@@ -12,6 +12,7 @@ import ComponentTwo from './components/ComponentTwo';
 import ComponentThree from './components/ComponentThree';
 import AllSongs from './components/AllSongs';
 import OneSong from './components/OneSong';
+import OnePlaylist from './components/OnePlaylist';
 import services from './services/apiServices';
 
 
@@ -92,7 +93,7 @@ class App extends Component {
                 <button onClick={this.loggingOut}>Log Out</button>
               </nav>
               <Route exact path='/' render={() => <ComponentOne userData={this.state.userData} />} />
-              <Route path='/componenttwo' component={ComponentTwo} />
+              <Route path='/playlist/:id' component={OnePlaylist} />
               <Route path='/componentthree' component={ComponentThree} />
               <Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
               <Route path='/songs/:id' component={OneSong}/>

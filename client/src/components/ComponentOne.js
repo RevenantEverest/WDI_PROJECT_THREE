@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import services from '../services/apiServices';
-import PlayList from './Playlist'
+import Playlist from './Playlist';
+import AddPlaylist from './AddPlaylist'
 
 class ComponentOne extends Component {
   constructor(props){
@@ -26,11 +27,12 @@ class ComponentOne extends Component {
     })
   }
   renderUserHomepage(){
-    const allPlayLists = this.state.apiData.map((playlist, id) => <PlayList playlist={playlist} key={id} />)
+    const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div>
         <h1>Welcome back {this.state.userData.username}!</h1>
         {allPlayLists}
+        <AddPlaylist userData={this.state.userData} />
       </div>
     )
   }

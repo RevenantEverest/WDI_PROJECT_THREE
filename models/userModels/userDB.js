@@ -11,6 +11,10 @@ module.exports = {
   getSingle(username){
     return db.one(`SELECT * FROM user_table WHERE username=$1`, username)
   },
+  addPlaylist(data) {
+    console.log(`in model ----> `, data);
+    return db.one(`INSERT INTO playlist (user_id, playlist_name) VALUES ($1, $2) RETURNING *`, [data.user_id, data.playlist_name])
+  },
   makeOne(){
     console.log(`Inside the makeOne function on the userDB model`);
   },

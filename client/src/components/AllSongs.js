@@ -19,7 +19,7 @@ class AllSongs extends Component {
     this.renderData = this.renderData.bind(this)
   }
   componentDidMount(){
-    console.log(`Im here as the state in all songs ---> `, this.props);
+    // console.log(`Im here as the state in all songs ---> `, this.props);
     services.getAll()
     .then(result => {
       // console.log(result);
@@ -34,7 +34,7 @@ class AllSongs extends Component {
     })
   }
   renderData(){
-    const allSongs = this.state.apiData.map((song, id) => <Song songData={song} key={id}/>)
+    const allSongs = this.state.apiData.map((song, id) => <Song userData={this.props.userData} songData={song} key={id}/>)
     return(
       <div className="full_library">
         <h1>All songs in the Database</h1>

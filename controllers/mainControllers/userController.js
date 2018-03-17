@@ -18,7 +18,10 @@ module.exports ={
     })
   },
   getPlaylist(req, res, next){
-    console.log(`in get getPlaylist`, req.params.id);
+    log(`in get playlist`)
+  },
+  getPlaylists(req, res, next){
+    console.log(`in get getPlaylists`, req.params.id);
     userDB.getAllPlayLists(req.params.id)
     .then(results => {
       res.json({
@@ -29,6 +32,19 @@ module.exports ={
     })
     .catch(err => {
       next(err)
+    })
+  },
+  newPlayList(req, res, next){
+    console.log('in user controller -----> ', req.body);
+    userDB.addPlaylist(req.body)
+    .then(result => {
+      res.json({
+        message: "ok",
+        data: result
+      })
+    })
+    .catch(error => {
+      next(error);
     })
   },
   create(req, res, next){

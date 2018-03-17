@@ -7,12 +7,15 @@ userRouter.route(`/`)
           // .get(userController.index)
           .post(userController.create)
           // .put(userController.update)
-          // .delete(userController.destroy)
+          // .delete(userController.destroy
+userRouter.route('/playlist/:id')
+          .get(userController.getPlaylist)
 
 userRouter.route('/:username')
           .get(userController.getOne)
 
 userRouter.route('/:username/:id')
-          .get(userController.getPlaylist)
+          .get(userController.getPlaylists)
+          .post(userController.newPlayList)
 //Export the router
 module.exports = userRouter;

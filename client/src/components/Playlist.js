@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 
-class PlayList extends Component {
+class Playlist extends Component {
   render(){
+    console.log(this.props);
     return(
       <div>
-      <h1>{this.props.playlist.playlist_name}</h1>
+      <Link to={`/playlist/${this.props.playlist.playlist_id}`}>{this.props.playlist.playlist_name}</Link>
       </div>
     )
   }
 }
-export default PlayList
+export default Playlist
