@@ -15,17 +15,23 @@ services.getUser = (username) => {
   return axios.get(`/auth/${username}`);
 }
 
-services.makeUser = (thing) => {
-  console.log('IM A THING ----> ', thing.username);
-  return axios({
-              method: 'post',
-              url: `/auth/`,
-              data: {
-                username: thing.username,
-                password: thing.password
-              }
-    })
+services.getUserInfo = (username, userId) => {
+  console.log('in axios ---> ', username, userId);
+  return axios.get(`/auth/${username}/${userId}`)
 }
+
+//Still working on this!
+// services.makeUser = (thing) => {
+//   console.log('IM A THING ----> ', thing.username);
+//   return axios({
+//               method: 'post',
+//               url: `/auth/`,
+//               data: {
+//                 username: thing.username,
+//                 password: thing.password
+//               }
+//     })
+// }
 
 
 export default services;

@@ -95,7 +95,7 @@ class App extends Component {
               <Route path='/componenttwo' component={ComponentTwo} />
               <Route path='/componentthree' component={ComponentThree} />
               <Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
-              <Route path='/songs/:id' render={() => <OneSong userData={this.state.userData} />}/>
+              <Route path='/songs/:id' component={OneSong}/>
             </div>
           </Router>
         </div>

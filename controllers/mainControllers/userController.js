@@ -2,26 +2,12 @@
 const userDB = require(`../../models/userModels/userDB`);
 
 module.exports ={
-  // index(req, res, next){
-  //   console.log(`linked`);
-  //   userDB.getAll()
-  //   .then(results => {
-  //     res.json({
-  //       message: "ok",
-  //       data: results
-  //     })
-  //     //Dont forget to call next()
-  //   })
-  //   .catch(err => {
-  //     next(err)
-  //   })
-  // },
   getOne(req, res, next){
-    console.log('in user controller getOne()', req.params.username);
+    // console.log('in user controller getOne()', req.params.username);
 
     userDB.getSingle(req.params.username)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       res.json({
         message: "ok",
         data: result
@@ -29,6 +15,20 @@ module.exports ={
     })
     .catch(error => {
       next(error)
+    })
+  },
+  getPlaylist(req, res, next){
+    console.log(`in get getPlaylist`, req.params.id);
+    userDB.getAllPlayLists(req.params.id)
+    .then(results => {
+      res.json({
+        message: "ok",
+        data: results
+      })
+      //Dont forget to call next()
+    })
+    .catch(err => {
+      next(err)
     })
   },
   create(req, res, next){

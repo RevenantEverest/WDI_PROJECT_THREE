@@ -11,5 +11,8 @@ userRouter.route(`/`)
 
 userRouter.route('/:username')
           .get(userController.getOne)
+
+userRouter.route('/:username/:id')
+          .get(userController.getPlaylist)
 //Export the router
 module.exports = userRouter;

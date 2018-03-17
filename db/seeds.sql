@@ -35,3 +35,23 @@ INSERT INTO user_table (username, password) VALUES (
   'Ryan',
   'Ryan'
 );
+
+INSERT INTO join_table (plist_id, song_id) VALUES (
+  1, 1
+), (
+  1, 2
+), (
+  1, 4
+), (
+  2, 3
+), (
+  2, 5
+);
+
+INSERT INTO playlist (user_id, playlist_name) VALUES (
+  1,
+  'playlistOne'
+),(
+  1,
+  'playlistTwo'
+)
