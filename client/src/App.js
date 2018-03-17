@@ -12,7 +12,6 @@ import ComponentTwo from './components/ComponentTwo';
 import ComponentThree from './components/ComponentThree';
 import AllSongs from './components/AllSongs';
 import OneSong from './components/OneSong';
-import UserAdd from './components/UserAdd';
 import services from './services/apiServices';
 
 
@@ -46,7 +45,7 @@ class App extends Component {
     e.preventDefault();
     services.getUser(this.state.username)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       this.setState({
         isLoggedIn: true,
         userData: result.data.data
@@ -78,13 +77,6 @@ class App extends Component {
             />
             <input type="submit" value="Log In!" />
           </form>
-          <Router>
-            <div>
-              {this.state.fireRedirect ? <Redirect to='/createuser' /> : ''}
-              <Route path='/createuser' component={UserAdd} />
-            </div>
-
-          </Router>
         </div>
       )
     } else {
@@ -99,11 +91,11 @@ class App extends Component {
                 <Link to='/songs'>Link to the songs</Link>
                 <button onClick={this.loggingOut}>Log Out</button>
               </nav>
-              <Route exact path='/' component={ComponentOne} />
+              <Route exact path='/' render={() => <ComponentOne userData={this.state.userData} />} />
               <Route path='/componenttwo' component={ComponentTwo} />
               <Route path='/componentthree' component={ComponentThree} />
-              <Route exact path='/songs' component={AllSongs} />
-              <Route path='/songs/:id' component={OneSong} />
+              <Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
+              <Route path='/songs/:id' render={() => <OneSong userData={this.state.userData} />}/>
             </div>
           </Router>
         </div>

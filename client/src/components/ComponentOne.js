@@ -9,10 +9,21 @@ class ComponentOne extends Component {
       apiData: null
     }
   }
+  componentDidMount(){
+    console.log(this.props);
+    this.setState({
+      userData: this.props.userData,
+    })
+  }
+  renderUserHomepage(){
+    return(
+      <h1>Welcome back {this.state.userData.username}!</h1>
+    )
+  }
   render() {
     return(
       <div>
-      <h1> This is the First/Landing Page of the Template</h1>
+      {this.state.userData ? this.renderUserHomepage() : 'OOPS!!!!'}
       </div>
     )
   }

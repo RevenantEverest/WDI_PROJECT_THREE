@@ -19,6 +19,7 @@ class AllSongs extends Component {
     this.renderData = this.renderData.bind(this)
   }
   componentDidMount(){
+    console.log(`Im here as the state in all songs ---> `, this.props);
     services.getAll()
     .then(result => {
       // console.log(result);
