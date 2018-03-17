@@ -23,8 +23,10 @@ app.use(express.static(`public`));
 app.set(`views`, path.join(__dirname, `views`));
 app.set(`view engine`, `ejs`);
 
+app.use('/api/songs', mainRouter)
+
 //******** testing that routes and controllers work ************
-app.use(`/api/testmain`, mainRouter);
+// app.use(`/api/testmain`, mainRouter);
 app.use(`/testusers`, userRouter);
 //******** testing that routes and controllers work ************
 

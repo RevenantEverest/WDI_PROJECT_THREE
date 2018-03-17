@@ -15,6 +15,18 @@ module.exports ={
       next(err)
     })
   },
+  getOne(req, res, next){
+    mainDB.getSingle(req.params.id)
+    .then(result => {
+      res.json({
+        message: "ok",
+        data: result
+      })
+    })
+    .catch(error => {
+      next(error)
+    })
+  },
   create(req, res, next){
     mainDB.makeOne()
     .then(result => {

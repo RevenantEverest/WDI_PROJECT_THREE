@@ -8,5 +8,8 @@ mainRouter.route(`/`)
           .post(mainController.create)
           .put(mainController.update)
           .delete(mainController.destroy)
+
+mainRouter.route('/:id')
+          .get(mainController.getOne)
 //Export the router
 module.exports = mainRouter;

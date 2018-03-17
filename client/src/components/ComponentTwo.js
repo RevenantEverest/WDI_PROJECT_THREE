@@ -13,6 +13,7 @@ class ComponentTwo extends Component {
   componentDidMount(){
     axios.get('/api/testmain')
     .then(res => {
+      console.log(res);
       this.setState({
         apiDataRecieved: true,
         apiData: res.data.data
@@ -25,11 +26,12 @@ class ComponentTwo extends Component {
 
   renderData(){
     return(
+
      this.state.apiData.map((el, i) => {
         return(
           <div key={i}>
-          <h1> This is the Second Page of the Template</h1>
-          <h2>Creator: </h2>
+          <h1> this is the list of all the songs</h1>
+          <h2>Song: </h2>
           <p>{el.name}</p>
           <h2>Extra Data: </h2>
           <p>{el.expression}</p>
