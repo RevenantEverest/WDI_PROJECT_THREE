@@ -24,10 +24,11 @@ app.set(`views`, path.join(__dirname, `views`));
 app.set(`view engine`, `ejs`);
 
 app.use('/api/songs', mainRouter)
+app.use('/auth', userRouter)
 
 //******** testing that routes and controllers work ************
 // app.use(`/api/testmain`, mainRouter);
-app.use(`/testusers`, userRouter);
+// app.use(`/testusers`, userRouter);
 //******** testing that routes and controllers work ************
 
 

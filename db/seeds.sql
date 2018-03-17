@@ -30,3 +30,8 @@ INSERT INTO song_library (title, artist, genre) VALUES (
   'Blind Melon',
   'Rock'
 );
+
+INSERT INTO user_table (username, password) VALUES (
+  'Ryan',
+  'Ryan'
+);

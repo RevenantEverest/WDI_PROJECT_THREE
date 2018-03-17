@@ -14,7 +14,7 @@ class OneSong extends Component{
     console.log(`IN ONE SONG FOR ----> `, this.props.match.params.id);
     services.getOne(this.props.match.params.id)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data

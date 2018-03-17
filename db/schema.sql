@@ -20,8 +20,8 @@ CREATE TABLE playlist (
 
 CREATE TABLE user_table (
   user_id SERIAL PRIMARY KEY,
-  uname VARCHAR(255),
-  pword VARCHAR(255)
+  username VARCHAR(255),
+  password VARCHAR(255)
 );
 
 CREATE TABLE test_table (

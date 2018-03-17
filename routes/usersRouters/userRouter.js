@@ -4,9 +4,12 @@ const userRouter = require(`express`).Router();
 const userController = require(`../../controllers/mainControllers/userController`);
 //Call all methods in the router that controller will utilize
 userRouter.route(`/`)
-          .get(userController.index)
+          // .get(userController.index)
           .post(userController.create)
-          .put(userController.update)
-          .delete(userController.destroy)
+          // .put(userController.update)
+          // .delete(userController.destroy)
+
+userRouter.route('/:username')
+          .get(userController.getOne)
 //Export the router
 module.exports = userRouter;
