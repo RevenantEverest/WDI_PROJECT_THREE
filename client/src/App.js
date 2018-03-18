@@ -85,13 +85,18 @@ class App extends Component {
         <div>
           <Router>
             <div>
-              <nav>
-                <div className="navBar">
-                <Link className="navBarHome" to='/'>Home</Link>
-                <Link classname="navBarSongs" to='/songs'>Songs</Link>
+              <div className="navBar">
+                <div className="searchBarContainer">
+                  <input className="searchBar" type="text" value="Search" />
+                </div>
+                <nav>
+                  <div className="navBarContent">
+                    <Link className="navBarHome" to='/'>Home</Link>
+                    <Link classname="navBarSongs" to='/songs'>Songs</Link>
+                  </div>
+                  <button className="logoutButton" onClick={this.loggingOut}>Log Out</button>
+                </nav>
               </div>
-                <button className="logoutButton" onClick={this.loggingOut}>Log Out</button>
-              </nav>
               <Route exact path='/' render={() => <ComponentOne userData={this.state.userData} />} />
               <Route path='/playlist/:id' component={OnePlaylist} />
               <Route path='/componentthree' component={ComponentThree} />

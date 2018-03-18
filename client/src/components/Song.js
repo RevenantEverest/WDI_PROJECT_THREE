@@ -11,7 +11,7 @@ class Song extends Component {
     }
   }
   componentDidMount(){
-    // console.log(this.props);
+    console.log(this.props);
   }
 
   openModal() {
@@ -41,7 +41,12 @@ class Song extends Component {
               <div className="modalContent">
                 <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
                 <h1 className="modalHeading">Which playlist would you like to add too?</h1>
-                <p></p>
+                <select>
+                  <option vlaue="placeholder name"> PlayList One </option>
+                  <option vlaue="placeholder name 2"> PlayList Two </option>
+                  <option vlaue="placeholder name 3"> PlayList Three </option>
+                </select>
+                <input type="submit" value="Add" />
               </div>
             </div>
         </div>
