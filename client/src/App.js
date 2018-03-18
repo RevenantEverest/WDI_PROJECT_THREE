@@ -6,9 +6,12 @@ import {
   Link
 } from 'react-router-dom';
 
-import ComponentOne from './components/ComponentOne';
-import ComponentTwo from './components/ComponentTwo';
-import ComponentThree from './components/ComponentThree';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import UserProfile from './components/UserProfile';
+import SingleList from './components/SingleList';
+import Search from './components/Search';
+
 
 class App extends Component {
   render() {
@@ -17,13 +20,13 @@ class App extends Component {
         <Router>
           <div>
             <nav>
-              <Link to='/'>Home Link</Link>
-              <Link to='/componenttwo'>Link to the Second Page</Link>
-              <Link to='/componentthree'>Link to the Third Page</Link>
+              <Link to='/Login'>Home</Link>
+              <Link to='/Signup'>Sign Up</Link>
+              <Link to='/Search'>Search Music</Link>
             </nav>
-              <Route exact path='/' component={ComponentOne} />
-              <Route path='/componenttwo' component={ComponentTwo} />
-              <Route path='/componentthree' component={ComponentThree} />
+              <Route exact path='/' component={Login} />
+              <Route path='/Signup' component={Signup} />
+              <Route path='/Search' component={Search} />
           </div>
         </Router>
       </div>
