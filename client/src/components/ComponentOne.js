@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import services from '../services/apiServices';
-import Playlist from './Playlist';
-import AddPlaylist from './AddPlaylist'
+import Playlist from './playlists/Playlist';
+import AddPlaylist from './playlists/AddPlaylist'
 
 class ComponentOne extends Component {
   constructor(props){

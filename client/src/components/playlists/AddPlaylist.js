@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import services from '../services/apiServices';
+import services from '../../services/apiServices';
 import {Redirect} from 'react-router-dom'
 
 class AddPlaylist extends Component {

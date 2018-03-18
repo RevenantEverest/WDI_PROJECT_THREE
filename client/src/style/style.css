@@ -25,6 +25,48 @@ a:hover{
   color: #B2006E;
 }
 
+/*======== Home Page ========*/
+
+.log-in-username {
+  border-radius: 6px;
+  border-style: solid;
+  border-color: black;
+}
+
+.log-in-password {
+  border-radius: 6px;
+  border-style: solid;
+  border-color: black;
+  margin-left: 0.5%;
+}
+
+.logIn-input {
+  border-radius: 4px;
+  border-style: solid;
+  border-color: black;
+  margin-left: 1%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}
+
+.logIn-input:hover {
+  color: #B2006E;
+  border-color: #B2006E;
+  background-color: black;
+  cursor: pointer;
+}
+
+.sign-Up {
+  padding-top: 1%;
+  margin-left: 0.5%;
+}
+
+.sign-Up:hover{
+  cursor: pointer;
+}
+
+/*-------- END --------*/
+
 .navBar{
   height: 3em;
   background-color: #2c2c2c;
@@ -111,6 +153,23 @@ a:hover{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/*======== Single Playlist ========*/
+
+.edit-playlist {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  padding-top: .2%;
+  padding-bottom: .2%;
+  width: 5%;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: inherit;
+}
+
+.edit-playlist:hover {
+  color: #B2006E;
 }
 
 

@@ -10,9 +10,9 @@ import {
 import ComponentOne from './components/ComponentOne';
 import ComponentTwo from './components/ComponentTwo';
 import ComponentThree from './components/ComponentThree';
-import AllSongs from './components/AllSongs';
-import OneSong from './components/OneSong';
-import OnePlaylist from './components/OnePlaylist';
+import AllSongs from './components/songs/AllSongs';
+import OneSong from './components/songs/OneSong';
+import OnePlaylist from './components/playlists/OnePlaylist';
 import services from './services/apiServices';
 
 
@@ -59,25 +59,46 @@ class App extends Component {
       })
     })
   }
+
+  handleLogInClick(){
+    let modal = document.querySelector('.simpleModal');
+    modal.style.display = "block";
+  }
+
+  closeModal() {
+    let modal = document.querySelector('.simpleModal');
+    modal.style.display = "none";
+  }
+
   render() {
     if(!this.state.isLoggedIn) {
       return(
         <div>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="username"
-              onChange={this.handleChange}
-              placeholder="User Name"
-            />
-            <input
-              type="text"
-              name="password"
-              onChange={this.handleChange}
-              placeholder="Password"
-            />
-            <input type="submit" value="Log In!" />
-          </form>
+          <button className="loginButton" onClick={(e) => this.handleLogInClick()}>Log In</button>
+          <div className="simpleModal">
+            <div className="modalContent">
+              <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
+              <h1 className="modalHeading">Welcome Back!</h1>
+              <div>
+                <form onSubmit={this.handleSubmit}>
+                  <input className="log-in-username"
+                    type="text"
+                    name="username"
+                    onChange={this.handleChange}
+                    placeholder="User Name"
+                  />
+                  <input className="log-in-password"
+                    type="text"
+                    name="password"
+                    onChange={this.handleChange}
+                    placeholder="Password"
+                  />
+                  <input className="logIn-input" type="submit" value="Log In!" />
+                </form>
+                <p>Or you can <a className="sign-Up">Sign-up</a></p>
+              </div>
+            </div>
+          </div>
         </div>
       )
     } else {

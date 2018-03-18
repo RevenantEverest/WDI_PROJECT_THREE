@@ -18,6 +18,11 @@ module.exports = {
   makeOne(){
     console.log(`Inside the makeOne function on the userDB model`);
   },
+
+  addSong(id){
+    return db.one(`INSERT INTO playlist (song_id) `)
+  }
+
   // updateInfo(){
   //   console.log(`Inside the updateInfo function on the userDB model`);
   // },

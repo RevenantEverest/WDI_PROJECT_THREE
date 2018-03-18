@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import services from '../services/apiServices';
+import services from '../../services/apiServices';
 
 
 class OnePlaylist extends Component{
@@ -7,7 +7,8 @@ class OnePlaylist extends Component{
     super(props);
     this.state = {
       apiDataRecieved: false,
-      apiData: null
+      apiData: null,
+      editState: false
     }
   }
   componentDidMount(){
@@ -34,10 +35,30 @@ class OnePlaylist extends Component{
       )
     })
   }
+
+  handleEditState() {
+    if(!this.state.editState) {
+      this.setState({
+        editState: true
+      })
+      let editButton = document.querySelector('.edit-playlist');
+      editButton.style.backgroundColor = "black";
+      editButton.style.color = "#B2006E";
+    }else {
+      this.setState({
+        editState: false
+      });
+      let editButton = document.querySelector('.edit-playlist');
+      editButton.style.backgroundColor = "inherit";
+      editButton.style.color = "inherit";
+    }
+  }
+
   render(){
     return(
       <div>
         {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
+        <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button>
       </div>
     )
   }
