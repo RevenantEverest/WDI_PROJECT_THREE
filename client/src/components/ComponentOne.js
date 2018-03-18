@@ -29,7 +29,7 @@ class ComponentOne extends Component {
   renderUserHomepage(){
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
-      <div>
+      <div className="userHomePageTrue">
         <h1>Welcome back {this.state.userData.username}!</h1>
         {allPlayLists}
         <AddPlaylist userData={this.state.userData} />
@@ -38,7 +38,7 @@ class ComponentOne extends Component {
   }
   render() {
     return(
-      <div>
+      <div className="userHomePageFalse">
       {this.state.apiDataRecieved ? this.renderUserHomepage() : 'OOPS!!!!'}
       </div>
     )

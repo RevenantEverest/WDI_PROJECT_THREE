@@ -23,7 +23,7 @@ class App extends Component {
       isLoggedIn: false,
       userData: null,
       apiDataRecieved: false,
-      firRedirect: false
+      fireRedirect: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -86,11 +86,11 @@ class App extends Component {
           <Router>
             <div>
               <nav>
-                <Link to='/'>Home Link</Link>
-                <Link to='/componenttwo'>Link to the Second Page</Link>
-                <Link to='/componentthree'>Link to the Third Page</Link>
-                <Link to='/songs'>Link to the songs</Link>
-                <button onClick={this.loggingOut}>Log Out</button>
+                <div className="navBar">
+                <Link className="navBarHome" to='/'>Home</Link>
+                <Link classname="navBarSongs" to='/songs'>Songs</Link>
+              </div>
+                <button className="logoutButton" onClick={this.loggingOut}>Log Out</button>
               </nav>
               <Route exact path='/' render={() => <ComponentOne userData={this.state.userData} />} />
               <Route path='/playlist/:id' component={OnePlaylist} />
