@@ -13,8 +13,7 @@ class Song extends Component {
     }
   }
   componentDidMount(){
-    console.log(this.props.playlist);
-    console.log();
+
   }
 
   openModal() {

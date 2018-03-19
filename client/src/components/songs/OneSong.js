@@ -11,7 +11,6 @@ class OneSong extends Component{
     }
   }
   componentDidMount(){
-    // console.log(`IN ONE SONG FOR ----> `, this.props);
     services.getOne(this.props.match.params.id)
     .then(result => {
       // console.log(result);

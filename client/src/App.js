@@ -7,9 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import ComponentOne from './components/ComponentOne';
-import ComponentTwo from './components/ComponentTwo';
-import ComponentThree from './components/ComponentThree';
+import UserProfile from './components/UserProfile';
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
 import OnePlaylist from './components/playlists/OnePlaylist';
@@ -122,9 +120,8 @@ class App extends Component {
                   <button className="logoutButton" onClick={this.loggingOut}>Log Out</button>
                 </nav>
               </div>
-              <Route exact path='/' render={() => <ComponentOne userData={this.state.userData} />} />
+              <Route exact path='/' render={() => <UserProfile userData={this.state.userData} />} />
               <Route path='/playlist/:id' component={OnePlaylist} />
-              <Route path='/componentthree' component={ComponentThree} />
               <Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
               <Route path='/songs/:id' component={OneSong}/>
             </div>
