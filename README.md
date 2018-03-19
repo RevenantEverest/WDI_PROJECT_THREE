@@ -1,6 +1,6 @@
 BeatBox
 
-	An application where users will have an accessible personal  account and can select and store music from a 3rd party api into their own playlists and save their song for random access
+An application where users will have an accessible personal  account and can select and store music from a 3rd party api into their own playlists and save their song for random access
 
 Technologies used: html, css, javascript, react, express, node.js, a third party API, Postgres, SQL, Axios and a user authorization system (potentially Oauth)
 
