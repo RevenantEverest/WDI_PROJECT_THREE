@@ -13,7 +13,7 @@ class AddPlaylist extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount(){
-    console.log(this.props);
+    console.log('AddPlaylist =>' + this.props);
   }
   handleChange(e){
     const name = e.target.name;
@@ -39,10 +39,6 @@ class AddPlaylist extends Component {
     .catch(error => {
       console.log(error);
     })
-  }
-
-  handleAddRedirect() {
-
   }
 
   render(){

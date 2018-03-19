@@ -67,6 +67,8 @@ a:hover{
 
 /*-------- END --------*/
 
+/*======== Nav Bar ========*/
+
 .navBar{
   height: 3em;
   background-color: #2c2c2c;
@@ -107,6 +109,8 @@ a:hover{
   border-color: #B2006E;
 }
 
+/*-------- END --------*/
+
 /*======== Display All Songs ========*/
 
 .addSongButton {
@@ -121,6 +125,53 @@ a:hover{
 .addSongButton:hover {
   color: #B2006E;
 }
+
+/*-------- END --------*/
+
+
+/*======== Single Playlist ========*/
+
+.edit-playlist {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  padding-top: .2%;
+  padding-bottom: .2%;
+  width: 5%;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: inherit;
+}
+
+.edit-playlist:hover {
+  color: #B2006E;
+}
+
+.delete-song {
+  height: 1em;
+  width: 1em;
+  display: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  background-color: red;
+  border: none;
+  border-color: grey;
+  border-radius: 24px;
+}
+
+.delete-song-x {
+  margin-top: -.2em;
+}
+
+.delete-song:hover{
+  color: grey;
+  background-color: #5c0909;
+}
+
+/*-------- END --------*/
+
+/*======== Modal ========*/
 
 .simpleModal{
   display: none;
@@ -155,23 +206,9 @@ a:hover{
   cursor: pointer;
 }
 
-/*======== Single Playlist ========*/
+/*-------- END --------*/
 
-.edit-playlist {
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  padding-top: .2%;
-  padding-bottom: .2%;
-  width: 5%;
-  border-radius: 3px;
-  border-style: solid;
-  border-color: inherit;
-}
-
-.edit-playlist:hover {
-  color: #B2006E;
-}
-
+/*======== Animations ========*/
 
 @keyframes fadeIn {
     0%,
@@ -183,3 +220,5 @@ a:hover{
       opacity: 1;
     }
 }
+
+/*-------- END --------*/

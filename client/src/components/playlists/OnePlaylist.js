@@ -30,27 +30,36 @@ class OnePlaylist extends Component{
     return this.state.apiData.map((song, id) => {
       return(
         <div>
-          <h1>{song.title}</h1>
+          <h1>
+            <button className="delete-song">
+              <p className="delete-song-x">&times;</p>
+            </button>
+            {song.title}
+          </h1>
         </div>
       )
     })
   }
 
   handleEditState() {
+    let editButton = document.querySelector('.edit-playlist');
+    let deleteButton = document.querySelector('.delete-song');
     if(!this.state.editState) {
       this.setState({
         editState: true
       })
-      let editButton = document.querySelector('.edit-playlist');
       editButton.style.backgroundColor = "black";
       editButton.style.color = "#B2006E";
+      deleteButton.style.display = "inline-block";
+      this.renderPlaylist();
     }else {
       this.setState({
         editState: false
       });
-      let editButton = document.querySelector('.edit-playlist');
       editButton.style.backgroundColor = "inherit";
       editButton.style.color = "inherit";
+      deleteButton.style.display = "none";
+      this.renderPlaylist();
     }
   }
 

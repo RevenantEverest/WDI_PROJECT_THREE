@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Playlist from '../playlists/Playlist';
+
 //********* We can probably make this a Brian "dumb" Component ***************
 
 class Song extends Component {
@@ -11,7 +13,8 @@ class Song extends Component {
     }
   }
   componentDidMount(){
-    console.log(this.props);
+    console.log(this.props.playlist);
+    console.log();
   }
 
   openModal() {
@@ -31,6 +34,10 @@ class Song extends Component {
     })
   }
 
+  listPlaylists() {
+    let playlists = <Playlist />;
+  }
+
   render(){
     return(
       <div className="one_song_container">
@@ -42,9 +49,9 @@ class Song extends Component {
                 <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
                 <h1 className="modalHeading">Which playlist would you like to add too?</h1>
                 <select>
-                  <option vlaue="placeholder name"> PlayList One </option>
-                  <option vlaue="placeholder name 2"> PlayList Two </option>
-                  <option vlaue="placeholder name 3"> PlayList Three </option>
+                  <option>Placeholer 1</option>
+                  <option>Placeholer 2</option>
+                  <option>Placeholer 3</option>
                 </select>
                 <input type="submit" value="Add" />
               </div>

@@ -5,10 +5,10 @@ class Playlist extends Component {
   render(){
     console.log(this.props);
     return(
-      <div>
-      <Link to={`/playlist/${this.props.playlist.playlist_id}`}>{this.props.playlist.playlist_name}</Link>
+      <div className={this.props.playlist.playlist_name}>
+        <Link to={`/playlist/${this.props.playlist.playlist_id}`}>{this.props.playlist.playlist_name}</Link>
       </div>
     )
   }
 }
-export default Playlist
+export default Playlist;

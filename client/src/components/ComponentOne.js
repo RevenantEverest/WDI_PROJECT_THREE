@@ -13,7 +13,7 @@ class ComponentOne extends Component {
     }
   }
   componentDidMount(){
-    // console.log(this.props);
+    console.log('ComponentOne => ' + this.state.userData);
     services.getUserInfo(this.props.userData.username, this.props.userData.user_id)
     .then(result => {
       console.log(result);

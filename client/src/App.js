@@ -29,6 +29,10 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.loggingOut = this.loggingOut.bind(this);
   }
+  componentDidMount(){
+    //console.log(this.props.data);
+  }
+
   loggingOut(e) {
     e.preventDefault();
     this.setState({
@@ -108,7 +112,7 @@ class App extends Component {
             <div>
               <div className="navBar">
                 <div className="searchBarContainer">
-                  <input className="searchBar" type="text" value="Search" />
+                  <input className="searchBar" type="text" name="search" placeholder="Search" />
                 </div>
                 <nav>
                   <div className="navBarContent">
