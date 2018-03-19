@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const services = {};
 
-
+services.checkLoggedIn = () =>{
+  return axios.get('/auth')
+}
 services.getAll = () => {
   return axios.get('/api/songs')
 }
