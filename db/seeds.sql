@@ -31,11 +31,6 @@ INSERT INTO song_library (title, artist, genre) VALUES (
   'Rock'
 );
 
-INSERT INTO user_table (username, password) VALUES (
-  'Ryan',
-  'Ryan'
-);
-
 INSERT INTO join_table (plist_id, song_id) VALUES (
   1, 1
 ), (

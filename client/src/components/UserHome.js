@@ -53,6 +53,7 @@ class UserHome extends Component {
       console.log(`I am in Register ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token)
       TokenService.saveUser(resp.data.user.user_id);
+      TokenService.saveUsername(resp.data.user.username);
       console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
@@ -71,6 +72,7 @@ class UserHome extends Component {
       console.log(`I am in login ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token);
       TokenService.saveUser(resp.data.user.user_id);
+      TokenService.saveUsername(resp.data.user.username);
       console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,

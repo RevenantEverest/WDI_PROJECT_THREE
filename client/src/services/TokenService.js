@@ -8,6 +8,10 @@ export default {
     window.localStorage.setItem('user_id', id);
   },
 
+  saveUsername(name) {
+    window.localStorage.setItem('username', name);
+  },
+
   read() {
     return window.localStorage.getItem('authToken') || ''; // fetch the token out of localStorage
 
