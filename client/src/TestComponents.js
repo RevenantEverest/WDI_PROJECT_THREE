@@ -30,6 +30,7 @@ class TestComponent extends Component {
       <div>
         <h1>Im here!!!!</h1>
         <Link to='/songs'>All songs</Link>
+        <Link to={`${parseInt(window.localStorage.user_id)}`}
       </div>
     )
   }

@@ -1,9 +1,16 @@
 import axios from 'axios';
+import TokenService from './apiServices'
 
 const services = {};
 
-services.checkLoggedIn = () =>{
-  return axios.get('/auth')
+services.checkLoggedIn = (read) =>{
+  return axios({
+      method: 'get',
+      url: `/isLoggedIn`,
+      headers: {
+              Authorization: `Bearer ${read}`,
+            },
+  })
 }
 services.getAll = () => {
   return axios.get('/api/songs')

@@ -36,7 +36,7 @@ class UserHome extends Component {
         Authorization: `Bearer ${TokenService.read()}`,
       },
     }).then(resp => {
-      console.log(resp)
+      console.log('Im in the componentDidMount ---> ', TokenService.read())
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         apiDataRecieved: true
