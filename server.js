@@ -31,7 +31,7 @@ app.set(`views`, path.join(__dirname, `views`));
 app.set(`view engine`, `ejs`);
 app.use(tokenService.receiveToken);
 
-//app.use('/users', userRouterTwo)
+app.use('/users', userRouterTwo)
 app.get('/restricted', authServices.restrict(), (req, res) => {
   res.json({message: 'nailed it!'})
 })

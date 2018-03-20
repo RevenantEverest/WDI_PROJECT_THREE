@@ -49,7 +49,7 @@ module.exports ={
       });
   },
   update(req, res, next) {
-    playlistDB.update(req.params.id)
+    playlistDB.update(req.body)
       .then(results => {
         res.json({
           message: "Updating Playlist",

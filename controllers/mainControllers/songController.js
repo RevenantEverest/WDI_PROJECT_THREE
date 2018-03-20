@@ -38,7 +38,7 @@ module.exports = {
     songDB.update(req.body)
       .then(results => {
         res.json({
-          message: "ok",
+          message: "Updating Song",
           data: results
         })
         next();

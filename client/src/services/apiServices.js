@@ -3,11 +3,11 @@ import axios from 'axios';
 const services = {};
 
 
-services.getAll = () => {
+services.getAllSongs = () => {
   return axios.get('/api/songs')
 }
 
-services.getOne = (id) => {
+services.getOneSong = (id) => {
   return axios.get(`/api/songs/${id}`)
 }
 
@@ -30,7 +30,11 @@ console.log(data);
                 }
   })
 }
-services.getPlaylistInfo = (id) => {
+services.getAllPlaylists = () => {
+  return axios.get(`/playlist`)
+}
+
+services.getOnePlaylist = (id) => {
   return axios.get(`/playlist/${id}`)
 }
 
