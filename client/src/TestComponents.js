@@ -11,20 +11,21 @@ class TestComponent extends Component {
     }
   }
   componentDidMount() {
+    console.log(`IS THIS MY USER DATA???? ----> `, window.localStorage);
     axios(`http://localhost:3000/isLoggedIn`, {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },
     }).then(resp => {
-      console.log(resp)
       this.setState({
-        isLoggedIn: true,
+        isLoggedIn: resp.data.isLoggedIn,
+        // userData: window.localStorage.
       })
     })
     .catch(err => console.log(err))
   }
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     return(
       <div>
         <h1>Im here!!!!</h1>

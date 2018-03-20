@@ -50,8 +50,10 @@ class UserHome extends Component {
       method: "POST",
       data
     }).then(resp => {
-      console.log(`I am in Register ------> `, resp);
+      console.log(`I am in Register ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token)
+      TokenService.saveUser(resp.data.user.user_id);
+      console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
         isLoggedIn: true,
@@ -66,8 +68,10 @@ class UserHome extends Component {
       method: "POST",
       data
     }).then(resp => {
-      console.log(`I am in login ------> `, resp);
+      console.log(`I am in login ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token);
+      TokenService.saveUser(resp.data.user.user_id);
+      console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
         isLoggedIn: true,
@@ -91,19 +95,6 @@ class UserHome extends Component {
     event.preventDefault()
     TokenService.destroy();
     console.log("Im logged out");
-  }
-  checkLogin() {
-    axios(`http://localhost:3000/isLoggedIn`, {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => {
-      console.log(resp)
-      this.setState({
-        isLoggedIn: true,
-      })
-    })
-    .catch(err => console.log(err))
   }
   renderLogin(){
     return(

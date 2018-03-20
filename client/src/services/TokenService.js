@@ -4,6 +4,10 @@ export default {
 
   },
 
+  saveUser(id) {
+    window.localStorage.setItem('user_id', id);
+  },
+
   read() {
     return window.localStorage.getItem('authToken') || ''; // fetch the token out of localStorage
 

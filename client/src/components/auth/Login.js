@@ -18,7 +18,7 @@ export default class Login extends Component {
     // preventDefault and lift state back up to the parent
     handleSubmit(e) {
       e.preventDefault();
-      console.log(`in state ----> `, this.state);
+      // console.log(`in state ----> `, this.state);
       this.props.submit(this.state);
 
     }
@@ -33,7 +33,7 @@ export default class Login extends Component {
     }
 
     render() {
-      console.log('loaded', this.state)
+      // console.log('loaded', this.state)
       return (
         <form onSubmit={this.handleSubmit}>
           <label>Name

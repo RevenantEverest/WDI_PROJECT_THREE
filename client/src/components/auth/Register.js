@@ -20,8 +20,7 @@ export default class Register extends Component {
     // preventDefault and lift state back up to the parent
     handleSubmit(e) {
       e.preventDefault();
-      console.log(`in state ----> `, this.state, this.props);
-      debugger
+      // console.log(`in state ----> `, this.state, this.props);
       this.props.submit(this.state);
 
     }
@@ -36,7 +35,6 @@ export default class Register extends Component {
     }
 
     render() {
-      console.log('loaded', this.state)
       return (
         <form onSubmit={this.handleSubmit}>
           <label>Name
