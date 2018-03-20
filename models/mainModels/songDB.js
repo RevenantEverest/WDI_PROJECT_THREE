@@ -15,8 +15,8 @@ module.exports = {
   update(song) {
     return db.one(`UPDATE song_library
       SET
-      title = $/title/
-      artist = $/artist/
+      title = $/title/,
+      artist = $/artist/,
       genre = $/genre/
       WHERE song_id = $/song_id/
       RETURNING *`, song);

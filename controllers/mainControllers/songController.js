@@ -35,7 +35,7 @@ module.exports = {
       });
   },
   update(req, res, next) {
-    songDB.update()
+    songDB.update(req.body)
       .then(results => {
         res.json({
           message: "ok",
