@@ -21,11 +21,8 @@ class AllSongs extends Component {
     this.renderData = this.renderData.bind(this)
   }
   componentDidMount() {
-    axios(`http://localhost:3000/isLoggedIn`, {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => {
+    services.checkLoggedIn(TokenService.read())
+    .then(resp => {
       console.log(`IN RESPONSE ____>`, resp.data.isLoggedIn)
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,

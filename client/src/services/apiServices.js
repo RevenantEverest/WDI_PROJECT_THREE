@@ -2,6 +2,15 @@ import axios from 'axios';
 
 const services = {};
 
+services.checkLoggedIn = (read) => {
+  return axios({
+    method: "get",
+    url: "/isLoggedIn",
+    headers: {
+      Authorization: `Bearer ${read}`
+    },
+  })
+}
 
 services.getAllSongs = () => {
   return axios.get('/api/songs')
