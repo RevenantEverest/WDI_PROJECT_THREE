@@ -36,7 +36,7 @@ class AllSongs extends Component {
   }
   getData(){
     // console.log(`Im here as the state in all songs ---> `, this.props);
-    services.getAll()
+    services.getAllSongs()
     .then(result => {
       // console.log(result);
       this.setState({
