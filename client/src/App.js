@@ -115,7 +115,7 @@ class App extends Component {
                 <nav>
                   <div className="navBarContent">
                     <Link className="navBarHome" to='/'>Home</Link>
-                    <Link classname="navBarSongs" to='/songs'>Songs</Link>
+                    <Link className="navBarSongs" to='/songs'>Songs</Link>
                   </div>
                   <button className="logoutButton" onClick={this.loggingOut}>Log Out</button>
                 </nav>

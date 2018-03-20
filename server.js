@@ -14,6 +14,7 @@ const app = express();
 const mainRouter = require(`./routes/mainRouters/mainRouter`);
 const userRouter = require(`./routes/usersRouters/userRouter`);
 const playlistRouter = require('./routes/mainRouters/playlistRouter');
+const songRouter = require('./routes/mainRouters/songRouter');
 
 app.use(methodOverride(`_method`));
 app.use(logger(`dev`));
@@ -24,9 +25,10 @@ app.use(express.static(`public`));
 app.set(`views`, path.join(__dirname, `views`));
 app.set(`view engine`, `ejs`);
 
-app.use('/api/songs', mainRouter)
-app.use('/playlist', playlistRouter)
-app.use('/auth', userRouter)
+app.use('/api/songs', mainRouter);
+app.use('/playlist', playlistRouter);
+app.use('/song', songRouter);
+app.use('/auth', userRouter);
 
 //******** testing that routes and controllers work ************
 // app.use(`/api/testmain`, mainRouter);

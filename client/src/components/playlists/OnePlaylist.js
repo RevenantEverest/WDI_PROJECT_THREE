@@ -8,17 +8,18 @@ class OnePlaylist extends Component{
     this.state = {
       apiDataRecieved: false,
       apiData: null,
+      apiDataPlaylist: null,
       editState: false
     }
   }
   componentDidMount(){
-    console.log(`IN ONE PLAYLIST FOR ----> `, this);
     services.getPlaylistInfo(this.props.match.params.id)
     .then(result => {
       console.log(result);
       this.setState({
         apiDataRecieved: true,
-        apiData: result.data.data
+        apiData: result.data.data,
+        apiDataPlaylist: result.data
       })
     })
     .catch(error => {
@@ -27,6 +28,7 @@ class OnePlaylist extends Component{
   }
 
   renderPlaylist(){
+    console.log(this.state.apiData)
     return this.state.apiData.map((song, id) => {
       return(
         <div>
@@ -34,11 +36,17 @@ class OnePlaylist extends Component{
             <button className="delete-song">
               <p className="delete-song-x">&times;</p>
             </button>
-            {song.title}
+            <p2 className="songListing">{song.title}</p2>
           </h1>
         </div>
       )
     })
+  }
+
+  renderPlaylistName() {
+    return(
+      <h1>{this.state.apiDataPlaylist.playlistName}</h1>
+    )
   }
 
   handleEditState() {
@@ -66,6 +74,7 @@ class OnePlaylist extends Component{
   render(){
     return(
       <div>
+        {this.state.apiDataRecieved ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
         {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
         <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button>
       </div>

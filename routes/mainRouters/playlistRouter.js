@@ -4,8 +4,17 @@ const playlistRouter = require(`express`).Router();
 const playlistController = require(`../../controllers/mainControllers/playlistController`);
 //Call all methods in the router that controller will utilize
 
-playlistRouter.route('/:id')
-                  .get(playlistController.index)
 
+playlistRouter.get(`/:id/edit`, playlistController.getOne);
+//playlistRouter.get(`/new`, playlistController.addPlaylist);
+
+playlistRouter.route('/:id')
+                  .get(playlistController.getOne, playlistController.listSongs)
+                  .put(playlistController.update)
+                  .delete(playlistController.destroy)
+
+playlistRouter.route(`/`)
+                  .get(playlistController.index)
+                  .post(playlistController.create)
 
 module.exports = playlistRouter;

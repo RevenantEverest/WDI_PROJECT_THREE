@@ -169,6 +169,11 @@ a:hover{
   background-color: #5c0909;
 }
 
+.songListing {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
 /*-------- END --------*/
 
 /*======== Modal ========*/
