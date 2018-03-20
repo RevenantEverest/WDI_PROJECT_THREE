@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
-import TokenService from './services/TokenService';
+import TokenService from './services/TokenService'
 
 class TestComponent extends Component {
   constructor(props){
     super(props);
+    this.state = {
 
+    }
   }
-  componentDidMount(){
-    console.log('Im in componentDidMount');
+  componentDidMount() {
     axios(`http://localhost:3000/isLoggedIn`, {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
@@ -16,15 +18,18 @@ class TestComponent extends Component {
     }).then(resp => {
       console.log(resp)
       this.setState({
-        isLoggedIn: resp.data.isLoggedIn,
-        apiDataRecieved: true
+        isLoggedIn: true,
       })
     })
     .catch(err => console.log(err))
   }
   render(){
+    console.log(this.props)
     return(
-      <h1>Im here!!!!</h1>
+      <div>
+        <h1>Im here!!!!</h1>
+        <Link to='/songs'>All songs</Link>
+      </div>
     )
   }
 }

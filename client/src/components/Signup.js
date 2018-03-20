@@ -15,7 +15,7 @@ class Signup extends Component {
     this.setState({
       username: '',
       password: ''
-      
+
     })
   }
 
@@ -39,7 +39,7 @@ class Signup extends Component {
       <form onSubmit={this.handleFormSubmit}>
       <input type='text' name='user' onChange={this.handleInputChange}
       placeholder='User Name?' />
-      <input type='text' name='password' onChange={this.handleInputChange}
+      <input type='text' name='password' onChange={this.handleInputChange} />
       </form>
       </div>
     )

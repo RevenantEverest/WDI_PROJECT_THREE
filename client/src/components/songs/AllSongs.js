@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import services from '../../services/apiServices';
 import Song from './Song';
+import TokenService from '../../services/TokenService'
 
 
 class AllSongs extends Component {
@@ -14,11 +15,26 @@ class AllSongs extends Component {
     super(props)
     this.state = {
       apiDataRecieved: false,
-      apiData: null
+      apiData: null,
+      isLoggedIn: false
     }
     this.renderData = this.renderData.bind(this)
   }
-  componentDidMount(){
+  componentDidMount() {
+    axios(`http://localhost:3000/isLoggedIn`, {
+      headers: {
+        Authorization: `Bearer ${TokenService.read()}`,
+      },
+    }).then(resp => {
+      console.log(`IN RESPONSE ____>`, resp.data.isLoggedIn)
+      this.setState({
+        isLoggedIn: resp.data.isLoggedIn,
+      })
+      this.getData()
+    })
+    .catch(err => console.log(err))
+  }
+  getData(){
     // console.log(`Im here as the state in all songs ---> `, this.props);
     services.getAll()
     .then(result => {
@@ -45,7 +61,7 @@ class AllSongs extends Component {
   render(){
     return(
       <div>
-      {this.state.apiDataRecieved ? this.renderData() : <h1>Oops this is awkward <span>😳</span></h1>}
+      {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderData() : <h1>Oops this is awkward <span>😳</span></h1>}
       </div>
     )
   }
