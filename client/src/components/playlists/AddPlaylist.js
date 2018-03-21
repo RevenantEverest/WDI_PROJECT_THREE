@@ -15,7 +15,7 @@ class AddPlaylist extends Component {
       //****** SEE CHANGES ******
 
       username: window.localStorage.username,
-      user_id: window.localStorage.user_id,
+      user_id: parseInt(window.localStorage.user_id),
 
       // userData: this.props.userData,
 
@@ -30,7 +30,7 @@ class AddPlaylist extends Component {
   componentDidMount(){
     console.log('AddPlaylist =>' + this.props);
   }
-  
+
   handleChange(e){
     const name = e.target.name;
     const value = e.target.value;
