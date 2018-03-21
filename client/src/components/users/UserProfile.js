@@ -65,13 +65,16 @@ class UserProfile extends Component {
       <div className="userHomePageTrue">
         <h1>Welcome back {this.state.username}!</h1>
         {allPlayLists}
+
+        {/* we no longer need to pass the userData through here, we can acess in localStorage, remove props */}
+
         <AddPlaylist userData={this.state.userData} />
       </div>
     )
   }
 
   // The other side of the if tearnary needs to be updated to redirect to an error handler page, consider making this a full blown if statement and changing state with a setTimeout to display loading then firing a redirect to login if the user is not logged in....displaying loading if its waiting on the actual db or if the user is not logged in, redirecting
-  
+
   render() {
     return(
       <div className="userHomePageFalse">

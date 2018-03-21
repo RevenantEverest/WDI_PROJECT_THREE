@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
 
+//this component renders a single song and all of the information about that song, there are multiple ways to handle this, we can just re-call the API or we can have the song saved in the db and then call the db, this one is up to you KHALID AND BRADFORD
 
 class OneSong extends Component{
   constructor(props){
@@ -10,7 +11,11 @@ class OneSong extends Component{
       apiData: null
     }
   }
+
+  //KHALID and BRADFORD, this is where you have to make the change if the song is not in our db.
+
   componentDidMount(){
+    console.log(`inside did mount`);
     services.getOne(this.props.match.params.id)
     .then(result => {
       // console.log(result);
@@ -23,6 +28,8 @@ class OneSong extends Component{
       console.log(`Woops! ----> `, error);
     })
   }
+
+  //Render the song sheet when the information is loaded
 
   renderSong(){
     return(

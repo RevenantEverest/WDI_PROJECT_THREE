@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
+//can make this a dumb component
+
+//this renders each playlist on the UserProfile page
+
 class Playlist extends Component {
   render(){
     console.log(this.props);

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import {Link} from 'react-router-dom';
 
+//STEFAN, this one is working for me as I work through this, idk if the same applies for yourself, can we play around with this and see if we need the multiple render statements???
+
+//also can you please populate this file with comments? you may be able to clearly depict best what is taking place here
 
 class OnePlaylist extends Component{
   constructor(props){
@@ -14,6 +17,9 @@ class OnePlaylist extends Component{
       editState: false
     }
   }
+
+  //load the single playlist information before it gets rendered
+
   componentDidMount(){
     services.getOnePlaylist(parseInt(this.props.match.params.id))
     .then(playlist => {

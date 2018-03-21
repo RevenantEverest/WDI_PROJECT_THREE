@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+//register form....have at it with changing classnames for css
+
+//**** Please do not modify other than classNames ****
+
 
 export default class Register extends Component {
   constructor(props) {

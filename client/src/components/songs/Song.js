@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Playlist from '../playlists/Playlist';
 
-//********* We can probably make this a Brian "dumb" Component ***************
+// STEFAN, you're the CSS master, please populate this component with comments to explain everything #fuckmodals
 
 class Song extends Component {
   constructor(props){

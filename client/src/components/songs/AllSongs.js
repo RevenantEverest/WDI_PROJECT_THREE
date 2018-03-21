@@ -20,6 +20,10 @@ class AllSongs extends Component {
     }
     this.renderData = this.renderData.bind(this)
   }
+
+  //I dont think that we need this here because there is nothing on this component that needs user specific information, if we do decide that we want to require user specific information, then we need to change the error handler
+
+
   componentDidMount() {
     services.checkLoggedIn(TokenService.read())
     .then(resp => {
@@ -31,6 +35,9 @@ class AllSongs extends Component {
     })
     .catch(err => console.log(err))
   }
+
+  //call to get all of the data from the Database, KHALID, this is were we can change this to call your music API
+
   getData(){
     // console.log(`Im here as the state in all songs ---> `, this.props);
     services.getAllSongs()
@@ -46,6 +53,9 @@ class AllSongs extends Component {
       console.log(error);
     })
   }
+
+  //render the page once api data is loaded, this will be especially important if we are actually calling from the api with a relatively large response time.
+
   renderData(){
     const allSongs = this.state.apiData.map((song, id) => <Song userData={this.props.userData} songData={song} key={id}/>)
     return(

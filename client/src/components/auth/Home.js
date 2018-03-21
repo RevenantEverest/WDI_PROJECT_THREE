@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+//can be a dumb component just renders both options to login or register
+
 export default class Home extends Component {
   constructor(props) {
     super(props);

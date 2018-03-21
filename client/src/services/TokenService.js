@@ -1,7 +1,10 @@
+//This file contains all methods to store, read, and remove information from window.localStorage
+
+//PLEASE DO NOT MODIFY WITHOUT ENTIRE GROUP PERMISSION
+
 export default {
   save(token) {
-    window.localStorage.setItem('authToken', token); // store token in localStorage under the 'authToken' key
-
+    window.localStorage.setItem('authToken', token);
   },
 
   saveUser(id) {
@@ -13,12 +16,11 @@ export default {
   },
 
   read() {
-    return window.localStorage.getItem('authToken') || ''; // fetch the token out of localStorage
-
+    return window.localStorage.getItem('authToken') || '';
   },
 
   destroy() {
-    window.localStorage.removeItem('authToken'); // delete the token
+    window.localStorage.removeItem('authToken');
   },
 
 };
