@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-import services from '../services/apiServices';
-import Playlist from './playlists/Playlist';
-import AddPlaylist from './playlists/AddPlaylist';
+import services from '../../services/apiServices';
+import Playlist from '../playlists/Playlist';
+import AddPlaylist from '../playlists/AddPlaylist';
 import axios from 'axios';
-import TokenService from '../services/TokenService';
+import TokenService from '../../services/TokenService';
 
 class UserProfile extends Component {
   constructor(props){
@@ -18,17 +17,14 @@ class UserProfile extends Component {
   }
 
   componentDidMount(){
-    console.log(`im here`);
-    axios(`http://localhost:3000/isLoggedIn`, {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => {
-      console.log(`im the onload window response!! ---> `, resp)
+    services.checkLoggedIn(TokenService.read())
+    .then(resp => {
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
-        apiDataRecieved: true
+        username: window.localStorage.username,
+        user_id: parseInt(window.localStorage.user_id)
       })
+      this.getUserInfo()
     })
     .catch(err => {
       console.log(err);
@@ -40,7 +36,7 @@ class UserProfile extends Component {
 
   getUserInfo(){
     console.log('ComponentOne ---> ', this.state.userData);
-    services.getUserInfo(this.state.userData.username, this.state.userData.user_id)
+    services.getUserInfo(this.state.username, this.state.user_id)
     .then(result => {
       console.log(result);
       this.setState({
@@ -48,15 +44,13 @@ class UserProfile extends Component {
         apiData: result.data.data
       })
     })
-    // this.setState({
-    //   userData: this.props.userData,
-    // })
   }
   renderUserHomepage(){
+    console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">
-        <h1>Welcome back {this.state.userData.username}!</h1>
+        <h1>Welcome back {this.state.username}!</h1>
         {allPlayLists}
         <AddPlaylist userData={this.state.userData} />
       </div>
@@ -66,7 +60,6 @@ class UserProfile extends Component {
     return(
       <div className="userHomePageFalse">
       {this.state.apiDataRecieved ? this.renderUserHomepage() : 'Loading!!!!'}
-      {this.state.fireRedirect}
       </div>
     )
   }

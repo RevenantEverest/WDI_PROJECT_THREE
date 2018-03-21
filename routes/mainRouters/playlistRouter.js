@@ -9,9 +9,13 @@ playlistRouter.get(`/:id/edit`, playlistController.getOne);
 //playlistRouter.get(`/new`, playlistController.addPlaylist);
 
 playlistRouter.route('/:id')
-                  .get(playlistController.getOne, playlistController.listSongs)
+                  .get(playlistController.getOne)
+                  //.get(playlistController.listPlaylistSongs)
                   .put(playlistController.update)
                   .delete(playlistController.destroy)
+
+playlistRouter.route('/:id/songs')
+                  .get(playlistController.listSongs)
 
 playlistRouter.route(`/`)
                   .get(playlistController.index)

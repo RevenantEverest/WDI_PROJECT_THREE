@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
+import {Link} from 'react-router-dom';
 
 
 class OnePlaylist extends Component{
@@ -7,45 +8,73 @@ class OnePlaylist extends Component{
     super(props);
     this.state = {
       apiDataRecieved: false,
-      apiData: null,
+      apiDataPlaylistName: null,
       apiDataPlaylist: null,
+      apiDataSongs: null,
       editState: false
     }
   }
   componentDidMount(){
-    services.getPlaylistInfo(this.props.match.params.id)
-    .then(result => {
-      console.log(result);
+    services.getOnePlaylist(parseInt(this.props.match.params.id))
+    .then(playlist => {
       this.setState({
         apiDataRecieved: true,
-        apiData: result.data.data,
-        apiDataPlaylist: result.data
+        apiDataPlaylistName: playlist.data.data,
+        apiDataPlaylist: playlist.data
       })
     })
     .catch(error => {
       console.log(`Woops! ----> `, error);
     })
+
+    services.getPlaylistSongs(parseInt(this.props.match.params.id))
+    .then(songs => {
+      this.setState({
+        apiDataRecieved: true,
+        apiDataSongs: songs.data.data
+      })
+    })
+    .catch(error => {
+      console.log('You done yourself an error => ', error);
+    })
+  }
+
+  handleDelete() {
+
   }
 
   renderPlaylist(){
-    console.log(this.state.apiData)
-    return this.state.apiData.map((song, id) => {
+    const data = this.state.apiDataSongs;
+    if(Array.isArray(data)) {
+      return this.state.apiDataSongs.map((song, id) => {
+        return(
+          <div>
+            <h1>
+              <button className="delete-song">
+                <p className="delete-song-x" onClcik={(e) => this.handleDelete()}>&times;</p>
+              </button>
+              <a className="songListing">{song.title}</a>
+            </h1>
+          </div>
+        )
+      })
+    } else {
       return(
         <div>
           <h1>
             <button className="delete-song">
               <p className="delete-song-x">&times;</p>
             </button>
-            <p2 className="songListing">{song.title}</p2>
+            <a className="songListing">{data}</a>
           </h1>
         </div>
       )
-    })
+    }
   }
 
   renderPlaylistName() {
     return(
-      <h1>{this.state.apiDataPlaylist.playlistName}</h1>
+      <h1>{this.state.apiDataPlaylistName.playlist_name}</h1>
     )
   }
 

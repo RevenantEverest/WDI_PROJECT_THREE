@@ -8,7 +8,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import axios from 'axios';
-import TestComponent from '../TestComponents';
+// import TestComponent from '../TestComponents';
+import UserProfile from '../components/users/UserProfile';
 import TokenService from '../services/TokenService';
 import Home from './auth/Home'
 import Register from './auth/Register';
@@ -115,7 +116,7 @@ class UserHome extends Component {
     console.log(`this is being rendered`);
     return(
       <div>
-        <TestComponent />
+        <UserProfile />
       </div>
     )
   }

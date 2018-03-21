@@ -33,6 +33,11 @@ module.exports = {
   },
   destroy(id) {
     return db.none(`DELETE FROM playlist WHERE playlist_id = $1`, id);
-  }
+  },
+
+  // listPlaylistSongs(id) {
+  //   console.log('Made it to the model ', id);
+  //   return db.many(`SELECT playlist.playlist_name, song_library.title FROM playlist JOIN join_table ON playlist.playlist_id=join_table.plist_id JOIN song_library ON song_library.song_id=join_table.song_id WHERE playlist.playlist_id = $1`, id)
+  // }
 
 }

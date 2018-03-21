@@ -28,7 +28,7 @@ class TestComponent extends Component {
   }
 
   getData() {
-    services.getAllPlaylists()
+    services.getUserInfo(window.localStorage.username, parseInt(window.location))
     .then(result => {
       this.setState({
         apiDataRecieved: true,

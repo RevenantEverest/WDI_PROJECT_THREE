@@ -47,6 +47,10 @@ services.getOnePlaylist = (id) => {
   return axios.get(`/playlist/${id}`)
 }
 
+services.getPlaylistSongs = (id) => {
+  return axios.get(`/playlist/${id}/songs`)
+}
+
 //Still working on this!
 // services.makeUser = (thing) => {
 //   console.log('IM A THING ----> ', thing.username);

@@ -71,16 +71,23 @@ module.exports ={
       .catch(err => next(err));
   },
   listSongs(req, res, next) {
-    playlistDB.listSongs(res.locals.playlist.playlist_id)
+    playlistDB.listSongs(req.params.id)
       .then(results => {
-        let songsAndPlaylists = res.locals
-        console.log('your locals are...', res.locals)
         res.json({
           message: "Listing Songs",
-          data: results,
-          playlistName: res.locals.playlist.playlist_name
+          data: results
         })
+        next();
       })
       .catch(err => next(err))
+  },
+  listPlaylistSongs(req, res, next) {
+    playlistDB.listPlaylistSongs(2)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        next(err)
+      })
   }
 }
