@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+//Might not need all of these imports, will reevaluate at the end
+
 import {
   BrowserRouter as Router,
   Route,
@@ -7,6 +9,7 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
+
 import axios from 'axios';
 // import TestComponent from '../TestComponents';
 import UserProfile from '../components/users/UserProfile';
@@ -16,6 +19,7 @@ import Register from './auth/Register';
 import Login from './auth/Login';
 import services from '../services/apiServices';
 
+// setting initial state of this component, may not need all of these, we will state scrub at the end when the project is up and working
 
 class UserHome extends Component {
   constructor(props){
@@ -26,11 +30,18 @@ class UserHome extends Component {
       apiDataRecieved: false,
       fireRedirect: false
     }
+
+    //Still working on which functions in this page need binding....
+
     this.renderTestComponent = this.renderTestComponent.bind(this);
     this.renderLogin = this.renderLogin.bind(this)
     // this.renderUserPage = this.renderUserPage.bind(this);
     // this.renderRegisterAndSignUp = this.renderRegisterAndSignUp.bind(this)
   }
+
+  //Upon load of this component, check to see if there is any token saved in localStorage and return a boolean
+
+  //set state of isLoggedIn based on the boolean that is returned
   componentDidMount(){
     axios(`http://localhost:3000/isLoggedIn`, {
       headers: {
@@ -46,6 +57,8 @@ class UserHome extends Component {
     .catch(err => console.log(err))
   }
 
+  //Register function that creates a new user in the db, and stores it, need to work on the error handler here bc it will store two useres with the same name.
+
   register(data){
     axios('http://localhost:3000/users/', {
       method: "POST",
@@ -58,8 +71,10 @@ class UserHome extends Component {
       console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
-        isLoggedIn: true,
-        fireRedirect: true
+        //*********** WE ARE CHANGING THIS TO FIX THE LOGIN PROBLEM *********
+        //REMOVE WHAT IS COMMENTED OUT
+        // isLoggedIn: true,
+        // fireRedirect: true
       })
     })
     .catch(err => console.log(`err: ${err}`));
@@ -77,8 +92,10 @@ class UserHome extends Component {
       console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
-        isLoggedIn: true,
-        fireRedirect: true
+        //*********** WE ARE CHANGING THIS TO FIX THE LOGIN PROBLEM *********
+        //REMOVE WHAT IS COMMENTED OUT
+        // isLoggedIn: true,
+        // fireRedirect: true
       })
     })
     .catch(err => console.log(`err: ${err}`))
@@ -121,7 +138,14 @@ class UserHome extends Component {
     )
   }
   render(){
-    return this.state.fireRedirect ? this.renderTestComponent() : this.renderLogin()
+    //*********** WE ARE CHANGING THIS TO FIX THE LOGIN PROBLEM *********
+    //CHECK YOUR CODE TO SEE WHAT IS DIFFERENT HERE
+
+    //we should also now change the name of the method from renderTestComponent to render UserProfile..
+
+    //also we should address the fact that if you go to / index route, it nomatter what redirects to the login register page, might be a simple fix but not necessary at this moment for functionality.....tried it again after I wrote this and its working now ---> lets keep this comment and continue to preform tests on the functionality of this...might be becasue of the login problem that was fixed
+
+    return window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()
   }
 }
 

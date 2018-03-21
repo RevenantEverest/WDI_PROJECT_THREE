@@ -5,6 +5,8 @@ import AddPlaylist from '../playlists/AddPlaylist';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 
+// setting initial state of this component, may not need all of these, we will state scrub at the end when the project is up and working
+
 class UserProfile extends Component {
   constructor(props){
     super(props);
@@ -16,6 +18,8 @@ class UserProfile extends Component {
     this.getUserInfo = this.getUserInfo.bind(this)
   }
 
+// upon load of this component, check to see if the user is logged in and set the state based on the user information saved in localStorage
+
   componentDidMount(){
     services.checkLoggedIn(TokenService.read())
     .then(resp => {
@@ -24,15 +28,21 @@ class UserProfile extends Component {
         username: window.localStorage.username,
         user_id: parseInt(window.localStorage.user_id)
       })
+      //call the next funciton inline to retrieve the user specific information
       this.getUserInfo()
     })
     .catch(err => {
+
+      //fireRedirect is not currently being used, just set up to redirect to anywhere we want in that case, as it stands, it will direct to the login/register page if there is nothing saved in window.localStorage.authToken
+
       console.log(err);
       this.setState({
         fireRedirect: true
       })
     })
   }
+
+  //function to get the user information to display the playlists on the users homepage
 
   getUserInfo(){
     console.log('ComponentOne ---> ', this.state.userData);
@@ -45,6 +55,9 @@ class UserProfile extends Component {
       })
     })
   }
+
+  //once api data is loaded, render the page
+
   renderUserHomepage(){
     console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
@@ -56,6 +69,9 @@ class UserProfile extends Component {
       </div>
     )
   }
+
+  // The other side of the if tearnary needs to be updated to redirect to an error handler page, consider making this a full blown if statement and changing state with a setTimeout to display loading then firing a redirect to login if the user is not logged in....displaying loading if its waiting on the actual db or if the user is not logged in, redirecting
+  
   render() {
     return(
       <div className="userHomePageFalse">

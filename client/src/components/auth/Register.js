@@ -21,7 +21,6 @@ export default class Register extends Component {
     handleSubmit(e) {
       e.preventDefault();
       console.log(`in state ----> `, this.state, this.props);
-      debugger
       this.props.submit(this.state);
 
     }
