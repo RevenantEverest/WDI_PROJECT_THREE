@@ -56,6 +56,7 @@ services.getPlaylistSongs = (id) => {
 
 //Update
 services.editPlaylistName = (data) => {
+  console.log(`made it to edit! `, data);
   return axios({
     method: 'put',
     url: `/playlist/${data.playlist_id}`,

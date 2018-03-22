@@ -5,7 +5,7 @@ const playlistController = require(`../../controllers/mainControllers/playlistCo
 //Call all methods in the router that controller will utilize
 
 
-playlistRouter.get(`/:id/edit`, playlistController.getOne);
+// playlistRouter.get(`/:id/edit`, playlistController.);
 //playlistRouter.get(`/new`, playlistController.addPlaylist);
 
 playlistRouter.route('/:id')

@@ -79,9 +79,10 @@ class OnePlaylist extends Component{
   //     [name]: value
   //   })
   // }
-
+  //
   // handleEditSubmit(e){
   //   e.preventDefault();
+  //   console.log('Working on edit playlist ----> ', this.state);
   //   const data = {
   //     // username: this.state.userData.username,
   //     user_id: parseInt(window.localStorage.user_id),
@@ -96,7 +97,7 @@ class OnePlaylist extends Component{
   //     console.log(error);
   //   })
   // }
-  //
+
   // handleDeleteSubmit(e) {
   //   e.preventDefault();
   //   const data = {
@@ -148,17 +149,17 @@ class OnePlaylist extends Component{
       <h1 className="playlistName-onePlaylist">{this.state.apiDataPlaylistName.playlist_name}</h1>
     )
   }
-
-  renderEditPlaylistForm() {
-    return(
-      <div className="editPlaylistFormContainer">
-        <form className="editPlaylistForm" onSubmit={this.handleEditSubmit}>
-          <input type="text" name="playlist_name" onChange={this.handleChange} placeholder='Edit Playlist' />
-          <input type="submit" value="Update" />
-        </form>
-      </div>
-    );
-  }
+  //
+  // renderEditPlaylistForm() {
+  //   return(
+  //     <div className="editPlaylistFormContainer">
+  //       <form className="editPlaylistForm" onSubmit={this.handleEditSubmit}>
+  //         <input type="text" name="playlist_name" onChange={this.handleChange} placeholder='Edit Playlist' />
+  //         <input type="submit" value="Update" />
+  //       </form>
+  //     </div>
+  //   );
+  // }
 
   renderPlaylistDeleteForm() {
     return(

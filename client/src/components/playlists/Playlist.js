@@ -7,6 +7,7 @@ class Playlist extends Component {
     return(
       <div className={this.props.playlist.playlist_name}>
         <Link to={`/playlist/${this.props.playlist.playlist_id}`}>{this.props.playlist.playlist_name}</Link>
+        <Link to={`playlist/edit`}>Edit this playlist</Link>
       </div>
     )
   }
