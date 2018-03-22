@@ -14,6 +14,7 @@ import Login from './components/auth/Login';
 // import Home from './components/auth/Home';
 import Register from './components/auth/Register';
 import UserProfile from './components/users/UserProfile';
+import AddSong from './components/songs/AddSong';
 // import TestComponent from './TestComponents'
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
@@ -58,7 +59,9 @@ class App extends Component {
               <Route exact path='/login' component={UserHome} />
               <Route exact path='/register' component={UserHome} />
               <Route exact path='/home' component={UserProfile} />
-              <Route exaxt path='/songs' component={AllSongs} />
+              <Route exact path='/songs' component={AllSongs} />
+              <Route path='/songs/:id' component={OneSong}/>
+              <Route exact path='/addsong/:id' component={AddSong} />
               <Route exact path='/addPlaylist' component={AddPlaylist} />
               <Route exact path='/playlist/:id' component={OnePlaylist} />
               <Route exact path='/playlist/edit/:id' component={EditPlaylist} />

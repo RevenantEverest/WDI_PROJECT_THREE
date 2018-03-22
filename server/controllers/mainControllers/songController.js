@@ -2,6 +2,7 @@ const songDB = require('../../models/mainModels/songDB');
 
 module.exports = {
   index(req, res, next) {
+    console.log(`in get all Songs`);
     songDB.findAll()
       .then(results => {
         res.json({
@@ -12,6 +13,7 @@ module.exports = {
       .catch(err => next(err));
   },
   getOne(req, res, next) {
+    console.log(`in get one`);
     songDB.findById(req.params.id)
       .then(results => {
         res.json({
@@ -36,15 +38,15 @@ module.exports = {
   },
   update(req, res, next) {
     console.log(`I am routing correctly`);
-    songDB.update(req.body)
-      .then(results => {
-        res.json({
-          message: "Updating Song",
-          data: results
-        })
-        next();
-      })
-      .catch(err => next(err));
+    // songDB.update(req.body)
+    //   .then(results => {
+    //     res.json({
+    //       message: "Updating Song",
+    //       data: results
+    //     })
+    //     next();
+    //   })
+    //   .catch(err => next(err));
   },
 
   //Delete the song from the join table for each user

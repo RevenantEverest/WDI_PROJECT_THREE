@@ -48,6 +48,16 @@ module.exports ={
         next(err)
       });
   },
+  addSong(req, res, next) {
+    console.log(`I am adding a new song to the playlist!!!!`, req.body);
+    playlistDB.addSongToPlaylist(req.body)
+    .then(result => {
+      console.log(`song was added! `, result)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  },
   update(req, res, next) {
     playlistDB.update(req.body)
       .then(results => {

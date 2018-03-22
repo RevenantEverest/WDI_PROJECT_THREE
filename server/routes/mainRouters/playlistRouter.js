@@ -13,12 +13,14 @@ playlistRouter.route(`/`)
                   .post(playlistController.create)
 
 playlistRouter.route('/:id')
+                  //used to get a single playlist
                   .get(playlistController.getOne)
-                  //.get(playlistController.listPlaylistSongs)
+                  .post(playlistController.addSong)
                   .put(playlistController.update)
                   .delete(playlistController.deleteFromPlaylistTable, playlistController.deleteFromJoinTable)
 
 playlistRouter.route('/:id/songs')
+                  //used to show all of the songs in each playlist
                   .get(playlistController.listSongs)
 
 module.exports = playlistRouter;

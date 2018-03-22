@@ -54,6 +54,17 @@ services.getPlaylistSongs = (id) => {
   return axios.get(`/playlist/${id}/songs`)
 }
 
+services.addSongToPlaylist = (data) => {
+  return axios({
+              method: "post",
+              url: `/playlist/${data.playlist_id}`,
+              data: {
+                plist_id: data.playlist_id,
+                song_id: data.song_id
+              }
+  })
+}
+
 //Update
 services.editPlaylistName = (data) => {
   console.log(`made it to edit! `, data);
@@ -98,11 +109,11 @@ services.removeSongFromPlaylist = (songData) => {
 
 
 services.getAllSongs = () => {
-  return axios.get('/api/songs')
+  return axios.get('/song')
 }
 
 services.getOneSong = (id) => {
-  return axios.get(`/api/song/${id}`)
+  return axios.get(`/song/${id}`)
 }
 
 /*-------- END --------*/

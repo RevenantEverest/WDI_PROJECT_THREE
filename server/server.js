@@ -39,7 +39,10 @@ app.get('/isLoggedIn', authServices.isLoggedIn, (req, res) => {
   res.json({isLoggedIn: res.locals.isLoggedIn})
 })
 
-app.use('/api/songs', mainRouter);
+//DELETE ROUTE LATER**************
+// app.use('/api/songs', mainRouter);
+//DELETE ROUTE LATER**************
+
 app.use('/playlist', playlistRouter);
 app.use('/song', songRouter);
 app.use('/auth', userRouter);

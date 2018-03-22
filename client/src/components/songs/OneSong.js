@@ -11,7 +11,8 @@ class OneSong extends Component{
     }
   }
   componentDidMount(){
-    services.getOne(this.props.match.params.id)
+    console.log(this.props.match.params.id);
+    services.getOneSong(parseInt(this.props.match.params.id))
     .then(result => {
       // console.log(result);
       this.setState({

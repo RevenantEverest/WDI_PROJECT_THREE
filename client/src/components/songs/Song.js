@@ -40,20 +40,8 @@ class Song extends Component {
   render(){
     return(
       <div className="one_song_container">
-        <div className="one_song">
           <Link to={`/songs/${this.props.songData.song_id}`}>{this.props.songData.title} | {this.props.songData.artist} | {this.props.songData.genre}</Link>
-            <button className="addSongButton" onClick={(e) => this.openModal()}> + </button>
-            <div className="simpleModal">
-              <div className="modalContent">
-                <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
-                <h1 className="modalHeading">Which playlist would you like to add too?</h1>
-                <select>
-                  {}
-                </select>
-                <input type="submit" value="Add" />
-              </div>
-            </div>
-        </div>
+          <Link to={`/addsong/${this.props.songData.song_id}`}>Add song</Link>
       </div>
 
     )
