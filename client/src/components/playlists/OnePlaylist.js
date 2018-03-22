@@ -23,8 +23,10 @@ class OnePlaylist extends Component{
     this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
   }
   componentDidMount(){
+    console.log(`in one playlist`);
     services.getOnePlaylist(parseInt(this.props.match.params.id))
     .then(playlist => {
+      console.log('Here we are in the return from the componentDidMount', playlist);
       this.setState({
         apiDataRecieved: true,
         apiDataPlaylistName: playlist.data.data,
@@ -38,6 +40,7 @@ class OnePlaylist extends Component{
 
     services.getPlaylistSongs(parseInt(this.props.match.params.id))
     .then(songs => {
+      console.log('here we are in getting the songs', songs);
       this.setState({
         apiDataRecieved: true,
         apiDataSongs: songs.data.data
@@ -92,13 +95,15 @@ class OnePlaylist extends Component{
   renderPlaylist(){
     const data = this.state.apiDataSongs;
     if(Array.isArray(data)) {
+      console.log(`working with an array of songs ------> `, data);
       return this.state.apiDataSongs.map((song, id) => {
         return(
           <div>
-            <button className="delete-song">
-              <p className="delete-song-x" onClcik={(e) => this.handleDelete()}>&times;</p>
-            </button>
+            {/* <button className="delete-song">
+              <p className="delete-song-x" onClick={(e) => this.handleDelete()}>&times;</p>
+            </button> */}
             <a className="songListing">{song.title}</a>
+            <button >Delete</button>
           </div>
         )
       })
@@ -123,7 +128,6 @@ class OnePlaylist extends Component{
   }
 
   renderEditPlaylistForm() {
-    console.log('Edit form should be showing')
     return(
       <div className="editPlaylistFormContainer">
         <form className="editPlaylistForm" onSubmit={this.handleEditSubmit}>
@@ -175,10 +179,10 @@ class OnePlaylist extends Component{
       <div>
         {this.state.apiDataRecieved ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
         {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
-        {this.state.apiDataRecieved ? this.renderEditPlaylistForm() : <p>Loading Edit Form</p>}
-        {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
+        {/* {this.state.apiDataRecieved ? this.renderEditPlaylistForm() : <p>Loading Edit Form</p>} */}
+        {/* {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>} */}
         {this.state.fireRedirect ? <Redirect to="/songs"/> : ''}
-        <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button>
+        {/* <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button> */}
       </div>
     )
   }
