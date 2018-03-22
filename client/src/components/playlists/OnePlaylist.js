@@ -18,10 +18,12 @@ class OnePlaylist extends Component{
       apiDataSongs: null,
       editState: false
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleEditSubmit = this.handleEditSubmit.bind(this);
-    this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    // this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
+    this.removeSong = this.removeSong.bind(this)
   }
+
   componentDidMount(){
     console.log(`in one playlist`);
     services.getOnePlaylist(parseInt(this.props.match.params.id))
@@ -51,59 +53,79 @@ class OnePlaylist extends Component{
     })
   }
 
-  handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value
-    })
-  }
-
-  handleEditSubmit(e){
-    e.preventDefault();
+  removeSong(song) {
+    // console.log(`this is the playlist that I am in ---->`, this.state.apiDataPlaylistName.playlist_id);
+    // console.log(`removing song ----> `, song);
     const data = {
-      // username: this.state.userData.username,
-      user_id: parseInt(window.localStorage.user_id),
-      playlist_name: this.state.playlist_name,
-      playlist_id: this.state.apiDataPlaylistName.playlist_id
+      playlist_id: this.state.apiDataPlaylistName.playlist_id,
+      song_id: song.song_id
     }
-    services.editPlaylistName(data)
+    // console.log(`Here is the data that I am passing to the back end ----> `, data);
+    services.removeSongFromPlaylist(data)
     .then(result => {
-      console.log(`Editing Playlist ----> `, result);
+      console.log(`I deleted the song from the playlist`);
+      alert(`Song was deleted from the playlist!`)
+      window.location.reload();
     })
-    .catch(error => {
-      console.log(error);
+    .catch( err => {
+      console.log(err);
     })
   }
+  //
+  // handleChange(e) {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   this.setState({
+  //     [name]: value
+  //   })
+  // }
 
-  handleDeleteSubmit(e) {
-    e.preventDefault();
-    const data = {
-      playlist_id: this.state.apiDataPlaylistName.playlist_id
-    }
-    services.deletePlaylist(data)
-      .then(result => {
-        this.setState({
-          fireRedirect: true
-        })
-      })
-      .catch(err => {
-        console.log(`Couldn't Delete Playlist`, err);
-      })
-  }
+  // handleEditSubmit(e){
+  //   e.preventDefault();
+  //   const data = {
+  //     // username: this.state.userData.username,
+  //     user_id: parseInt(window.localStorage.user_id),
+  //     playlist_name: this.state.playlist_name,
+  //     playlist_id: this.state.apiDataPlaylistName.playlist_id
+  //   }
+  //   services.editPlaylistName(data)
+  //   .then(result => {
+  //     console.log(`Editing Playlist ----> `, result);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   })
+  // }
+  //
+  // handleDeleteSubmit(e) {
+  //   e.preventDefault();
+  //   const data = {
+  //     playlist_id: this.state.apiDataPlaylistName.playlist_id
+  //   }
+  //   services.deletePlaylist(data)
+  //     .then(result => {
+  //       this.setState({
+  //         fireRedirect: true
+  //       })
+  //     })
+  //     .catch(err => {
+  //       console.log(`Couldn't Delete Playlist`, err);
+  //     })
+  // }
 
   renderPlaylist(){
     const data = this.state.apiDataSongs;
     if(Array.isArray(data)) {
       console.log(`working with an array of songs ------> `, data);
       return this.state.apiDataSongs.map((song, id) => {
+        console.log(song);
         return(
           <div>
             {/* <button className="delete-song">
               <p className="delete-song-x" onClick={(e) => this.handleDelete()}>&times;</p>
             </button> */}
             <a className="songListing">{song.title}</a>
-            <button >Delete</button>
+            <button onClick={() => this.removeSong(song)}>Delete</button>
           </div>
         )
       })

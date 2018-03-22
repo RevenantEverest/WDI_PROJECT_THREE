@@ -60,13 +60,14 @@ module.exports ={
       .catch(err => next(err));
   },
   destroy(req, res, next) {
-    playlistDB.destroy(req.params.id)
-      .then(results => {
+    console.log(`made it to the playlist controller ---> `, req.body);
+    playlistDB.destroy(req.body)
+      .then(result => {
+        console.log(`I deleted successfully`);
         res.json({
           message: "deleteing playlist",
-          data: results
         })
-        next();
+        // next();
       })
       .catch(err => next(err));
   },
