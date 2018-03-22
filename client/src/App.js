@@ -18,6 +18,7 @@ import UserProfile from './components/users/UserProfile';
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
 import OnePlaylist from './components/playlists/OnePlaylist';
+import EditPlaylist from './components/playlists/EditPlaylist';
 import AddPlaylist from './components/playlists/AddPlaylist';
 import services from './services/apiServices';
 
@@ -47,7 +48,7 @@ class App extends Component {
         <Router>
           <div>
             <nav>
-              {window.localStorage.username  ? <button className="logoutButton" onClick={(e) => this.handleLogout()}>Logout</button> : <button className="loginButton">Log In</button>}
+              {/* {window.localStorage.username  ? <button className="logoutButton" onClick={(e) => this.handleLogout()}>Logout</button> : <button className="loginButton">Log In</button>} */}
               <Link to='/home'>Home</Link>
               <Link to='/songs'>Show all Songs</Link>
               {/* <Link to='/songs'>Show all Songs</Link> */}
@@ -59,7 +60,8 @@ class App extends Component {
               <Route exact path='/home' component={UserProfile} />
               <Route exaxt path='/songs' component={AllSongs} />
               <Route exact path='/addPlaylist' component={AddPlaylist} />
-              <Route path='/playlist/:id' component={OnePlaylist} />
+              <Route exact path='/playlist/:id' component={OnePlaylist} />
+              <Route exact path='/playlist/edit/:id' component={EditPlaylist} />
               {this.state.fireRedirect ? <Redirect to='/login' /> : ''}
               { /*<Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
               <Route path='/songs/:id' component={OneSong}/> */}

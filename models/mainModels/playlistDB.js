@@ -32,10 +32,12 @@ module.exports = {
       RETURNING *`, playlist)
   },
   destroy(data) {
-    return db.none(`DELETE FROM join_table WHERE plist_id=$[plist_id] AND song_id=$[song_id]`, data);
+    console.log(`in model, destroy`);
+    return db.none(`DELETE FROM playlist WHERE playlist_id=$[playlist_id]`, data);
   },
-  deleteSongFromPlaylist(playlist) {
-    return db.none(`DELETE FROM join_table WHERE plist_id = $/plist_id/ AND song_id = $/song_id/`, playlist);
+  deletAllSongs(data){
+    console.log(`Im deleting all songs from join_table`)
+    return db.none(`DELETE FROM join_table WHERE plist_id=$[plist_id]`, data)
   },
   addSongToPlaylist(playlist) {
     return db.one(`INSERT INTO join_table (plist_id, song_id)

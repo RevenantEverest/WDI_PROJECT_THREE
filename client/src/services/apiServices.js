@@ -70,11 +70,12 @@ services.editPlaylistName = (data) => {
 
 //Delete
 services.deletePlaylist = (data) => {
+  console.log(`in api services for delete playlist`, data);
   return axios({
     method: 'delete',
-    url: `/playlist/${data.playlist_id}`,
+    url: `/playlist/${data.playlist.playlist_id}`,
     data: {
-      playlist_id: data.playlist_id
+      playlist_id: data.playlist.playlist_id
     }
   })
 }
@@ -83,7 +84,7 @@ services.removeSongFromPlaylist = (songData) => {
   console.log(`here is the song data that I am passing in from apiServices ---> `, songData)
   return axios({
     method: 'DELETE',
-    url: `/playlist/${songData.playlist_id}`,
+    url: `/song/${songData.song_id}`,
     data: {
       plist_id: songData.playlist_id,
       song_id: songData.song_id
@@ -101,7 +102,7 @@ services.getAllSongs = () => {
 }
 
 services.getOneSong = (id) => {
-  return axios.get(`/api/songs/${id}`)
+  return axios.get(`/api/song/${id}`)
 }
 
 /*-------- END --------*/

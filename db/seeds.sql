@@ -41,6 +41,10 @@ INSERT INTO join_table (plist_id, song_id) VALUES (
   2, 3
 ), (
   2, 5
+), (
+  3, 1
+), (
+  3, 5
 );
 
 INSERT INTO playlist (user_id, playlist_name) VALUES (
@@ -49,4 +53,7 @@ INSERT INTO playlist (user_id, playlist_name) VALUES (
 ),(
   1,
   'playlistTwo'
-)
+), (
+  2,
+  'playlistThree'
+);

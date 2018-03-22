@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import Playlist from '../playlists/Playlist';
 import AddPlaylist from '../playlists/AddPlaylist';
+import EditPlaylist from '../playlists/EditPlaylist';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 
@@ -37,10 +38,9 @@ class UserProfile extends Component {
   }
 
   getUserInfo(){
-    console.log('ComponentOne ---> ', this.state.userData);
     services.getUserInfo(this.state.username, this.state.user_id)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
@@ -48,7 +48,7 @@ class UserProfile extends Component {
     })
   }
   renderUserHomepage(){
-    console.log(this.state.apiData);
+    // console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">

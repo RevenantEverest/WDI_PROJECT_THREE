@@ -37,7 +37,7 @@ class UserHome extends Component {
         Authorization: `Bearer ${TokenService.read()}`,
       },
     }).then(resp => {
-      console.log(resp)
+      // console.log(resp)
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         apiDataRecieved: true
@@ -51,38 +51,38 @@ class UserHome extends Component {
       method: "POST",
       data
     }).then(resp => {
-      console.log(`I am in Register ------> `, resp.data.user.user_id);
+      // console.log(`I am in Register ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token)
       TokenService.saveUser(resp.data.user.user_id);
       TokenService.saveUsername(resp.data.user.username);
-      console.log(`in window.localstorage!!!!`, window.localStorage);
+      // console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
-        isLoggedIn: true,
-        fireRedirect: true
+        isLoggedIn: resp.data.isLoggedIn,
       })
     })
     .catch(err => console.log(`err: ${err}`));
   }
   login(data){
-    console.log(data)
+    // console.log(data)
     axios(`http://localhost:3000/users/login`, {
       method: "POST",
       data
     }).then(resp => {
-      console.log(`I am in login ------> `, resp.data.user.user_id);
+      // console.log(`I am in login ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token);
       TokenService.saveUser(resp.data.user.user_id);
       TokenService.saveUsername(resp.data.user.username);
-      console.log(`in window.localstorage!!!!`, window.localStorage);
+      // console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
-        isLoggedIn: true,
-        fireRedirect: true
+        isLoggedIn: resp.data.isLoggedIn,
       })
     })
     .catch(err => console.log(`err: ${err}`))
   }
+
+  //can probably delete this, not currently in use
 
   authClick(event) {
     event.preventDefault();
@@ -113,7 +113,7 @@ class UserHome extends Component {
     )
   }
   renderTestComponent(){
-    console.log(`this is being rendered`);
+    // console.log(`this is being rendered`);
     return(
       <div>
         <UserProfile />
@@ -121,7 +121,7 @@ class UserHome extends Component {
     )
   }
   render(){
-    return this.state.fireRedirect ? this.renderTestComponent() : this.renderLogin()
+    return window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()
   }
 }
 

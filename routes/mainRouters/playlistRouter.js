@@ -8,17 +8,17 @@ const playlistController = require(`../../controllers/mainControllers/playlistCo
 // playlistRouter.get(`/:id/edit`, playlistController.);
 //playlistRouter.get(`/new`, playlistController.addPlaylist);
 
+playlistRouter.route(`/`)
+                  .get(playlistController.index)
+                  .post(playlistController.create)
+
 playlistRouter.route('/:id')
                   .get(playlistController.getOne)
                   //.get(playlistController.listPlaylistSongs)
                   .put(playlistController.update)
-                  .delete(playlistController.destroy)
+                  .delete(playlistController.deleteFromPlaylistTable, playlistController.deleteFromJoinTable)
 
 playlistRouter.route('/:id/songs')
                   .get(playlistController.listSongs)
-
-playlistRouter.route(`/`)
-                  .get(playlistController.index)
-                  .post(playlistController.create)
 
 module.exports = playlistRouter;

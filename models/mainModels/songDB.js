@@ -21,7 +21,9 @@ module.exports = {
       WHERE song_id = $/song_id/
       RETURNING *`, song);
   },
-  destroy(id) {
-    return db.none(`DELETE FROM song_library WHERE song_id = $1`, id);
+
+  //Delete the song from the join_table aka remove from playlist
+  destroy(data) {
+    return db.none(`DELETE FROM join_table WHERE song_id = $[song_id] AND plist_id=$[plist_id]`, data);
   }
 }

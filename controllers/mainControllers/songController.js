@@ -35,6 +35,7 @@ module.exports = {
       });
   },
   update(req, res, next) {
+    console.log(`I am routing correctly`);
     songDB.update(req.body)
       .then(results => {
         res.json({
@@ -45,8 +46,12 @@ module.exports = {
       })
       .catch(err => next(err));
   },
+
+  //Delete the song from the join table for each user
+
   destroy(req, res, next) {
-    songDB.destroy(req.params.id)
+    console.log(`made it to the song controller`, req.body, req.params.id);
+    songDB.destroy(req.body)
       .then(results => {
         res.json({
           message: "deleted",

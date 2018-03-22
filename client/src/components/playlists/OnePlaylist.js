@@ -18,9 +18,7 @@ class OnePlaylist extends Component{
       apiDataSongs: null,
       editState: false
     }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleEditSubmit = this.handleEditSubmit.bind(this);
-    // this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
+    this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     this.removeSong = this.removeSong.bind(this)
   }
 
@@ -54,13 +52,10 @@ class OnePlaylist extends Component{
   }
 
   removeSong(song) {
-    // console.log(`this is the playlist that I am in ---->`, this.state.apiDataPlaylistName.playlist_id);
-    // console.log(`removing song ----> `, song);
     const data = {
       playlist_id: this.state.apiDataPlaylistName.playlist_id,
       song_id: song.song_id
     }
-    // console.log(`Here is the data that I am passing to the back end ----> `, data);
     services.removeSongFromPlaylist(data)
     .then(result => {
       console.log(`I deleted the song from the playlist`);
@@ -71,48 +66,22 @@ class OnePlaylist extends Component{
       console.log(err);
     })
   }
-  //
-  // handleChange(e) {
-  //   const name = e.target.name;
-  //   const value = e.target.value;
-  //   this.setState({
-  //     [name]: value
-  //   })
-  // }
-  //
-  // handleEditSubmit(e){
-  //   e.preventDefault();
-  //   console.log('Working on edit playlist ----> ', this.state);
-  //   const data = {
-  //     // username: this.state.userData.username,
-  //     user_id: parseInt(window.localStorage.user_id),
-  //     playlist_name: this.state.playlist_name,
-  //     playlist_id: this.state.apiDataPlaylistName.playlist_id
-  //   }
-  //   services.editPlaylistName(data)
-  //   .then(result => {
-  //     console.log(`Editing Playlist ----> `, result);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   })
-  // }
 
-  // handleDeleteSubmit(e) {
-  //   e.preventDefault();
-  //   const data = {
-  //     playlist_id: this.state.apiDataPlaylistName.playlist_id
-  //   }
-  //   services.deletePlaylist(data)
-  //     .then(result => {
-  //       this.setState({
-  //         fireRedirect: true
-  //       })
-  //     })
-  //     .catch(err => {
-  //       console.log(`Couldn't Delete Playlist`, err);
-  //     })
-  // }
+  handleDeleteSubmit(e) {
+    e.preventDefault();
+    const data = {
+      playlist_id: this.state.apiDataPlaylistName.playlist_id
+    }
+    services.deletePlaylist(data)
+      .then(result => {
+        this.setState({
+          fireRedirect: true
+        })
+      })
+      .catch(err => {
+        console.log(`Couldn't Delete Playlist`, err);
+      })
+  }
 
   renderPlaylist(){
     const data = this.state.apiDataSongs;
@@ -149,18 +118,6 @@ class OnePlaylist extends Component{
       <h1 className="playlistName-onePlaylist">{this.state.apiDataPlaylistName.playlist_name}</h1>
     )
   }
-  //
-  // renderEditPlaylistForm() {
-  //   return(
-  //     <div className="editPlaylistFormContainer">
-  //       <form className="editPlaylistForm" onSubmit={this.handleEditSubmit}>
-  //         <input type="text" name="playlist_name" onChange={this.handleChange} placeholder='Edit Playlist' />
-  //         <input type="submit" value="Update" />
-  //       </form>
-  //     </div>
-  //   );
-  // }
-
   renderPlaylistDeleteForm() {
     return(
       <div className="deletePlaylistFormContainer">
@@ -202,8 +159,7 @@ class OnePlaylist extends Component{
       <div>
         {this.state.apiDataRecieved ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
         {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
-        {/* {this.state.apiDataRecieved ? this.renderEditPlaylistForm() : <p>Loading Edit Form</p>} */}
-        {/* {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>} */}
+        {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
         {this.state.fireRedirect ? <Redirect to="/songs"/> : ''}
         {/* <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button> */}
       </div>

@@ -59,17 +59,30 @@ module.exports ={
       })
       .catch(err => next(err));
   },
-  destroy(req, res, next) {
-    console.log(`made it to the playlist controller ---> `, req.body);
+  deleteFromPlaylistTable(req, res, next) {
+    console.log(`made it to the playlist controller, deleteFromPlaylistTable ---> `, req.body);
     playlistDB.destroy(req.body)
       .then(result => {
         console.log(`I deleted successfully`);
         res.json({
           message: "deleteing playlist",
         })
-        // next();
+        next();
       })
       .catch(err => next(err));
+  },
+  deleteFromJoinTable(req, res, next){
+    console.log(`made it to the deleteFromJoinTable`, req.body);
+    const data = {
+      plist_id: req.body.playlist_id
+    }
+    playlistDB.deletAllSongs(data)
+    .then(result => {
+      console.log(`deleted from join table!!!!!`);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   },
   listSongs(req, res, next) {
     playlistDB.listSongs(req.params.id)
