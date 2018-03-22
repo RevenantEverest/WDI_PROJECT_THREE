@@ -18,6 +18,7 @@ import UserProfile from './components/users/UserProfile';
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
 import OnePlaylist from './components/playlists/OnePlaylist';
+import EditPlaylist from './components/playlists/EditPlaylist';
 import services from './services/apiServices';
 
 // We dont necessarily need all of these states for this App.js, we should revisit all pages towards the end of the project and see if we need states/state scrub
@@ -61,7 +62,8 @@ class App extends Component {
               <Route exact path='/login' component={UserHome} />
               <Route exact path='/register' component={UserHome} />
               <Route exact path='/home' component={UserProfile} />
-              <Route exaxt path='/songs' component={AllSongs} />
+              <Route exact path='/songs' component={AllSongs} />
+              <Route exact path='/edit/:id' component={EditPlaylist} />
               <Route path='/playlist/:id' component={OnePlaylist} />
 
               {/* This does not need to be here!  */}

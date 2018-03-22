@@ -49,6 +49,7 @@ module.exports ={
       });
   },
   update(req, res, next) {
+    console.log(`in update, here is what I am passing in`, req.body);
     playlistDB.update(req.body)
       .then(results => {
         res.json({

@@ -71,6 +71,18 @@ services.getPlaylistSongs = (id) => {
   return axios.get(`/playlist/${id}/songs`)
 }
 
+services.updateName = (data) => {
+  console.log(`im the data for put ------> `, data);
+  return axios({
+            method: 'PUT',
+            url: `/playlist/${data.playlist_id}`,
+            data: {
+              playlist_id: data.playlist_id,
+              playlist_name: data.playlist_name
+            }
+          })
+}
+
 //we can remove what is commented out below, no longer used, was created in early development
 
 //Still working on this!

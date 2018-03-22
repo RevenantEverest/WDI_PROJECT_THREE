@@ -48,7 +48,7 @@ class UserProfile extends Component {
     console.log('ComponentOne ---> ', this.state.userData);
     services.getUserInfo(this.state.username, this.state.user_id)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
@@ -59,7 +59,7 @@ class UserProfile extends Component {
   //once api data is loaded, render the page
 
   renderUserHomepage(){
-    console.log(this.state.apiData);
+    // console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">
