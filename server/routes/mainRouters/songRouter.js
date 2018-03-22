@@ -10,7 +10,7 @@ songRouter.route(`/:id`)
               .put(songController.update)
 
               //used to remove songs from the playlists
-              .delete(songController.destroy)
+              .delete(songController.findBeforeDelete, songController.destroy)
 
 songRouter.route(`/`)
               //get all of the songs from the db

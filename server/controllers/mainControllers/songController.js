@@ -48,18 +48,30 @@ module.exports = {
     //   })
     //   .catch(err => next(err));
   },
+  findBeforeDelete(req, res, next) {
+    console.log(`in controller finding one on the list`);
+    songDB.findOne(req.body)
+    .then(result => {
+      console.log(`no shit i can do this!`, result);
+      res.locals = result
+      next()
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  },
 
   //Delete the song from the join table for each user
 
   destroy(req, res, next) {
-    console.log(`made it to the song controller`, req.body, req.params.id);
-    songDB.destroy(req.body)
+    console.log(`made it to the song controller`, res.locals);
+    songDB.destroy(res.locals)
       .then(results => {
         res.json({
           message: "deleted",
           data: results
         })
-        next();
+        next()
       })
       .catch(err => next(err));
   },

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 import services from '../../services/apiServices';
+import { Redirect } from 'react-router-dom';
 
 
 class AddSong extends Component {
@@ -10,7 +11,8 @@ class AddSong extends Component {
             this.state={
               song_id: parseInt(this.props.match.params.id),
               user_id: parseInt(window.localStorage.user_id),
-              playlists: null
+              playlists: null,
+              fireRedirect: false
             }
             this.renderAddForm = this.renderAddForm.bind(this)
             this.handleSubmit = this.handleSubmit.bind(this)
@@ -60,7 +62,10 @@ class AddSong extends Component {
       console.log(`Im the new state!!!! ----> `, this.state);
       services.addSongToPlaylist(this.state)
       .then(result => {
-        console.log(`Song was added`);
+        console.log(`Song was added-----> `, result);
+        this.setState({
+          fireRedirect: true
+        })
       })
       .catch(err => {
         console.log(err);
@@ -75,8 +80,8 @@ class AddSong extends Component {
           <h1>Select which playlist to add the song to</h1>
           <form onSubmit={this.handleSubmit}>
               {playlists}
-            <input type="submit" value="Add song!"/>
           </form>
+          {/* {this.state.fireRedirect ? <Redirect to="/playlist"} */}
         </div>
       )
     }

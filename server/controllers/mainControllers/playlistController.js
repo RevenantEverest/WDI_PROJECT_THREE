@@ -53,6 +53,9 @@ module.exports ={
     playlistDB.addSongToPlaylist(req.body)
     .then(result => {
       console.log(`song was added! `, result)
+      res.json({
+        message: "added a song to the playlist"
+      })
     })
     .catch(err => {
       console.log(err);
