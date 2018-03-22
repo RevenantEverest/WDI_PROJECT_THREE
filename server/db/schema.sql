@@ -28,7 +28,8 @@ CREATE TABLE join_table (
 CREATE TABLE user_table (
   user_id SERIAL PRIMARY KEY,
   username VARCHAR(255),
-  password VARCHAR(255)
+  password VARCHAR(255),
+  security VARCHAR(255)
 );
 
 CREATE TABLE test_table (

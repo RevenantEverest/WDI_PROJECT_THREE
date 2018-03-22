@@ -21,6 +21,14 @@ module.exports = {
 
   addSong(id){
     return db.one(`INSERT INTO playlist (song_id) `)
+  },
+
+  updateSecurity(data){
+    console.log(`In the model!!!!!!!! `, data);
+    return db.one(`UPDATE user_table
+                    SET security=$[security]
+                    WHERE user_id=$[user_id]
+                    RETURNING *`, data)
   }
 
   // updateInfo(){

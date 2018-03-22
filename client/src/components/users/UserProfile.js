@@ -3,6 +3,7 @@ import services from '../../services/apiServices';
 import Playlist from '../playlists/Playlist';
 import AddPlaylist from '../playlists/AddPlaylist';
 import EditPlaylist from '../playlists/EditPlaylist';
+import Privacy from './Privacy';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 
@@ -55,6 +56,9 @@ class UserProfile extends Component {
         <h1>Welcome back {this.state.username}!</h1>
         {allPlayLists}
         <button><a href="/addPlaylist">Add Playlist</a></button>
+      <br></br>
+      <br></br>
+      <Privacy/>
       </div>
     )
   }

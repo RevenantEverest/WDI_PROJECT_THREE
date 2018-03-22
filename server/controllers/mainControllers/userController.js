@@ -15,21 +15,38 @@ module.exports ={
     }
   },
   getOne(req, res, next){
-    // console.log('in user controller getOne()', req.params.username);
+    console.log("I made to the user controller!!!!", req.params);
+    console.log('in user controller getOne()', req.params.username);
     userDB.getSingle(req.params.username)
     .then(result => {
       console.log('In getting the user! ---> ', result);
-      req.session.user = result;
       res.json({
         message: "ok",
         data: result
       });
-      console.log(`Now checking the session! ---> `, req.session.user);
     })
     .catch(error => {
       next(error)
     })
   },
+
+
+  changeSecurity(req, res, next){
+    console.log(`I AM THE REQ.BODY!!! -----> `, req.body);
+    userDB.updateSecurity(req.body)
+    .then(result => {
+      console.log("its been updated", result);
+      res.json({
+        message: "ok"
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  },
+
+
+
   getPlaylists(req, res, next){
     console.log(`in get getPlaylists`, req.params.id);
     userDB.getAllPlayLists(req.params.id)

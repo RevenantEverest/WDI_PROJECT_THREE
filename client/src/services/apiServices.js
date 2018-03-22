@@ -15,6 +15,23 @@ services.checkLoggedIn = (read) => {
   })
 }
 
+services.getSecurity = (username) => {
+  console.log(`In apiServices -----> `, username);
+  return axios.get(`/auth/${username}/`)
+}
+services.changeSecurity = (userdata, cred) => {
+  console.log(`In apiServices -----> `, userdata, cred);
+  return axios({
+          method: "PUT",
+          url: `/auth/${userdata.username}/`,
+          data: {
+            security: cred,
+            user_id: userdata.user_id
+          }
+  })
+
+}
+
 services.getUser = (username) => {
   return axios.get(`/auth/${username}`);
 }

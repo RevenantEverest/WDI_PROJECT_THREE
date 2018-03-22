@@ -8,7 +8,8 @@ const User = {};
 User.createNewUser = function(req, res, next) {
   const user = req.body;
   const password = bcrypt.hashSync(user.password, 10);
-  db.one('INSERT INTO user_table (username, password) VALUES ($1, $2) RETURNING *;', [user.username, password, 0]
+  const security = "private"
+  db.one('INSERT INTO user_table (username, password, security) VALUES ($1, $2, $3) RETURNING *;', [user.username, password, security, 0]
 ).then(data => {
   const { password, ...userData } = data;
   res.locals.user = userData;

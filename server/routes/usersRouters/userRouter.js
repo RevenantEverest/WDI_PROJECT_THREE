@@ -12,6 +12,7 @@ userRouter.route(`/`)
 
 userRouter.route('/:username')
           .get(userController.getOne)
+          .put(userController.changeSecurity)
 
 userRouter.route('/:username/:id')
           .get(userController.getPlaylists)
