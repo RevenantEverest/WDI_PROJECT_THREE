@@ -5,6 +5,8 @@ import AddPlaylist from '../playlists/AddPlaylist';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 
+import {Link} from 'react-router-dom';
+
 class UserProfile extends Component {
   constructor(props){
     super(props);
@@ -52,7 +54,7 @@ class UserProfile extends Component {
       <div className="userHomePageTrue">
         <h1>Welcome back {this.state.username}!</h1>
         {allPlayLists}
-        <AddPlaylist userData={this.state.userData} />
+        <button><a href="/addPlaylist">Add Playlist</a></button>
       </div>
     )
   }

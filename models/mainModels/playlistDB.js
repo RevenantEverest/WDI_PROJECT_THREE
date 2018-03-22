@@ -34,6 +34,14 @@ module.exports = {
   destroy(id) {
     return db.none(`DELETE FROM playlist WHERE playlist_id = $1`, id);
   },
+  deleteSongFromPlaylist(playlist) {
+    return db.none(`DELETE FROM join_table WHERE plist_id = $/plist_id/ AND song_id = $/song_id/`, playlist);
+  },
+  addSongToPlaylist(playlist) {
+    return db.one(`INSERT INTO join_table (plist_id, song_id)
+    VALUES ($/plist_id/, $/song_id/)
+    RETURNING *`, playlist);
+  }
 
   // listPlaylistSongs(id) {
   //   console.log('Made it to the model ', id);

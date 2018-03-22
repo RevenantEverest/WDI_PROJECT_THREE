@@ -48,9 +48,7 @@ class Song extends Component {
                 <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
                 <h1 className="modalHeading">Which playlist would you like to add too?</h1>
                 <select>
-                  <option>Placeholer 1</option>
-                  <option>Placeholer 2</option>
-                  <option>Placeholer 3</option>
+                  {}
                 </select>
                 <input type="submit" value="Add" />
               </div>

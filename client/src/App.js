@@ -18,6 +18,7 @@ import UserProfile from './components/users/UserProfile';
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
 import OnePlaylist from './components/playlists/OnePlaylist';
+import AddPlaylist from './components/playlists/AddPlaylist';
 import services from './services/apiServices';
 
 
@@ -57,6 +58,7 @@ class App extends Component {
               <Route exact path='/register' component={UserHome} />
               <Route exact path='/home' component={UserProfile} />
               <Route exaxt path='/songs' component={AllSongs} />
+              <Route exact path='/addPlaylist' component={AddPlaylist} />
               <Route path='/playlist/:id' component={OnePlaylist} />
               {this.state.fireRedirect ? <Redirect to='/login' /> : ''}
               { /*<Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
