@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 class AddSong extends Component {
           constructor(props){
             super(props);
-            this.state={
+            this.state = {
               song_id: parseInt(this.props.match.params.id),
               user_id: parseInt(window.localStorage.user_id),
               playlists: null,
@@ -35,15 +35,15 @@ class AddSong extends Component {
           }
 
     getAllUserPlaylists(){
-      console.log(`in getting all of the playlists`);
+      // console.log(`in getting all of the playlists`);
       const username = window.localStorage.username;
       const user_id = parseInt(window.localStorage.user_id)
       services.getUserInfo(username, user_id)
       .then(result => {
-        console.log(result);
+        // console.log(result);
         this.setState({
           playlists: result.data.data
-        }, () => console.log(this.state.playlists))
+        })
       })
       .catch(err => {
         console.log(err);
@@ -55,14 +55,14 @@ class AddSong extends Component {
       this.setState({
         playlist_id: parseInt(value)
       })
-      console.log(this.state);
+      // console.log(this.state);
     }
     handleSubmit(e){
       e.preventDefault()
-      console.log(`Im the new state!!!! ----> `, this.state);
+      // console.log(`Im the new state!!!! ----> `, this.state);
       services.addSongToPlaylist(this.state)
       .then(result => {
-        console.log(`Song was added-----> `, result);
+        // console.log(`Song was added-----> `, result);
         this.setState({
           fireRedirect: true
         })

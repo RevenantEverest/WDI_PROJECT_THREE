@@ -24,7 +24,7 @@ class OnePlaylist extends Component{
   }
 
   componentDidMount(){
-    console.log('I AM TESTING THIS!!!! ----> ', this.props.match);
+    // console.log('I AM TESTING THIS!!!! ----> ', this.props.match);
     if(this.props.match.path === "/playlist/public/:id"){
       this.setState({
         isThisMine: false
@@ -32,7 +32,7 @@ class OnePlaylist extends Component{
     }
     services.getOnePlaylist(parseInt(this.props.match.params.id))
     .then(playlist => {
-      console.log('Here we are in the return from the componentDidMount', playlist);
+      // console.log('Here we are in the return from the componentDidMount', playlist);
       this.setState({
         apiDataRecieved: true,
         apiDataPlaylistName: playlist.data.data,
@@ -46,7 +46,7 @@ class OnePlaylist extends Component{
 
     services.getPlaylistSongs(parseInt(this.props.match.params.id))
     .then(songs => {
-      console.log('here we are in getting the songs', songs);
+      // console.log('here we are in getting the songs', songs);
       this.setState({
         apiDataRecieved: true,
         apiDataSongs: songs.data.data
@@ -64,7 +64,7 @@ class OnePlaylist extends Component{
     }
     services.removeSongFromPlaylist(data)
     .then(result => {
-      console.log(`I deleted the song from the playlist`);
+      // console.log(`I deleted the song from the playlist`);
       alert(`Song was deleted from the playlist!`)
       window.location.reload();
     })
@@ -92,9 +92,9 @@ class OnePlaylist extends Component{
   renderPlaylist(){
     const data = this.state.apiDataSongs;
     if(Array.isArray(data)) {
-      console.log(`working with an array of songs ------> `, data);
+      // console.log(`working with an array of songs ------> `, data);
       return this.state.apiDataSongs.map((song, id) => {
-        console.log(song);
+        // console.log(song);
         return(
           <div>
             {/* <button className="delete-song">

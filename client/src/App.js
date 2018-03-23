@@ -14,6 +14,7 @@ import Login from './components/auth/Login';
 // import Home from './components/auth/Home';
 import Register from './components/auth/Register';
 import UserProfile from './components/users/UserProfile';
+import SearchBar from './components/songs/SearchBar';
 import AddSong from './components/songs/AddSong';
 // import TestComponent from './TestComponents'
 import AllSongs from './components/songs/AllSongs';
@@ -53,6 +54,7 @@ class App extends Component {
               {/* {window.localStorage.username  ? <button className="logoutButton" onClick={(e) => this.handleLogout()}>Logout</button> : <button className="loginButton">Log In</button>} */}
               <Link to='/home'>Home</Link>
               <Link to='/songs'>Show all Songs</Link>
+              <Link to='/search'>Search For Songs</Link>
               {/* <Link to='/songs'>Show all Songs</Link> */}
             </nav>
             <div>
@@ -61,6 +63,7 @@ class App extends Component {
               <Route exact path='/register' component={UserHome} />
               <Route exact path='/home' component={UserProfile} />
               <Route exact path='/songs' component={AllSongs} />
+              <Route exact path='/search' component={SearchBar} />
               <Route path='/songs/:id' component={OneSong}/>
               <Route exact path='/public/:id' component={OnePublicProfile} />
               <Route exact path='/addsong/:id' component={AddSong} />

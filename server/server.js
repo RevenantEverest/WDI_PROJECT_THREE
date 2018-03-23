@@ -19,6 +19,7 @@ const userRouter = require(`./routes/usersRouters/userRouter`);
 const userRouterTwo = require('./controllers/mainControllers/userControllerTwo');
 const playlistRouter = require('./routes/mainRouters/playlistRouter');
 const songRouter = require('./routes/mainRouters/songRouter');
+const apiRouter = require(`./routes/apiRouters/apiRouter`)
 
 app.use(cors());
 app.use(methodOverride(`_method`));
@@ -46,6 +47,7 @@ app.get('/isLoggedIn', authServices.isLoggedIn, (req, res) => {
 app.use('/playlist', playlistRouter);
 app.use('/song', songRouter);
 app.use('/auth', userRouter);
+app.use('/api', apiRouter)
 
 //******** testing that routes and controllers work ************
 // app.use(`/api/testmain`, mainRouter);

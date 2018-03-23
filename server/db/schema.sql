@@ -10,7 +10,10 @@ CREATE TABLE song_library (
   song_id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   artist VARCHAR(255),
-  genre VARCHAR(255)
+  genre VARCHAR(255),
+  release_date VARCHAR(255),
+  album VARCHAR(255),
+  rating VARCHAR(255)
 );
 
 CREATE TABLE playlist (

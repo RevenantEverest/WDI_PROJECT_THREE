@@ -23,7 +23,7 @@ class AllSongs extends Component {
   componentDidMount() {
     services.checkLoggedIn(TokenService.read())
     .then(resp => {
-      console.log(`IN RESPONSE ____>`, resp.data.isLoggedIn)
+      // console.log(`IN RESPONSE ____>`, resp.data.isLoggedIn)
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
       })

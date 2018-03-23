@@ -33,7 +33,7 @@ class AddPlaylist extends Component {
     }
     services.addPlaylist(data)
     .then(result => {
-      console.log(`Inserted new Playlist ----> `, result);
+      // console.log(`Inserted new Playlist ----> `, result);
       this.setState({
         fireRedirect: true
       })

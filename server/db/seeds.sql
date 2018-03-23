@@ -9,27 +9,27 @@ INSERT INTO test_table (name, expression) VALUES (
 );
 
 
-INSERT INTO song_library (title, artist, genre) VALUES (
-  'FRIENDS',
-  'marshmellow',
-  'Pop'
-),(
-  'Hardaway',
-  'Derez Deshon',
-  'Hip-Hop'
-),(
-  'Slow',
-  'Matoma',
-  'Pop'
-),(
-  'do re mi',
-  'Backbear',
-  'Hip-Hop'
-),(
-  'No Rain',
-  'Blind Melon',
-  'Rock'
-);
+-- INSERT INTO song_library (title, artist, genre) VALUES (
+--   'FRIENDS',
+--   'marshmellow',
+--   'Pop'
+-- ),(
+--   'Hardaway',
+--   'Derez Deshon',
+--   'Hip-Hop'
+-- ),(
+--   'Slow',
+--   'Matoma',
+--   'Pop'
+-- ),(
+--   'do re mi',
+--   'Backbear',
+--   'Hip-Hop'
+-- ),(
+--   'No Rain',
+--   'Blind Melon',
+--   'Rock'
+-- );
 
 INSERT INTO join_table (plist_id, song_id) VALUES (
   1, 1

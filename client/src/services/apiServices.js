@@ -42,7 +42,7 @@ services.getUser = (username) => {
 }
 
 services.getUserInfo = (username, userId) => {
-  console.log('in axios ---> ', username, userId);
+  // console.log('in axios ---> ', username, userId);
   return axios.get(`/auth/user/${username}/${userId}`)
 }
 
@@ -52,7 +52,7 @@ services.getUserInfo = (username, userId) => {
 
 //Create
 services.addPlaylist = (data) => {
-  console.log(data);
+  // console.log(data);
   return axios({
     method: 'post',
     url: `/auth/user/${data.username}/${data.userId}`,
@@ -89,7 +89,7 @@ services.addSongToPlaylist = (data) => {
 
 //Update
 services.editPlaylistName = (data) => {
-  console.log(`made it to edit! `, data);
+  // console.log(`made it to edit! `, data);
   return axios({
     method: 'put',
     url: `/playlist/${data.playlist_id}`,
@@ -103,7 +103,7 @@ services.editPlaylistName = (data) => {
 
 //Delete
 services.deletePlaylist = (data) => {
-  console.log(`in api services for delete playlist`, data);
+  // console.log(`in api services for delete playlist`, data);
   return axios({
     method: 'delete',
     url: `/playlist/${data.playlist.playlist_id}`,
@@ -114,7 +114,7 @@ services.deletePlaylist = (data) => {
 }
 
 services.removeSongFromPlaylist = (songData) => {
-  console.log(`here is the song data that I am passing in from apiServices ---> `, songData)
+  // console.log(`here is the song data that I am passing in from apiServices ---> `, songData)
   return axios({
     method: 'DELETE',
     url: `/song/${songData.song_id}`,
@@ -153,6 +153,27 @@ services.getOneSong = (id) => {
 //               }
 //     })
 // }
+
+services.insertIntoLibrary = (data) => {
+  console.log(`I am being inserted!`, data);
+  let newArtist = data.artist ? data.artist : "None";
+  let newTitle = data.title ? data.title : "None";
+  let newDate = data.release_date ? data.release_date : "None";
+  let newAlbum = data.album ? data.album : "None";
+  let newRating = data.rating ? data.rating : "None";
+  return axios({
+    method: "POST",
+    url: '/api',
+    data: {
+      artist: newArtist,
+      title: newTitle,
+      release_date: newDate,
+      album: newAlbum,
+      rating: newRating,
+      genre: data.genre
+    }
+  })
+}
 
 
 export default services;
