@@ -42,7 +42,7 @@ services.getUser = (username) => {
 }
 
 services.getUserInfo = (username, userId) => {
-  // console.log('in axios ---> ', username, userId);
+  console.log('in axios ---> ', username, userId);
   return axios.get(`/auth/user/${username}/${userId}`)
 }
 

@@ -16,14 +16,20 @@ class OnePlaylist extends Component{
       apiDataPlaylistName: null,
       apiDataPlaylist: null,
       apiDataSongs: null,
-      editState: false
+      editState: false,
+      isThisMine: true
     }
     this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     this.removeSong = this.removeSong.bind(this)
   }
 
   componentDidMount(){
-    console.log(`in one playlist`);
+    console.log('I AM TESTING THIS!!!! ----> ', this.props.match);
+    if(this.props.match.path === "/playlist/public/:id"){
+      this.setState({
+        isThisMine: false
+      })
+    }
     services.getOnePlaylist(parseInt(this.props.match.params.id))
     .then(playlist => {
       console.log('Here we are in the return from the componentDidMount', playlist);
@@ -95,7 +101,7 @@ class OnePlaylist extends Component{
               <p className="delete-song-x" onClick={(e) => this.handleDelete()}>&times;</p>
             </button> */}
             <a className="songListing">{song.title}</a>
-            <button onClick={() => this.removeSong(song)}>Delete</button>
+            {this.state.isThisMine ? <button onClick={() => this.removeSong(song)}>Delete</button> : ""}
           </div>
         )
       })

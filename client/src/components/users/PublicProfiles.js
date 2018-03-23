@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
+import { Link } from 'react-router-dom'
 
 
 class PublicProfiles extends Component {
@@ -27,7 +28,7 @@ class PublicProfiles extends Component {
   }
 
   renderProfiles(){
-    const allProfiles = this.state.publicProfiles.map((profile, id) => <h3 key={id}>{profile.username}</h3>)
+    const allProfiles = this.state.publicProfiles.map((profile, id) => <Link key={id} to={`/public/${profile.user_id}`}>{profile.username}</Link>)
     return (
       <div>
         <h1>I am the PublicProfiles Component</h1>
