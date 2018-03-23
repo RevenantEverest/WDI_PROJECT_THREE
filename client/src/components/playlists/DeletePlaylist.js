@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import services from '../../services/apiServices';
 
 class DeletePlaylist extends Component {
@@ -9,11 +8,9 @@ class DeletePlaylist extends Component {
       }
       handleClick(e){
         e.preventDefault();
-        console.log(`I am deleting the playlist, `, this.props);
         services.deletePlaylist(this.props)
         .then(result => {
           alert(`Playlist was deleted!`)
-          console.log(`playlist ${this.props} was deleted!`);
           window.location.reload();
         })
         .catch(err => {

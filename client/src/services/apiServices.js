@@ -16,11 +16,9 @@ services.checkLoggedIn = (read) => {
 }
 
 services.getSecurity = (username) => {
-  // console.log(`In apiServices -----> `, username);
   return axios.get(`/auth/user/${username}/`)
 }
 services.changeSecurity = (userdata, cred) => {
-  // console.log(`In apiServices -----> `, userdata, cred);
   return axios({
           method: "PUT",
           url: `/auth/user/${userdata.username}/`,
@@ -33,7 +31,6 @@ services.changeSecurity = (userdata, cred) => {
 }
 
 services.getPublicUsers = () => {
-  // console.log(`in the apiServices`);
   return axios.get(`/auth/public`)
 }
 
@@ -42,7 +39,6 @@ services.getUser = (username) => {
 }
 
 services.getUserInfo = (username, userId) => {
-  console.log('in axios ---> ', username, userId);
   return axios.get(`/auth/user/${username}/${userId}`)
 }
 
@@ -52,7 +48,6 @@ services.getUserInfo = (username, userId) => {
 
 //Create
 services.addPlaylist = (data) => {
-  console.log(data);
   return axios({
     method: 'post',
     url: `/auth/user/${data.username}/${data.userId}`,
@@ -89,7 +84,6 @@ services.addSongToPlaylist = (data) => {
 
 //Update
 services.editPlaylistName = (data) => {
-  console.log(`made it to edit! `, data);
   return axios({
     method: 'put',
     url: `/playlist/${data.playlist_id}`,
@@ -103,7 +97,6 @@ services.editPlaylistName = (data) => {
 
 //Delete
 services.deletePlaylist = (data) => {
-  console.log(`in api services for delete playlist`, data);
   return axios({
     method: 'delete',
     url: `/playlist/${data.playlist.playlist_id}`,
@@ -114,7 +107,6 @@ services.deletePlaylist = (data) => {
 }
 
 services.removeSongFromPlaylist = (songData) => {
-  console.log(`here is the song data that I am passing in from apiServices ---> `, songData)
   return axios({
     method: 'DELETE',
     url: `/song/${songData.song_id}`,
@@ -139,20 +131,5 @@ services.getOneSong = (id) => {
 }
 
 /*-------- END --------*/
-
-
-//Still working on this!
-// services.makeUser = (thing) => {
-//   console.log('IM A THING ----> ', thing.username);
-//   return axios({
-//               method: 'post',
-//               url: `/auth/`,
-//               data: {
-//                 username: thing.username,
-//                 password: thing.password
-//               }
-//     })
-// }
-
 
 export default services;

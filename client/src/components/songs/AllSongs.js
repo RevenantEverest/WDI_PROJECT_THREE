@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+
 import services from '../../services/apiServices';
 import Song from './Song';
 import TokenService from '../../services/TokenService'
@@ -32,10 +27,8 @@ class AllSongs extends Component {
     .catch(err => console.log(err))
   }
   getData(){
-    // console.log(`Im here as the state in all songs ---> `, this.props);
     services.getAllSongs()
     .then(result => {
-      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
@@ -58,7 +51,7 @@ class AllSongs extends Component {
   render(){
     return(
       <div>
-      {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderData() : <h1>Oops this is awkward <span>😳</span></h1>}
+      {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderData() : <h1>Oops this is awkward</h1>}
       </div>
     )
   }

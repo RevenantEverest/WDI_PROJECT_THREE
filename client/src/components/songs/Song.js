@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Playlist from '../playlists/Playlist';
 
 //********* We can probably make this a Brian "dumb" Component ***************
 
@@ -11,9 +10,6 @@ class Song extends Component {
     this.state = {
       modalOpen: false
     }
-  }
-  componentDidMount(){
-
   }
 
   openModal() {
@@ -25,16 +21,11 @@ class Song extends Component {
   }
 
   closeModal() {
-    console.log('Hello I Should Be Closing')
     let modal = document.querySelector('.simpleModal');
     modal.style.display = "none";
     this.setState({
       modalOpen: false
     })
-  }
-
-  listPlaylists() {
-    let playlists = <Playlist />;
   }
 
   render(){

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 
 export default class Register extends Component {
@@ -14,14 +13,10 @@ export default class Register extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount(){
-    // console.log(this.props);
-  }
+
     // preventDefault and lift state back up to the parent
     handleSubmit(e) {
       e.preventDefault();
-      // console.log(`in state ----> `, this.state, this.props);
-      debugger
       this.props.submit(this.state);
 
     }
@@ -32,11 +27,9 @@ export default class Register extends Component {
       this.setState({
         [name]: value,
       });
-      // console.log(name,value)
     }
 
     render() {
-      // console.log('loaded', this.state)
       return (
         <form onSubmit={this.handleSubmit}>
           <label>Name

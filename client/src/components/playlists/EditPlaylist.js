@@ -7,8 +7,7 @@ class EditPlaylist extends Component {
     constructor(props){
       super(props);
     this.state={
-      user_id: parseInt(window.localStorage.user_id),
-      // playlist_name: this.props.playlist_name,
+      user_id: parseInt(window.localStorage.user_id, 10),
       playlist_id: this.props.match.params.id,
       fireRedirect: false
     }
@@ -26,10 +25,8 @@ class EditPlaylist extends Component {
 
   handleEditSubmit(e){
     e.preventDefault();
-    console.log('Working on edit playlist in its own component ----> ', this.state);
     services.editPlaylistName(this.state)
     .then(result => {
-      console.log(`Editing Playlist ----> `, result);
       this.setState({
         fireRedirect: true
       })

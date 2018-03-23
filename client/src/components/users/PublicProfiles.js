@@ -13,10 +13,8 @@ class PublicProfiles extends Component {
   }
 
   componentDidMount(){
-    console.log(`mounting the Public Profiles`);
     services.getPublicUsers()
     .then(results => {
-      console.log('Got the users and am back to the PublicProfiles page', results);
       this.setState({
         publicProfiles: results.data.data,
         apiDataRecieved: true

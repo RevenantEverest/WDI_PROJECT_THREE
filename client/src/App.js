@@ -3,16 +3,11 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
   Link,
   Redirect
 } from 'react-router-dom';
-import axios from 'axios';
-import TokenService from './services/TokenService';
 import UserHome from './components/UserHome';
-import Login from './components/auth/Login';
 // import Home from './components/auth/Home';
-import Register from './components/auth/Register';
 import UserProfile from './components/users/UserProfile';
 import AddSong from './components/songs/AddSong';
 // import TestComponent from './TestComponents'
@@ -22,7 +17,6 @@ import OnePlaylist from './components/playlists/OnePlaylist';
 import EditPlaylist from './components/playlists/EditPlaylist';
 import AddPlaylist from './components/playlists/AddPlaylist';
 import OnePublicProfile from './components/users/OnePublicProfile';
-import services from './services/apiServices';
 
 
 class App extends Component {

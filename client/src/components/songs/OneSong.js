@@ -11,17 +11,14 @@ class OneSong extends Component{
     }
   }
   componentDidMount(){
-    console.log(this.props.match.params.id);
-    services.getOneSong(parseInt(this.props.match.params.id))
+    services.getOneSong(parseInt(this.props.match.params.id, 10))
     .then(result => {
-      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
       })
     })
     .catch(error => {
-      console.log(`Woops! ----> `, error);
     })
   }
 

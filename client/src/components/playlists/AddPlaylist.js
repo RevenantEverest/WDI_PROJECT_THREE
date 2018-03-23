@@ -6,17 +6,13 @@ class AddPlaylist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //userData: this.props.userData,
       userData: null,
       fireRedirect: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount(){
-    //console.log(this.props);
 
-  }
   handleChange(e){
     const name = e.target.name;
     const value = e.target.value;
@@ -27,13 +23,11 @@ class AddPlaylist extends Component {
   handleSubmit(e){
     e.preventDefault();
     const data = {
-      // username: this.state.userData.username,
-      userId: parseInt(window.localStorage.user_id),
+      userId: parseInt(window.localStorage.user_id, 10),
       playlist_name: this.state.playlist_name
     }
     services.addPlaylist(data)
     .then(result => {
-      console.log(`Inserted new Playlist ----> `, result);
       this.setState({
         fireRedirect: true
       })

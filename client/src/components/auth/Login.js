@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 
 export default class Login extends Component {
@@ -18,7 +17,6 @@ export default class Login extends Component {
     // preventDefault and lift state back up to the parent
     handleSubmit(e) {
       e.preventDefault();
-      // console.log(`in state ----> `, this.state);
       this.props.submit(this.state);
 
     }
@@ -29,11 +27,9 @@ export default class Login extends Component {
       this.setState({
         [name]: value,
       });
-      // console.log(name,value)
     }
 
     render() {
-      // console.log('loaded', this.state)
       return (
         <form onSubmit={this.handleSubmit}>
           <label>Name
