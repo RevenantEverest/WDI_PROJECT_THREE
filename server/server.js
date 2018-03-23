@@ -12,9 +12,7 @@ const authServices = require('./services/AuthService');
 const PORT = process.env.PORT || 3001;
 //Initiate Express
 const app = express();
-// Linking up Casey Harding
-//CASEY HARDING IS LINKED AND READY TO CODE!
-const mainRouter = require(`./routes/mainRouters/mainRouter`);
+
 const userRouter = require(`./routes/usersRouters/userRouter`);
 const userRouterTwo = require('./controllers/mainControllers/userControllerTwo');
 const playlistRouter = require('./routes/mainRouters/playlistRouter');
@@ -39,19 +37,10 @@ app.get('/isLoggedIn', authServices.isLoggedIn, (req, res) => {
   res.json({isLoggedIn: res.locals.isLoggedIn})
 })
 
-//DELETE ROUTE LATER**************
-// app.use('/api/songs', mainRouter);
-//DELETE ROUTE LATER**************
 
 app.use('/playlist', playlistRouter);
 app.use('/song', songRouter);
 app.use('/auth', userRouter);
-
-//******** testing that routes and controllers work ************
-// app.use(`/api/testmain`, mainRouter);
-// app.use(`/testusers`, userRouter);
-//******** testing that routes and controllers work ************
-
 
 app.listen(PORT, () => {
   console.log(`Up and listening in express app on PORT 🥑  ${PORT}`);

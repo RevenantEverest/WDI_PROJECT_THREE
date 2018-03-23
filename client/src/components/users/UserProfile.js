@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import Playlist from '../playlists/Playlist';
-import AddPlaylist from '../playlists/AddPlaylist';
-import EditPlaylist from '../playlists/EditPlaylist';
 import Privacy from './Privacy';
-import axios from 'axios';
 import TokenService from '../../services/TokenService';
-
-import {Link} from 'react-router-dom';
 
 class UserProfile extends Component {
   constructor(props){
@@ -26,7 +21,7 @@ class UserProfile extends Component {
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         username: window.localStorage.username,
-        user_id: parseInt(window.localStorage.user_id)
+        user_id: parseInt(window.localStorage.user_id, 10)
       })
       this.getUserInfo()
     })
@@ -49,11 +44,11 @@ class UserProfile extends Component {
     })
   }
   renderUserHomepage(){
-    // console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">
-        <h1>Welcome back {this.state.username}!</h1>
+        <h1>Hello, {this.state.username}!</h1>
+        <h2>Your Playlists:</h2>
         {allPlayLists}
         <button><a href="/addPlaylist">Add Playlist</a></button>
       <br></br>

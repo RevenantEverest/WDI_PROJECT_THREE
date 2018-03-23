@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import {
-  BroswerRouter as Router,
-  Route,
-  Redirect,
-  Link
+  Redirect
   } from 'react-router-dom';
 
 
@@ -24,7 +21,7 @@ class OnePlaylist extends Component{
 
   componentDidMount(){
     console.log(`in one playlist`);
-    services.getOnePlaylist(parseInt(this.props.match.params.id))
+    services.getOnePlaylist(parseInt(this.props.match.params.id, 10))
     .then(playlist => {
       console.log('Here we are in the return from the componentDidMount', playlist);
       this.setState({
@@ -38,7 +35,7 @@ class OnePlaylist extends Component{
       console.log(`Woops! ----> `, error);
     })
 
-    services.getPlaylistSongs(parseInt(this.props.match.params.id))
+    services.getPlaylistSongs(parseInt(this.props.match.params.id, 10))
     .then(songs => {
       console.log('here we are in getting the songs', songs);
       this.setState({

@@ -7,7 +7,7 @@ class EditPlaylist extends Component {
     constructor(props){
       super(props);
     this.state={
-      user_id: parseInt(window.localStorage.user_id),
+      user_id: parseInt(window.localStorage.user_id, 10),
       // playlist_name: this.props.playlist_name,
       playlist_id: this.props.match.params.id,
       fireRedirect: false

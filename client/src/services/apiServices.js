@@ -135,19 +135,4 @@ services.getOneSong = (id) => {
 
 /*-------- END --------*/
 
-
-//Still working on this!
-// services.makeUser = (thing) => {
-//   console.log('IM A THING ----> ', thing.username);
-//   return axios({
-//               method: 'post',
-//               url: `/auth/`,
-//               data: {
-//                 username: thing.username,
-//                 password: thing.password
-//               }
-//     })
-// }
-
-
 export default services;
