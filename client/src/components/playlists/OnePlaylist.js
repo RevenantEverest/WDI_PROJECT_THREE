@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
+import TokenService from '../../services/TokenService'
 import {
   BroswerRouter as Router,
   Route,
@@ -17,13 +18,24 @@ class OnePlaylist extends Component{
       apiDataPlaylist: null,
       apiDataSongs: null,
       editState: false,
-      isThisMine: true
+      isThisMine: true,
+      isLoggedIn: false
     }
     this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     this.removeSong = this.removeSong.bind(this)
+    this.checkPlaylist = this.checkPlaylist.bind(this)
+  }
+  componentDidMount(){
+    services.checkLoggedIn(TokenService.read())
+    .then(result => {
+      this.setState({
+        isLoggedIn: result.data.isLoggedIn
+      }, this.checkPlaylist())
+
+    })
   }
 
-  componentDidMount(){
+  checkPlaylist(){
     // console.log('I AM TESTING THIS!!!! ----> ', this.props.match);
     if(this.props.match.path === "/playlist/public/:id"){
       this.setState({
@@ -169,9 +181,9 @@ class OnePlaylist extends Component{
   render(){
     return(
       <div>
-        {this.state.apiDataRecieved ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
-        {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
-        {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
+        {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
+        {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylist() : <p>Loading.....</p>}
+        {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
         {this.state.fireRedirect ? <Redirect to="/songs"/> : ''}
         {/* <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button> */}
       </div>
