@@ -2,7 +2,7 @@ const db = require('../../config/connection');
 
 module.exports = {
   findAll() {
-    return db.any('SELECT * FROM song_library');
+    return db.any('SELECT DISTINCT * FROM song_library ');
   },
   findById(id) {
     return db.one(`SELECT * FROM song_library WHERE song_id = $1`, id);
@@ -28,5 +28,8 @@ module.exports = {
   //Delete the song from the join_table aka remove from playlist
   destroy(data) {
     return db.none(`DELETE FROM join_table WHERE id = $[max]`, data);
+  },
+  nuke(id){
+    return db.none(`DELETE FROM song_library WHERE id=$1`, id);
   }
 }

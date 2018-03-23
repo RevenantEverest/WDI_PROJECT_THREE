@@ -68,13 +68,28 @@ module.exports = {
     songDB.destroy(res.locals)
       .then(results => {
         res.json({
-          message: "deleted",
+          message: "totally wiped out",
           data: results
         })
         next()
       })
       .catch(err => next(err));
   },
+
+  // destroyFromLibrary(req, res, next){
+  //   console.log('I am in the controller with', req.params );
+  //   songDB.nuke(req.params.id)
+  //   .then(result => {
+  //     res.json({
+  //       message: "totally wiped out",
+  //       data: result
+  //     })
+  //   })
+    // .catch(err => {
+    //   console.log(err)
+    // })
+
+  // },
 
   addSong(req, res, next) {
     const blankSong = {

@@ -64,13 +64,19 @@ class OnePlaylist extends Component{
     }
     services.removeSongFromPlaylist(data)
     .then(result => {
+      this.removeSongFromLibrary(result)
       // console.log(`I deleted the song from the playlist`);
       alert(`Song was deleted from the playlist!`)
-      window.location.reload();
+      // window.location.reload();
     })
     .catch( err => {
       console.log(err);
     })
+  }
+
+  removeSongFromLibrary(data){
+    console.log(`HEY I SUCK `, data);
+
   }
 
   handleDeleteSubmit(e) {
