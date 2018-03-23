@@ -7,14 +7,14 @@ userRouter.route(`/`)
           .get(userController.checkLoggedIn)
           // .post(userController.create)
 
-// userRouter.route('/playlist/:id')
-//           .get(userController.getPlaylist)
+userRouter.route('/public')
+          .get(userController.getPublicUsers)
 
-userRouter.route('/:username')
+userRouter.route('/user/:username')
           .get(userController.getOne)
           .put(userController.changeSecurity)
 
-userRouter.route('/:username/:id')
+userRouter.route('/user/:username/:id')
           .get(userController.getPlaylists)
           .post(userController.newPlayList)
 //Export the router

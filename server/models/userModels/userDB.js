@@ -1,11 +1,11 @@
-//Require the connection file in the configuratiosn directory
+//Require the connection file in the configurations directory
 
 const db = require(`../../config/connection`)
 
 
 module.exports = {
   getAllPlayLists(id){
-    console.log(`Inside the getAll function on the userDB model`);
+    // console.log(`Inside the getAll function on the userDB model`);
     return db.any(`SELECT * FROM playlist WHERE user_id=$1`, id)
   },
   getSingle(username){
@@ -24,11 +24,17 @@ module.exports = {
   },
 
   updateSecurity(data){
-    console.log(`In the model!!!!!!!! `, data);
+    // console.log(`In the model!!!!!!!! `, data);
     return db.one(`UPDATE user_table
                     SET security=$[security]
                     WHERE user_id=$[user_id]
                     RETURNING *`, data)
+  },
+
+  getAllPUserData(security){
+    console.log(security)
+    console.log(`in get all p userData`);
+    return db.many(`SELECT user_id, username FROM user_table WHERE security=$[security]`, security)
   }
 
   // updateInfo(){

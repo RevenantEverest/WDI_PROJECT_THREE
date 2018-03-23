@@ -3,6 +3,7 @@ import services from '../../services/apiServices';
 import Playlist from '../playlists/Playlist';
 import AddPlaylist from '../playlists/AddPlaylist';
 import EditPlaylist from '../playlists/EditPlaylist';
+import PublicProfiles from './PublicProfiles';
 import Privacy from './Privacy';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
@@ -59,6 +60,9 @@ class UserProfile extends Component {
       <br></br>
       <br></br>
       <Privacy/>
+      <br></br>
+      <br></br>
+      <PublicProfiles />
       </div>
     )
   }

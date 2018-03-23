@@ -15,10 +15,10 @@ class Privacy extends Component {
         this.handleSecurityToggle = this.handleSecurityToggle.bind(this)
       }
       componentDidMount(){
-        console.log(`In privacy component ----> `, this.state, window.localStorage);
+        // console.log(`In privacy component ----> `, this.state, window.localStorage);
         services.getSecurity(this.state.username)
         .then(result => {
-          console.log(`made it back to privacy ------> `, result);
+          // console.log(`made it back to privacy ------> `, result);
           this.setState({
             security: result.data.data.security
           })
@@ -29,7 +29,7 @@ class Privacy extends Component {
       }
         handleSecurityToggle(e){
           e.preventDefault()
-          console.log(`The toggle is being fired!`);
+          // console.log(`The toggle is being fired!`);
           if(this.state.security === "private"){
             this.setState({security: "public"})
             this.changeSecurity("public")

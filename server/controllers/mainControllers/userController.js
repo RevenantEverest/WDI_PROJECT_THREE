@@ -4,7 +4,7 @@ const userDB = require(`../../models/userModels/userDB`);
 module.exports ={
   checkLoggedIn(req, res, next){
     if(req.session.user){
-      console.log("Im here");
+      // console.log("Im here");
       return res.json({
                   message: "I am the user data",
                   data: req.session.user
@@ -15,11 +15,11 @@ module.exports ={
     }
   },
   getOne(req, res, next){
-    console.log("I made to the user controller!!!!", req.params);
-    console.log('in user controller getOne()', req.params.username);
+    // console.log("I made to the user controller!!!!", req.params);
+    // console.log('in user controller getOne()', req.params.username);
     userDB.getSingle(req.params.username)
     .then(result => {
-      console.log('In getting the user! ---> ', result);
+      // console.log('In getting the user! ---> ', result);
       res.json({
         message: "ok",
         data: result
@@ -30,12 +30,11 @@ module.exports ={
     })
   },
 
-
   changeSecurity(req, res, next){
-    console.log(`I AM THE REQ.BODY!!! -----> `, req.body);
+    // console.log(`I AM THE REQ.BODY!!! -----> `, req.body);
     userDB.updateSecurity(req.body)
     .then(result => {
-      console.log("its been updated", result);
+      // console.log("its been updated", result);
       res.json({
         message: "ok"
       })
@@ -45,10 +44,23 @@ module.exports ={
     })
   },
 
-
+  getPublicUsers(req, res, next){
+    console.log(`In get public users of controller`);
+    const security = {security: 'public'}
+    userDB.getAllPUserData(security)
+    .then(results => {
+      res.json({
+        message: "ok",
+        data: results
+      })
+    })
+    .catch(err => {
+      console.log(`There was an error here you dingus! `, err);
+    })
+  },
 
   getPlaylists(req, res, next){
-    console.log(`in get getPlaylists`, req.params.id);
+    // console.log(`in get getPlaylists`, req.params.id);
     userDB.getAllPlayLists(req.params.id)
     .then(results => {
       res.json({
@@ -62,7 +74,7 @@ module.exports ={
     })
   },
   newPlayList(req, res, next){
-    console.log('in user controller -----> ', req.body);
+    // console.log('in user controller -----> ', req.body);
     userDB.addPlaylist(req.body)
     .then(result => {
       res.json({

@@ -16,14 +16,14 @@ services.checkLoggedIn = (read) => {
 }
 
 services.getSecurity = (username) => {
-  console.log(`In apiServices -----> `, username);
-  return axios.get(`/auth/${username}/`)
+  // console.log(`In apiServices -----> `, username);
+  return axios.get(`/auth/user/${username}/`)
 }
 services.changeSecurity = (userdata, cred) => {
-  console.log(`In apiServices -----> `, userdata, cred);
+  // console.log(`In apiServices -----> `, userdata, cred);
   return axios({
           method: "PUT",
-          url: `/auth/${userdata.username}/`,
+          url: `/auth/user/${userdata.username}/`,
           data: {
             security: cred,
             user_id: userdata.user_id
@@ -32,13 +32,18 @@ services.changeSecurity = (userdata, cred) => {
 
 }
 
+services.getPublicUsers = () => {
+  // console.log(`in the apiServices`);
+  return axios.get(`/auth/public`)
+}
+
 services.getUser = (username) => {
-  return axios.get(`/auth/${username}`);
+  return axios.get(`/auth/user/${username}`);
 }
 
 services.getUserInfo = (username, userId) => {
   // console.log('in axios ---> ', username, userId);
-  return axios.get(`/auth/${username}/${userId}`)
+  return axios.get(`/auth/user/${username}/${userId}`)
 }
 
 /*-------- END --------*/
@@ -50,7 +55,7 @@ services.addPlaylist = (data) => {
   console.log(data);
   return axios({
     method: 'post',
-    url: `/auth/${data.username}/${data.userId}`,
+    url: `/auth/user/${data.username}/${data.userId}`,
     data: {
       user_id: data.userId,
       playlist_name: data.playlist_name
