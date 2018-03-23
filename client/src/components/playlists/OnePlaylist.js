@@ -14,7 +14,6 @@ class OnePlaylist extends Component{
       editState: false,
       isThisMine: true
     }
-    this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     this.removeSong = this.removeSong.bind(this)
   }
 
@@ -64,22 +63,6 @@ class OnePlaylist extends Component{
     })
   }
 
-  handleDeleteSubmit(e) {
-    e.preventDefault();
-    const data = {
-      playlist_id: this.state.apiDataPlaylistName.playlist_id
-    }
-    services.deletePlaylist(data)
-      .then(result => {
-        this.setState({
-          fireRedirect: true
-        })
-      })
-      .catch(err => {
-        console.log(`Couldn't Delete Playlist`, err);
-      })
-  }
-
   renderPlaylist(){
     const data = this.state.apiDataSongs;
     if(Array.isArray(data)) {
@@ -95,9 +78,6 @@ class OnePlaylist extends Component{
       return(
         <div>
           <h1>
-            <button className="delete-song">
-              <p className="delete-song-x">&times;</p>
-            </button>
             <a className="songListing">{data}</a>
           </h1>
         </div>
@@ -110,22 +90,13 @@ class OnePlaylist extends Component{
       <h1 className="playlistName-onePlaylist">{this.state.apiDataPlaylistName.playlist_name}</h1>
     )
   }
-  renderPlaylistDeleteForm() {
-    return(
-      <div className="deletePlaylistFormContainer">
-        <form className="deletePlaylistForm" onSubmit={this.handleDeleteSubmit}>
-          <input type="submit" value="Delete Playlist" />
-        </form>
-      </div>
-    );
-  }
+
 
   render(){
     return(
       <div>
         {this.state.apiDataRecieved ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
         {this.state.apiDataRecieved ? this.renderPlaylist() : <p>Loading.....</p>}
-        {this.state.apiDataRecieved ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
         {this.state.fireRedirect ? <Redirect to="/songs"/> : ''}
       </div>
     )

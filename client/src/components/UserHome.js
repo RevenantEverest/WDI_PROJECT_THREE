@@ -25,7 +25,7 @@ class UserHome extends Component {
   }
 
   componentDidMount(){
-    axios(`http://localhost:3000/isLoggedIn`, {
+    axios(`/isLoggedIn`, {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },
@@ -39,7 +39,7 @@ class UserHome extends Component {
   }
 
   register(data){
-    axios('http://localhost:3000/users/', {
+    axios('/users/', {
       method: "POST",
       data
     }).then(resp => {
@@ -54,7 +54,7 @@ class UserHome extends Component {
     .catch(err => console.log(`err: ${err}`));
   }
   login(data){
-    axios(`http://localhost:3000/users/login`, {
+    axios(`/users/login`, {
       method: "POST",
       data
     }).then(resp => {
@@ -73,7 +73,7 @@ class UserHome extends Component {
 
   authClick(event) {
     event.preventDefault();
-    axios('http://localhost:3000/restricted', {
+    axios('/restricted', {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },
