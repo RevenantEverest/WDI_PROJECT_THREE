@@ -107,6 +107,19 @@ a:hover{
 .add-playlist-input-submit:hover {
 	color: red;
 }
+
+.delete-playlist-container {
+	padding: 30px;
+}
+
+.delete-playlist-deleteButton {
+	border-color: black;
+	background-color: black;
+	color: red;
+	border-width: 5px;
+	font-size: 20px;
+}
+
 /*======End========*/
 
 
