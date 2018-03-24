@@ -120,6 +120,17 @@ a:hover{
 	font-size: 20px;
 }
 
+.one-playlist-song-container-if-array {
+	padding: 20px;
+}
+
+.one-playlist-remove-song-button {
+	background-color: black;
+	color: red;
+	border-width: 5px;
+	font-size: 20px;
+}
+
 /*======End========*/
 
 
