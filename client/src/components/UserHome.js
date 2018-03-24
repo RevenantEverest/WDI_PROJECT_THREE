@@ -46,7 +46,22 @@ class UserHome extends Component {
     .catch(err => console.log(err))
   }
 
+  checkUser(data){
+    console.log(`I am checing the user`, data);
+    services.getUser(data.username)
+    .then(result => {
+      alert(`User name already exists, please choose a unique username!`);
+      this.setState({
+        fireRedirect: true
+      })
+    })
+    .catch(err => {
+      console.log(`creating new user! ---> `, err, data);
+      this.register(data)
+    })
+  }
   register(data){
+    console.log(`I am the data`, data);
     axios('http://localhost:3000/users/', {
       method: "POST",
       data
@@ -104,11 +119,12 @@ class UserHome extends Component {
       <div>
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={(props) => (
-        <Register {...props} submit={this.register.bind(this)} />
+        <Register {...props} submit={this.checkUser.bind(this)} />
       )} />
       <Route exact path="/login" component={(props) => (
         <Login {...props} submit={this.login.bind(this)} />
       )} />
+      {this.state.fireRedirect ? <Redirect to='/' /> : ''}
     </div>
     )
   }
