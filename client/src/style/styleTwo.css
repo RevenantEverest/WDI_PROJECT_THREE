@@ -93,7 +93,19 @@ a:hover{
 .add-playlist-input-playlist_name {
     text-align: center;
     color: red;
+    padding: 10px;
+    font-size: 20px;
 
+}
+
+.add-playlist-input-submit {
+	border-color: black;
+	border-width: 5px;
+	font-size: 30px;
+}
+
+.add-playlist-input-submit:hover {
+	color: red;
 }
 /*======End========*/
 
