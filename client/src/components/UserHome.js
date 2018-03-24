@@ -50,7 +50,7 @@ class UserHome extends Component {
     console.log(`I am checing the user`, data);
     services.getUser(data.username)
     .then(result => {
-      alert(`User name already exists, please choose a unique username!`);
+      alert(`User name already exists, please choose a new username!`);
       this.setState({
         fireRedirect: true
       })
