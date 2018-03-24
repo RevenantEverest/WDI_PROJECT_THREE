@@ -137,6 +137,12 @@ a:hover{
 	text-align: center;
 }
 
+.one-playlist-delete-playlist-form {
+	border-color: black;
+	border-width: 30px;
+	color: red;
+}
+
 /*======End========*/
 
 
