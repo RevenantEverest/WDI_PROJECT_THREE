@@ -15,7 +15,6 @@ class OnePublicProfile extends Component {
   }
 
   componentDidMount(){
-    // console.log(this.state);
     //make a services call to the db to get all playlist names and all songs in the playlist
     this.getAllPlaylists()
 
@@ -23,7 +22,6 @@ class OnePublicProfile extends Component {
   getAllPlaylists(){
     services.getUserInfo(this.state.username, this.state.user_id)
     .then(result => {
-      // console.log(`this is fire bruh `, result);
       this.setState({
         onePublicProfilePlaylists: result.data.data,
         apiDataRecieved: true
@@ -34,7 +32,6 @@ class OnePublicProfile extends Component {
     })
   }
   renderAllPlaylists(){
-    // console.log(`Im in rendering all playlists`, this.state);
     const allPlayLists = this.state.onePublicProfilePlaylists.map((playlist, id) => <Link to={`/playlist/public/${playlist.playlist_id}`}>{playlist.playlist_name}</Link> )
     return(
         <div>

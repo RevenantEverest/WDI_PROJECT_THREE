@@ -24,7 +24,6 @@ class AddSong extends Component {
                 Authorization: `Bearer ${TokenService.read()}`,
               },
             }).then(resp => {
-              // console.log(resp)
               this.setState({
                 isLoggedIn: resp.data.isLoggedIn,
               })
@@ -35,12 +34,10 @@ class AddSong extends Component {
           }
 
     getAllUserPlaylists(){
-      // console.log(`in getting all of the playlists`);
       const username = window.localStorage.username;
       const user_id = parseInt(window.localStorage.user_id)
       services.getUserInfo(username, user_id)
       .then(result => {
-        // console.log(result);
         this.setState({
           playlists: result.data.data
         })
@@ -55,14 +52,11 @@ class AddSong extends Component {
       this.setState({
         playlist_id: parseInt(value)
       })
-      // console.log(this.state);
     }
     handleSubmit(e){
       e.preventDefault()
-      // console.log(`Im the new state!!!! ----> `, this.state);
       services.addSongToPlaylist(this.state)
       .then(result => {
-        // console.log(`Song was added-----> `, result);
         this.setState({
           fireRedirect: true
         })
@@ -74,20 +68,19 @@ class AddSong extends Component {
     }
 
     renderAddForm(){
-      const playlists = this.state.playlists.map((playlist, id) => <button key={id} value={playlist.playlist_id} onClick={this.handleChange}>{playlist.playlist_name}</button>)
+      const playlists = this.state.playlists.map((playlist, id) => <button className="add-song-playlist-selector-button" key={id} value={playlist.playlist_id} onClick={this.handleChange}>{playlist.playlist_name}</button>)
       return(
-        <div>
-          <h1>Select which playlist to add the song to</h1>
-          <form onSubmit={this.handleSubmit}>
+        <div className="add-song-playlist-selector-container">
+          <h1 className="add-song=h1">Select which playlist to add the song to</h1>
+          <form className="add-song-form" onSubmit={this.handleSubmit}>
               {playlists}
           </form>
-          {/* {this.state.fireRedirect ? <Redirect to="/playlist"} */}
         </div>
       )
     }
     render(){
       return(
-        <div>
+        <div className="add-song-container">
           {this.state.playlists ? this.renderAddForm() : ""}
         </div>
       )

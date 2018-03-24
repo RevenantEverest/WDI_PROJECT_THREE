@@ -38,11 +38,9 @@ class SearchBar extends Component {
 		})
 		e.stopPropagation();
 		e.preventDefault();
-		// console.log("I am submitted ----> ", this.state.songName)
 		searchServices.search(this.state)
 
 		.then(result => {
-			// console.log("RESULT", result.data.message.body.track_list)
 			this.setState({
 				apiDataLoaded: true,
 				results: result.data.message.body.track_list

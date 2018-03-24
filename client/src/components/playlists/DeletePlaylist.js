@@ -22,8 +22,8 @@ class DeletePlaylist extends Component {
       }
       render(){
         return(
-          <div>
-            <button onClick={this.handleClick}>Delete</button>
+          <div className="delete-playlist-container">
+            <button className="delete-playlist-deleteButton" onClick={this.handleClick}>Delete</button>
           </div>
         )
       }

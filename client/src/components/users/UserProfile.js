@@ -42,7 +42,6 @@ class UserProfile extends Component {
   getUserInfo(){
     services.getUserInfo(this.state.username, this.state.user_id)
     .then(result => {
-      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
@@ -50,10 +49,11 @@ class UserProfile extends Component {
     })
   }
   renderUserHomepage(){
-    // console.log(this.state.apiData);
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">
+        <div className="userHomePageLogo">
+        </div>
         <h1>Welcome back {this.state.username}!</h1>
         {allPlayLists}
         <button><a href="/addPlaylist">Add Playlist</a></button>

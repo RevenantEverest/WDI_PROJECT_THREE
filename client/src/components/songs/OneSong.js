@@ -11,10 +11,8 @@ class OneSong extends Component{
     }
   }
   componentDidMount(){
-    // console.log(this.props.match.params.id);
     services.getOneSong(parseInt(this.props.match.params.id))
     .then(result => {
-      // console.log(result);
       this.setState({
         apiDataRecieved: true,
         apiData: result.data.data
@@ -27,17 +25,17 @@ class OneSong extends Component{
 
   renderSong(){
     return(
-      <div className="one_song">
-        <h1>{this.state.apiData.title}</h1>
-        <h2>{this.state.apiData.artist}</h2>
-        <h3>{this.state.apiData.genre}</h3>
+      <div className="one-song-data-container">
+        <h1 className="one-song-title">Title: {this.state.apiData.title}</h1>
+        <h2 className="one-song-artist">Artist: {this.state.apiData.artist}</h2>
+        <h3 className="one-song-genre">Genre: {this.state.apiData.genre}</h3>
       </div>
     )
   }
 
   render(){
     return(
-      <div>
+      <div className="one-song-container">
         {this.state.apiDataRecieved ? this.renderSong() : <p>Loading.....</p>}
       </div>
     )

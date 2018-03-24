@@ -8,7 +8,6 @@ import {
   Redirect
 } from 'react-router-dom';
 import axios from 'axios';
-// import TestComponent from '../TestComponents';
 import UserProfile from '../components/users/UserProfile';
 import TokenService from '../services/TokenService';
 import Home from './auth/Home'
@@ -28,8 +27,6 @@ class UserHome extends Component {
     }
     this.renderTestComponent = this.renderTestComponent.bind(this);
     this.renderLogin = this.renderLogin.bind(this)
-    // this.renderUserPage = this.renderUserPage.bind(this);
-    // this.renderRegisterAndSignUp = this.renderRegisterAndSignUp.bind(this)
   }
   componentDidMount(){
     axios(`http://localhost:3000/isLoggedIn`, {
@@ -37,7 +34,6 @@ class UserHome extends Component {
         Authorization: `Bearer ${TokenService.read()}`,
       },
     }).then(resp => {
-      // console.log(resp)
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         apiDataRecieved: true
@@ -66,11 +62,9 @@ class UserHome extends Component {
       method: "POST",
       data
     }).then(resp => {
-      // console.log(`I am in Register ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token)
       TokenService.saveUser(resp.data.user.user_id);
       TokenService.saveUsername(resp.data.user.username);
-      // console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
         isLoggedIn: resp.data.isLoggedIn,
@@ -79,16 +73,13 @@ class UserHome extends Component {
     .catch(err => console.log(`err: ${err}`));
   }
   login(data){
-    // console.log(data)
     axios(`http://localhost:3000/users/login`, {
       method: "POST",
       data
     }).then(resp => {
-      // console.log(`I am in login ------> `, resp.data.user.user_id);
       TokenService.save(resp.data.token);
       TokenService.saveUser(resp.data.user.user_id);
       TokenService.saveUsername(resp.data.user.username);
-      // console.log(`in window.localstorage!!!!`, window.localStorage);
       this.setState({
         userData: resp.data.user,
         isLoggedIn: resp.data.isLoggedIn,
@@ -116,7 +107,7 @@ class UserHome extends Component {
   }
   renderLogin(){
     return(
-      <div>
+      <div className="user-home-render-login-container">
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={(props) => (
         <Register {...props} submit={this.checkUser.bind(this)} />
@@ -129,9 +120,8 @@ class UserHome extends Component {
     )
   }
   renderTestComponent(){
-    // console.log(`this is being rendered`);
     return(
-      <div>
+      <div className="user-home-render-user-profile-container">
         <UserProfile />
       </div>
     )

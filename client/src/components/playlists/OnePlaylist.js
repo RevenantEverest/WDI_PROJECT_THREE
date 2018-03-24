@@ -36,7 +36,6 @@ class OnePlaylist extends Component{
   }
 
   checkPlaylist(){
-    // console.log('I AM TESTING THIS!!!! ----> ', this.props.match);
     if(this.props.match.path === "/playlist/public/:id"){
       this.setState({
         isThisMine: false
@@ -44,7 +43,6 @@ class OnePlaylist extends Component{
     }
     services.getOnePlaylist(parseInt(this.props.match.params.id))
     .then(playlist => {
-      // console.log('Here we are in the return from the componentDidMount', playlist);
       this.setState({
         apiDataRecieved: true,
         apiDataPlaylistName: playlist.data.data,
@@ -58,7 +56,6 @@ class OnePlaylist extends Component{
 
     services.getPlaylistSongs(parseInt(this.props.match.params.id))
     .then(songs => {
-      // console.log('here we are in getting the songs', songs);
       this.setState({
         apiDataRecieved: true,
         apiDataSongs: songs.data.data
@@ -77,18 +74,11 @@ class OnePlaylist extends Component{
     services.removeSongFromPlaylist(data)
     .then(result => {
       this.removeSongFromLibrary(result)
-      // console.log(`I deleted the song from the playlist`);
       alert(`Song was deleted from the playlist!`)
-      // window.location.reload();
     })
     .catch( err => {
       console.log(err);
     })
-  }
-
-  removeSongFromLibrary(data){
-    console.log(`HEY I SUCK `, data);
-
   }
 
   handleDeleteSubmit(e) {
@@ -110,27 +100,19 @@ class OnePlaylist extends Component{
   renderPlaylist(){
     const data = this.state.apiDataSongs;
     if(Array.isArray(data)) {
-      // console.log(`working with an array of songs ------> `, data);
       return this.state.apiDataSongs.map((song, id) => {
-        // console.log(song);
         return(
-          <div>
-            {/* <button className="delete-song">
-              <p className="delete-song-x" onClick={(e) => this.handleDelete()}>&times;</p>
-            </button> */}
-            <a className="songListing">{song.title}</a>
-            {this.state.isThisMine ? <button onClick={() => this.removeSong(song)}>Delete</button> : ""}
+          <div className="one-playlist-song-container-if-array">
+            <a className="one-playlist-song-listing one-playlist-song-listing-if-array">{song.title}</a>
+            {this.state.isThisMine ? <button className="one-playlist-remove-song-button" onClick={() => this.removeSong(song)}>Delete</button> : ""}
           </div>
         )
       })
     } else {
       return(
-        <div>
+        <div className="one-playlist-song-container-if-object">
           <h1>
-            <button className="delete-song">
-              <p className="delete-song-x">&times;</p>
-            </button>
-            <a className="songListing">{data}</a>
+            <a className="one-playlist-song-listing one-playlist-song-listing-if-object">{data}</a>
           </h1>
         </div>
       )
@@ -139,14 +121,14 @@ class OnePlaylist extends Component{
 
   renderPlaylistName() {
     return(
-      <h1 className="playlistName-onePlaylist">{this.state.apiDataPlaylistName.playlist_name}</h1>
+      <h1 className="one-playlist-playlist_name">{this.state.apiDataPlaylistName.playlist_name}</h1>
     )
   }
   renderPlaylistDeleteForm() {
     return(
-      <div className="deletePlaylistFormContainer">
-        <form className="deletePlaylistForm" onSubmit={this.handleDeleteSubmit}>
-          <input type="submit" value="Delete Playlist" />
+      <div className="one-playlist-delete-playlist-form-container">
+        <form className="one-playlist-delete-playlist-form" onSubmit={this.handleDeleteSubmit}>
+          <input className="one-playlist-input-submit" type="submit" value="Delete Playlist" />
         </form>
       </div>
     );

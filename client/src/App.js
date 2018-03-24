@@ -11,12 +11,10 @@ import axios from 'axios';
 import TokenService from './services/TokenService';
 import UserHome from './components/UserHome';
 import Login from './components/auth/Login';
-// import Home from './components/auth/Home';
 import Register from './components/auth/Register';
 import UserProfile from './components/users/UserProfile';
 import SearchBar from './components/songs/SearchBar';
 import AddSong from './components/songs/AddSong';
-// import TestComponent from './TestComponents'
 import AllSongs from './components/songs/AllSongs';
 import OneSong from './components/songs/OneSong';
 import OnePlaylist from './components/playlists/OnePlaylist';
@@ -47,17 +45,15 @@ class App extends Component {
 
   render(){
     return (
-      <div>
+      <div className="BeatBox_Main">
         <Router>
           <div>
             <nav>
-              {/* {window.localStorage.username  ? <button className="logoutButton" onClick={(e) => this.handleLogout()}>Logout</button> : <button className="loginButton">Log In</button>} */}
               <Link to='/home'>Home</Link>
               <Link to='/songs'>Show all Songs</Link>
               <Link to='/search'>Search For Songs</Link>
-              {/* <Link to='/songs'>Show all Songs</Link> */}
             </nav>
-            <div>
+            <div className="BeatBox_Main-routes">
               <Route exact path='/' component={UserHome} />
               <Route exact path='/login' component={UserHome} />
               <Route exact path='/register' component={UserHome} />
@@ -72,8 +68,6 @@ class App extends Component {
               <Route exact path='/playlist/edit/:id' component={EditPlaylist} />
               <Route exact path='/playlist/public/:id' component={OnePlaylist} />
               {this.state.fireRedirect ? <Redirect to='/login' /> : ''}
-              { /*<Route exact path='/songs' render={() => <AllSongs userData={this.state.userData} />}/>
-              <Route path='/songs/:id' component={OneSong}/> */}
             </div>
           </div>
         </Router>

@@ -41,10 +41,10 @@ class EditPlaylist extends Component {
 
     render() {
       return(
-        <div className="editPlaylistFormContainer">
-          <form className="editPlaylistForm" onSubmit={this.handleEditSubmit}>
-            <input type="text" name="playlist_name" onChange={this.handleChange} placeholder='Edit Playlist' />
-            <input type="submit" value="Update" />
+        <div className="edit-playlist-container">
+          <form className="edit-playlist-form" onSubmit={this.handleEditSubmit}>
+            <input className="edit-playlist-input-playlist_name" type="text" name="playlist_name" onChange={this.handleChange} placeholder='Edit Playlist' />
+            <input className="edit-playlist-input-submit" type="submit" value="Update" />
           </form>
           {this.state.fireRedirect ? <Redirect to='/home' /> : ''}
         </div>

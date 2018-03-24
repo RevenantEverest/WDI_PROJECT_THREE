@@ -14,28 +14,23 @@ export default class Register extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount(){
-    // console.log(this.props);
+
+  // preventDefault and lift state back up to the parent
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.submit(this.state);
+
   }
-    // preventDefault and lift state back up to the parent
-    handleSubmit(e) {
-      e.preventDefault();
-      // console.log(`in state ----> `, this.state, this.props);
-      this.props.submit(this.state);
 
-    }
-
-    // update form state
-    handleChange(e) {
-      const { name, value } = e.target
-      this.setState({
-        [name]: value,
-      });
-      // console.log(name,value)
-    }
+  // update form state
+  handleChange(e) {
+    const { name, value } = e.target
+    this.setState({
+      [name]: value,
+    });
+  }
 
     render() {
-      // console.log('loaded', this.state)
       return (
         <form onSubmit={this.handleSubmit}>
           <label>Name

@@ -12,9 +12,6 @@ class Song extends Component {
       modalOpen: false
     }
   }
-  componentDidMount(){
-
-  }
 
   openModal() {
     let modal = document.querySelector('.simpleModal');
@@ -33,13 +30,10 @@ class Song extends Component {
     })
   }
 
-  listPlaylists() {
-    let playlists = <Playlist />;
-  }
 
   render(){
     return(
-      <div className="one_song_container">
+      <div className="song-component-container">
           <Link to={`/songs/${this.props.songData.song_id}`}>{this.props.songData.title} | {this.props.songData.artist} | {this.props.songData.genre}</Link>
           <Link to={`/addsong/${this.props.songData.song_id}`}>Add song</Link>
       </div>
