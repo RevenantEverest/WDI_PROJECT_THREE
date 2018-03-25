@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 
 export default class Login extends Component {
   constructor(props) {
@@ -32,22 +30,26 @@ export default class Login extends Component {
 
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>Name
+        <form className="login-form" onSubmit={this.handleSubmit}>
+          <label className="login-username-text">Username:
             <input
+              className="login-input-username"
               type="text"
               name="username"
               onChange={this.handleChange}
               value={this.state.username} />
           </label>
-          <label>Password
+          <br></br>
+          <br></br>
+          <label className="login-password-text">Password:
             <input
+              className="login-input-password"
               type="password"
               name="password"
               onChange={this.handleChange}
               value={this.state.password} />
           </label>
-          <button type="submit" value="Submit">Submit</button>
+          <button className="login-input-submit" type="submit" value="Submit">Login</button>
         </form>
       );
     }

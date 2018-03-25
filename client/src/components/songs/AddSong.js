@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 import services from '../../services/apiServices';
-import { Redirect } from 'react-router-dom';
-
 
 class AddSong extends Component {
           constructor(props){
             super(props);
             this.state = {
-              song_id: parseInt(this.props.match.params.id),
-              user_id: parseInt(window.localStorage.user_id),
+              song_id: parseInt(this.props.match.params.id, 10),
+              user_id: parseInt(window.localStorage.user_id, 10),
               playlists: null,
               fireRedirect: false
             }
@@ -35,7 +33,7 @@ class AddSong extends Component {
 
     getAllUserPlaylists(){
       const username = window.localStorage.username;
-      const user_id = parseInt(window.localStorage.user_id)
+      const user_id = parseInt(window.localStorage.user_id, 10)
       services.getUserInfo(username, user_id)
       .then(result => {
         this.setState({
@@ -50,7 +48,7 @@ class AddSong extends Component {
     handleChange(e){
       const value = e.target.value;
       this.setState({
-        playlist_id: parseInt(value)
+        playlist_id: parseInt(value, 10)
       })
     }
     handleSubmit(e){

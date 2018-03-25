@@ -22,7 +22,7 @@ class AddPlaylist extends Component {
   handleSubmit(e){
     e.preventDefault();
     const data = {
-      userId: parseInt(window.localStorage.user_id),
+      userId: parseInt(window.localStorage.user_id, 10),
       playlist_name: this.state.playlist_name
     }
     services.addPlaylist(data)

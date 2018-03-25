@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Playlist from '../playlists/Playlist';
-
 //********* We can probably make this a Brian "dumb" Component ***************
 
 class Song extends Component {

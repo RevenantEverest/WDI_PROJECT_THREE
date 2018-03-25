@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import TokenService from '../../services/TokenService'
-import {
-  BroswerRouter as Router,
-  Route,
-  Redirect,
-  Link
-  } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 class OnePlaylist extends Component{
@@ -41,7 +36,7 @@ class OnePlaylist extends Component{
         isThisMine: false
       })
     }
-    services.getOnePlaylist(parseInt(this.props.match.params.id))
+    services.getOnePlaylist(parseInt(this.props.match.params.id, 10))
     .then(playlist => {
       this.setState({
         apiDataRecieved: true,
@@ -54,7 +49,7 @@ class OnePlaylist extends Component{
       console.log(`Woops! ----> `, error);
     })
 
-    services.getPlaylistSongs(parseInt(this.props.match.params.id))
+    services.getPlaylistSongs(parseInt(this.props.match.params.id, 10))
     .then(songs => {
       this.setState({
         apiDataRecieved: true,

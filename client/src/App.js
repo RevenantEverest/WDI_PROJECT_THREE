@@ -3,15 +3,11 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
   Link,
   Redirect
 } from 'react-router-dom';
-import axios from 'axios';
 import TokenService from './services/TokenService';
 import UserHome from './components/UserHome';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
 import UserProfile from './components/users/UserProfile';
 import SearchBar from './components/songs/SearchBar';
 import AddSong from './components/songs/AddSong';
@@ -22,7 +18,6 @@ import EditPlaylist from './components/playlists/EditPlaylist';
 import AddPlaylist from './components/playlists/AddPlaylist';
 import OnePublicProfile from './components/users/OnePublicProfile';
 import HomePage from './components/HomePage';
-import services from './services/apiServices';
 
 
 class App extends Component {
@@ -32,11 +27,13 @@ class App extends Component {
       isLoggedIn: false,
       userData: null,
       apiDataRecieved: false,
-      fireRedirect: false
+      fireRedirect: false,
+      homePageRedirect: false
     }
   }
 
   handleLogout() {
+    TokenService.destroy();
     window.localStorage.clear();
     window.location.reload();
   }
@@ -44,6 +41,12 @@ class App extends Component {
   handleLoginRedirect() {
     this.setState({
       fireRedirect: true
+    })
+  }
+
+  handleHomePageRedirect() {
+    this.setState({
+      homePageRedirect: true
     })
   }
 
@@ -72,13 +75,17 @@ class App extends Component {
     return <button className="logout" onClick={(e) => this.handleLogout()}>Logout</button>
   }
 
+  showUsername() {
+    return <h2 className="navBar-username">{window.localStorage.username}</h2>
+  }
+
   render(){
     return (
       <div className="BeatBox_Main">
         <Router>
           <div>
             <nav>
-              <div className="navBarLogo">
+              <div className="navBarLogo" onClick={(e) => this.handleHomePageRedirect()}>
               </div>
               <div className="navBarContent">
                 <Link to='/home'>Home</Link>
@@ -86,7 +93,9 @@ class App extends Component {
                 <Link to='/search'>Search For Songs</Link>
               </div>
               <div className="login-logout-buttons">
+                {this.state.homePageRedirect ? <Redirect to="/" /> : ''}
                 {window.localStorage.length > 0 ? this.logoutButton() : this.loginButton()}
+                {window.localStorage.length > 0 ? this.showUsername() : ''}
               </div>
             </nav>
             <div className="BeatBox_Main-routes">
@@ -108,8 +117,9 @@ class App extends Component {
             <div className="simpleModal">
               <div className="modalContent">
                 <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
-                <h1 className="modalHeading">Which playlist would you like to add too?</h1>
+                <h1 className="modalHeading">LOGIN:</h1>
                 <UserHome />
+                <p className="BeatBox_Main-register-option-p-tag">Or you can sign up <a className="BeatBox_Main-register-option-link" href="/register">here</a></p>
               </div>
             </div>
           </div>

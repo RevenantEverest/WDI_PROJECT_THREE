@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 
 import {
-  BrowserRouter as Router,
   Route,
-  Switch,
-  Link,
   Redirect
 } from 'react-router-dom';
 import axios from 'axios';
-import UserProfile from '../components/users/UserProfile';
 import TokenService from '../services/TokenService';
 import Home from './auth/Home'
 import Register from './auth/Register';
 import Login from './auth/Login';
 import services from '../services/apiServices';
-import { Slide } from 'react-slideshow-image';
-
 
 class UserHome extends Component {
   constructor(props){
@@ -26,7 +20,6 @@ class UserHome extends Component {
       apiDataRecieved: false,
       fireRedirect: false
     }
-    //this.renderTestComponent = this.renderTestComponent.bind(this);
     this.renderLogin = this.renderLogin.bind(this)
   }
   componentDidMount(){
@@ -69,6 +62,7 @@ class UserHome extends Component {
       this.setState({
         userData: resp.data.user,
         isLoggedIn: resp.data.isLoggedIn,
+        fireRedirect: true
       })
     })
     .catch(err => console.log(`err: ${err}`));
@@ -85,6 +79,7 @@ class UserHome extends Component {
         userData: resp.data.user,
         isLoggedIn: resp.data.isLoggedIn,
       })
+      window.location.reload();
     })
     .catch(err => console.log(`err: ${err}`))
   }
@@ -121,18 +116,26 @@ class UserHome extends Component {
     )
   }
 
+  renderLoginTwo() {
+    return(
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={(props) => (
+          <Register {...props} submit={this.checkUser.bind(this)} />
+        )} />
+        <Route exact path="/login" component={(props) => (
+          <Login {...props} submit={this.login.bind(this)} />
+        )} />
+      </div>
+    );
+  }
+
   render(){
     return(
       <div>
         {/*window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()*/}
         <div className="user-home-render-login-container">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={(props) => (
-            <Register {...props} submit={this.checkUser.bind(this)} />
-          )} />
-          <Route exact path="/login" component={(props) => (
-            <Login {...props} submit={this.login.bind(this)} />
-          )} />
+          {window.location.pathname === "/register" ? <Register /*{...props}*/ submit={this.checkUser.bind(this)} /> : <Login /*{...props}*/ submit={this.login.bind(this)} />}
           {this.state.fireRedirect ? <Redirect to='/' /> : ''}
         </div>
       </div>

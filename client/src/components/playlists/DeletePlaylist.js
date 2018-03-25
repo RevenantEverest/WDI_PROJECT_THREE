@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import services from '../../services/apiServices';
 
 class DeletePlaylist extends Component {

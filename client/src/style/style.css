@@ -67,6 +67,98 @@ nav{
   text-decoration: none;
 }
 
+.login:hover, .logout:hover {
+  color: #b3006E;
+  font-weight: 800;
+  background-color: rgba(0,0,0,.4);
+}
+
+.navBar-username {
+  position: absolute;
+  top: 2.5vh;
+  width: 6%;
+  height: 2%;
+  margin-left: 78%;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navBar-username:hover {
+  color: #B2006E;
+  cursor: pointer;
+}
+
+.login-form {
+  margin-top: 15%;
+}
+
+.login-username-text, .login-password-text {
+  font-weight: 400;
+}
+
+.login-input-username{
+  margin-left: 4%;
+}
+
+.login-input-password {
+  margin-left: 6%;
+}
+
+.login-input-submit {
+  font-weight: 600;
+  margin-top: 5%;
+  margin-left: 69%;
+  margin-bottom: 20%;
+}
+
+.homePage-box2 {
+  height: 80vh;
+  background-color: black;
+}
+
+.homePage-box3 {
+  height: 80vh;
+  width: 100%;
+  background-image: url("https://i.imgur.com/JAKGcyV.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  border-style: solid;
+  border-color: #dedede;
+  border-width: .6vh 0 0 0;
+}
+
+/*-------- END --------*/
+
+/*======== Register User ========*/
+
+.register-container {
+  margin-left: 70vh;
+}
+
+.register-username-text, .register-password-text {
+  font-weight: 400;
+  margin-bottom: 5%;
+}
+
+.register-input-username{
+  margin-left: 4%;
+}
+
+.register-input-password {
+  margin-top: 2%;
+  margin-left: 4.8%;
+}
+
+.register-input-submit {
+  font-weight: 600;
+  margin-top: 2%;
+  margin-left: 23.5%;
+  margin-bottom: 20%;
+}
+
 /*-------- END --------*/
 
 /*======== User Profile ========*/
@@ -100,10 +192,12 @@ nav{
 }
 
 .modalContent{
+  border-radius: 12px;
   background-color: #f4f4f4;
-  margin: 20% auto;
+  margin: 10% auto;
   padding: 20px;
-  width: 70%;
+  height: 40%;
+  width: 20%;
   box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
 }
 

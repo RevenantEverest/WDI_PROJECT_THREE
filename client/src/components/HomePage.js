@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Slide } from 'react-slideshow-image';
-import UserHome from './UserHome';
 
 class HomePage extends Component {
 
@@ -24,6 +23,10 @@ class HomePage extends Component {
               duration={5000}
               transitionDuration={1000}
             />
+          </div>
+          <div className="homePage-box2">
+          </div>
+          <div className="homePage-box3">
           </div>
         </div>
       </div>

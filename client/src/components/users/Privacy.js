@@ -9,7 +9,7 @@ class Privacy extends Component {
         this.state = {
           security: "private",
           fireRedirect: false,
-          user_id: parseInt(window.localStorage.user_id),
+          user_id: parseInt(window.localStorage.user_id, 10),
           username: window.localStorage.username
         }
         this.handleSecurityToggle = this.handleSecurityToggle.bind(this)

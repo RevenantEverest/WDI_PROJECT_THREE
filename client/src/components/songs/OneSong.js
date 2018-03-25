@@ -11,7 +11,7 @@ class OneSong extends Component{
     }
   }
   componentDidMount(){
-    services.getOneSong(parseInt(this.props.match.params.id))
+    services.getOneSong(parseInt(this.props.match.params.id, 10))
     .then(result => {
       this.setState({
         apiDataRecieved: true,
