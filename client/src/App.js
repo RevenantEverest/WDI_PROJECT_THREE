@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect
+  Link
 } from 'react-router-dom';
 import TokenService from './services/TokenService';
 import UserHome from './components/UserHome';
@@ -70,7 +69,16 @@ class App extends Component {
   }
 
   showUsername() {
-    return <h2 className="navBar-username">{window.localStorage.username}</h2>
+    return (
+      <div className="dropdown">
+        <h2 className="navBar-username dropbtn">{window.localStorage.username}</h2>
+        <div className="dropdown-content">
+          <a className="dropdown-content-link-userProfile" href="/home">Profile</a>
+          <a className="dropdown-content-link-userProfile" href="/home">My Playlists</a>
+          <button className="logoutButton" onClick={(e) => this.handleLogout()}>Logout</button>
+        </div>
+      </div>
+    );
   }
 
   render(){
@@ -89,8 +97,7 @@ class App extends Component {
                 <Link to='/search'>Search For Songs</Link>
               </div>
               <div className="login-logout-buttons">
-                {window.localStorage.length > 0 ? this.logoutButton() : this.loginButton()}
-                {window.localStorage.length > 0 ? this.showUsername() : ''}
+                {window.localStorage.length > 0 ? this.showUsername() : this.loginButton()}
               </div>
             </nav>
             <div className="BeatBox_Main-routes">
@@ -120,14 +127,16 @@ class App extends Component {
           </div>
         </Router>
         <footer>
-          <h1 className="footer-h1">Copyright 2018</h1>
+          <h1 className="footer-h1">&copy; Copyright 2018</h1>
           <div className="social-media-containers">
             <div className="facebook">
             </div>
             <div className="twitter">
             </div>
-            <div className="github">
-            </div>
+            <a href="https://github.com/RevenantEverest/WDI_PROJECT_THREE">
+              <div className="github">
+              </div>
+            </a>
           </div>
         </footer>
       </div>

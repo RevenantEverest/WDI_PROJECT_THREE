@@ -89,10 +89,10 @@ nav{
   top: 2.5vh;
   width: 6%;
   height: 2%;
-  margin-left: 78%;
+  /*margin-left: 78%;*/
   display: inline-block;
   text-decoration: none;
-  font-size: 20px;
+  /*font-size: 20px;*/
   font-weight: 600;
 }
 
@@ -223,7 +223,7 @@ footer {
   font-family: sans-serif;
   font-weight: 200;
   font-size: 10px;
-  position: absolute fixed;
+  position: fixed;
   bottom: 0;
   display: block;
   height: 10vh;
@@ -236,6 +236,7 @@ footer {
   display: inline-block;
   margin-top: 2%;
   margin-left: 40%;
+  font-weight: 200;
 }
 
 .social-media-containers {
@@ -261,7 +262,7 @@ footer {
   height: 6vh;
   width: 3vw;
   margin-top: -6.5vh;
-  margin-left: 5%;
+  margin-left: 2.5%;
   display: inline-block;
   background-image: url("https://i.imgur.com/XgY8p7J.png");
   background-size: 100%;
@@ -307,6 +308,77 @@ footer {
   cursor: pointer;
 }
 
+/*-------- END --------*/
+
+/*======== Dropdown ========*/
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  width: 4vw;
+  height: 2vh;
+}
+
+.dropdown {
+  position: absolute;
+  margin-left: 85%;
+  margin-top: -5.65%;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 10vh;
+  padding: 50%;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover, .logoutButton:hover {
+  background-color: #B2006E;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+}
+
+.dropdown-content-link-userProfile {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.logoutButton {
+  display: block;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-weight: 600;
+  width: 100%;
+  padding-left: .5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-bottom: 2vh;
+}
 /*-------- END --------*/
 
 /*======== Animations ========*/
