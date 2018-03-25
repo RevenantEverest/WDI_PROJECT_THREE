@@ -156,5 +156,16 @@ a:hover{
 	text-align: center;
 }
 
+.BeatBox_Main-routes {
+	display: block;
+	padding-top: 200px;
+	text-align: center;
+	border-color: green;
+}
+
+form {
+  	display: block;
+  	
+}
 
 /*=======End========*/
