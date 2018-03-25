@@ -44,12 +44,6 @@ class App extends Component {
     })
   }
 
-  handleHomePageRedirect() {
-    this.setState({
-      homePageRedirect: true
-    })
-  }
-
   openModal() {
      let modal = document.querySelector('.simpleModal');
      modal.style.display = "block";
@@ -85,15 +79,16 @@ class App extends Component {
         <Router>
           <div>
             <nav>
-              <div className="navBarLogo" onClick={(e) => this.handleHomePageRedirect()}>
-              </div>
+              <a href="/">
+                <div className="navBarLogo">
+                </div>
+              </a>
               <div className="navBarContent">
                 <Link to='/home'>Home</Link>
                 <Link to='/songs'>Show all Songs</Link>
                 <Link to='/search'>Search For Songs</Link>
               </div>
               <div className="login-logout-buttons">
-                {this.state.homePageRedirect ? <Redirect to="/" /> : ''}
                 {window.localStorage.length > 0 ? this.logoutButton() : this.loginButton()}
                 {window.localStorage.length > 0 ? this.showUsername() : ''}
               </div>
@@ -122,19 +117,19 @@ class App extends Component {
                 <p className="BeatBox_Main-register-option-p-tag">Or you can sign up <a className="BeatBox_Main-register-option-link" href="/register">here</a></p>
               </div>
             </div>
-            <footer>
-              <h1 className="footer-h1">Copyright 2018</h1>
-              <div className="social-media-containers">
-                <div className="facebook">
-                </div>
-                <div className="twitter">
-                </div>
-                <div className="github">
-                </div>
-              </div>
-            </footer>
           </div>
         </Router>
+        <footer>
+          <h1 className="footer-h1">Copyright 2018</h1>
+          <div className="social-media-containers">
+            <div className="facebook">
+            </div>
+            <div className="twitter">
+            </div>
+            <div className="github">
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

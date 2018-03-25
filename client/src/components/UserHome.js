@@ -119,7 +119,7 @@ class UserHome extends Component {
   renderLoginTwo() {
     return(
       <div>
-        <Route exact path="/" component={Home} />
+        {/*<Route exact path="/" component={Home} />*/}
         <Route exact path="/register" component={(props) => (
           <Register {...props} submit={this.checkUser.bind(this)} />
         )} />
@@ -134,6 +134,7 @@ class UserHome extends Component {
     return(
       <div>
         {/*window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()*/}
+        <Route exact path="/home" component={Home} />
         <div className="user-home-render-login-container">
           {window.location.pathname === "/register" ? <Register /*{...props}*/ submit={this.checkUser.bind(this)} /> : <Login /*{...props}*/ submit={this.login.bind(this)} />}
           {this.state.fireRedirect ? <Redirect to='/' /> : ''}
