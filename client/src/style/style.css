@@ -56,7 +56,18 @@ nav{
   overflow: hidden;
 }
 
-.login, .logout {
+.login {
+  position: absolute;
+  top: 5vh;
+  width: 6%;
+  height: 3%;
+  border-radius: 6px;
+  margin-left: 90%;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logout {
   position: absolute;
   top: 5vh;
   width: 6%;
@@ -114,20 +125,46 @@ nav{
 }
 
 .homePage-box2 {
+  color: #dedede;
   height: 80vh;
   background-color: black;
 }
 
+.homePage-box2-contents {
+  padding-top: 3%;
+  margin-left: 5%;
+}
+
+.homePage-box2-h1 {
+  font-weight: 800;
+  font-size: 40px;
+}
+
 .homePage-box3 {
+  color: #dedede;
   height: 80vh;
   width: 100%;
-  background-image: url("https://i.imgur.com/JAKGcyV.jpg");
+  background-image: url("https://i.imgur.com/UyLIjKX.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
   border-style: solid;
   border-color: #dedede;
   border-width: .6vh 0 0 0;
+}
+
+.homePage-box3-contents-container {
+  border-radius: 12px;
+  height: 70%;
+  width: 92%;
+  margin-top: 5%;
+  margin-left: 4%;
+  background-color: rgba(0,0,0,.6);
+}
+
+.homePage-box3-contents {
+  padding-top: 2%;
+  margin-left: 2%;
 }
 
 /*-------- END --------*/
@@ -171,6 +208,57 @@ nav{
   background-image: url("https://i.imgur.com/tZR6CT5.png");
   background-size: 80vh;
   background-repeat: no-repeat;
+}
+
+/*-------- END --------*/
+
+/*======== Footer ========*/
+
+footer {
+  font-family: sans-serif;
+  font-weight: 200;
+  font-size: 10px;
+  position: absolute;
+  display: block;
+  height: 20vh;
+  width: 100%;
+  background-color: black;
+  color: #dedede;
+}
+
+.footer-h1 {
+  display: inline-block;
+  margin-top: 4%;
+  margin-left: 40%;
+}
+
+.social-media-containers {
+  margin-top: -3.4%;
+  margin-left: 52%;
+}
+
+.facebook {
+  height: 6vh;
+  width: 3vw;
+  margin-left: 1%;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/htqOpO0.png");
+  background-size: 100%;
+}
+
+.twitter {
+  background-image: url("");
+}
+
+.github {
+  position: absolute;
+  height: 6vh;
+  width: 3vw;
+  margin-top: -6.5vh;
+  margin-left: 5%;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/XgY8p7J.png");
+  background-size: 100%;
 }
 
 /*-------- END --------*/

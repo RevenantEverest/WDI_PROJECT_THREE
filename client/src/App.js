@@ -122,6 +122,17 @@ class App extends Component {
                 <p className="BeatBox_Main-register-option-p-tag">Or you can sign up <a className="BeatBox_Main-register-option-link" href="/register">here</a></p>
               </div>
             </div>
+            <footer>
+              <h1 className="footer-h1">Copyright 2018</h1>
+              <div className="social-media-containers">
+                <div className="facebook">
+                </div>
+                <div className="twitter">
+                </div>
+                <div className="github">
+                </div>
+              </div>
+            </footer>
           </div>
         </Router>
       </div>

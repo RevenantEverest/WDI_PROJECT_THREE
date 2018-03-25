@@ -25,8 +25,16 @@ class HomePage extends Component {
             />
           </div>
           <div className="homePage-box2">
+            <div className="homePage-box2-contents">
+              <h1 className="homePage-box2-h1">How to use : </h1>
+            </div>
           </div>
           <div className="homePage-box3">
+            <div className="homePage-box3-contents-container">
+              <div className="homePage-box3-contents">
+                <h1 className="homePage-box3-h1">About BeatBox :</h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>
