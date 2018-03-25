@@ -146,9 +146,15 @@ a:hover{
 /*======End========*/
 
 
-/*=======Songs==========/
+/*=======Songs==========*/
 
+.song-component-container {
+	padding: 20px;
+}
 
+.all-songs-h1 {
+	text-align: center;
+}
 
 
 /*=======End========*/
