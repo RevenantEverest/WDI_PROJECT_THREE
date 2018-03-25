@@ -52,9 +52,7 @@ class UserProfile extends Component {
     const allPlayLists = this.state.apiData.map((playlist, id) => <Playlist playlist={playlist} key={id} />)
     return(
       <div className="userHomePageTrue">
-        <div className="userHomePageLogo">
-        </div>
-        <h1>Welcome back {this.state.username}!</h1>
+        <h1>Hello, {this.state.username}!</h1>
         {allPlayLists}
         <button><a href="/addPlaylist">Add Playlist</a></button>
       <br></br>

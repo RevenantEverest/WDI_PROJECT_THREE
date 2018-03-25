@@ -21,6 +21,7 @@ import OnePlaylist from './components/playlists/OnePlaylist';
 import EditPlaylist from './components/playlists/EditPlaylist';
 import AddPlaylist from './components/playlists/AddPlaylist';
 import OnePublicProfile from './components/users/OnePublicProfile';
+import HomePage from './components/HomePage';
 import services from './services/apiServices';
 
 
@@ -37,10 +38,38 @@ class App extends Component {
 
   handleLogout() {
     window.localStorage.clear();
+    window.location.reload();
+  }
+
+  handleLoginRedirect() {
     this.setState({
       fireRedirect: true
-    });
-    window.location.reload();
+    })
+  }
+
+  openModal() {
+     let modal = document.querySelector('.simpleModal');
+     modal.style.display = "block";
+     this.setState({
+       modalOpen: true
+     })
+   }
+
+   closeModal() {
+     console.log('Hello I Should Be Closing')
+     let modal = document.querySelector('.simpleModal');
+     modal.style.display = "none";
+     this.setState({
+       modalOpen: false
+     })
+   }
+
+  loginButton() {
+    return <button className="login" onClick={(e) => this.openModal()}>Login</button>
+  }
+
+  logoutButton() {
+    return <button className="logout" onClick={(e) => this.handleLogout()}>Logout</button>
   }
 
   render(){
@@ -49,12 +78,19 @@ class App extends Component {
         <Router>
           <div>
             <nav>
-              <Link to='/home'>Home</Link>
-              <Link to='/songs'>Show all Songs</Link>
-              <Link to='/search'>Search For Songs</Link>
+              <div className="navBarLogo">
+              </div>
+              <div className="navBarContent">
+                <Link to='/home'>Home</Link>
+                <Link to='/songs'>Show all Songs</Link>
+                <Link to='/search'>Search For Songs</Link>
+              </div>
+              <div className="login-logout-buttons">
+                {window.localStorage.length > 0 ? this.logoutButton() : this.loginButton()}
+              </div>
             </nav>
             <div className="BeatBox_Main-routes">
-              <Route exact path='/' component={UserHome} />
+              <Route exact path='/' component={HomePage} />
               <Route exact path='/login' component={UserHome} />
               <Route exact path='/register' component={UserHome} />
               <Route exact path='/home' component={UserProfile} />
@@ -67,7 +103,14 @@ class App extends Component {
               <Route exact path='/playlist/:id' component={OnePlaylist} />
               <Route exact path='/playlist/edit/:id' component={EditPlaylist} />
               <Route exact path='/playlist/public/:id' component={OnePlaylist} />
-              {this.state.fireRedirect ? <Redirect to='/login' /> : ''}
+              {/*this.state.fireRedirect ? <Redirect to='/login' /> : ''*/}
+            </div>
+            <div className="simpleModal">
+              <div className="modalContent">
+                <span className="closeButton" onClick={(e) => this.closeModal()}>&times;</span>
+                <h1 className="modalHeading">Which playlist would you like to add too?</h1>
+                <UserHome />
+              </div>
             </div>
           </div>
         </Router>

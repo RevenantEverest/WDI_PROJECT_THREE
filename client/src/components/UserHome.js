@@ -14,6 +14,7 @@ import Home from './auth/Home'
 import Register from './auth/Register';
 import Login from './auth/Login';
 import services from '../services/apiServices';
+import { Slide } from 'react-slideshow-image';
 
 
 class UserHome extends Component {
@@ -25,7 +26,7 @@ class UserHome extends Component {
       apiDataRecieved: false,
       fireRedirect: false
     }
-    this.renderTestComponent = this.renderTestComponent.bind(this);
+    //this.renderTestComponent = this.renderTestComponent.bind(this);
     this.renderLogin = this.renderLogin.bind(this)
   }
   componentDidMount(){
@@ -119,15 +120,23 @@ class UserHome extends Component {
     </div>
     )
   }
-  renderTestComponent(){
-    return(
-      <div className="user-home-render-user-profile-container">
-        <UserProfile />
-      </div>
-    )
-  }
+
   render(){
-    return window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()
+    return(
+      <div>
+        {/*window.localStorage.authToken && window.localStorage.authToken !== "undefined" ? this.renderTestComponent() : this.renderLogin()*/}
+        <div className="user-home-render-login-container">
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={(props) => (
+            <Register {...props} submit={this.checkUser.bind(this)} />
+          )} />
+          <Route exact path="/login" component={(props) => (
+            <Login {...props} submit={this.login.bind(this)} />
+          )} />
+          {this.state.fireRedirect ? <Redirect to='/' /> : ''}
+        </div>
+      </div>
+    );
   }
 }
 
