@@ -26,6 +26,9 @@
     "type": "git",
     "url": "https://git.generalassemb.ly/britt-ryant/react-router-blog.git"
   },
+  "engine": {
+    "node": "8.10.0"
+  },
   "author": "Ryan Britt",
   "license": "MIT"
 }
