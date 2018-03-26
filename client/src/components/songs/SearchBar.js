@@ -63,7 +63,7 @@ class SearchBar extends Component {
 					newGenre = "None"
 				}
 				return(
-					<div>
+					<div key={i}>
 					<p>
 					artist:{el.track.artist_name}<br />
 					title:{el.track.track_name}<br />
@@ -84,7 +84,7 @@ class SearchBar extends Component {
 		return(
 			<div>
 			<form onSubmit={this.handleSubmit}>
-			<input type="text" name="topSongs" onChange={this.handleChange} placeholder="Top 50" />
+			{/*<input type="text" name="topSongs" onChange={this.handleChange} placeholder="Top 50" />*/}
 			<input type="text" name="songName" onChange={this.handleChange} placeholder="Search Song" />
 			<input type="submit" value="search" />
 

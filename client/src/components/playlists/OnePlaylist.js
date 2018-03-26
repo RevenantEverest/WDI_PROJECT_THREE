@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
-import TokenService from '../../services/TokenService'
-import { Redirect } from 'react-router-dom';
+import TokenService from '../../services/TokenService';
 
 
 class OnePlaylist extends Component{
@@ -16,7 +15,6 @@ class OnePlaylist extends Component{
       isThisMine: true,
       isLoggedIn: false
     }
-    this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     this.removeSong = this.removeSong.bind(this)
     this.checkPlaylist = this.checkPlaylist.bind(this)
   }
@@ -70,26 +68,14 @@ class OnePlaylist extends Component{
     .then(result => {
       this.removeSongFromLibrary(result)
       alert(`Song was deleted from the playlist!`)
+      this.setState({
+        fireRedirect: true
+      })
     })
     .catch( err => {
       console.log(err);
+      window.location.reload();
     })
-  }
-
-  handleDeleteSubmit(e) {
-    e.preventDefault();
-    const data = {
-      playlist_id: this.state.apiDataPlaylistName.playlist_id
-    }
-    services.deletePlaylist(data)
-      .then(result => {
-        this.setState({
-          fireRedirect: true
-        })
-      })
-      .catch(err => {
-        console.log(`Couldn't Delete Playlist`, err);
-      })
   }
 
   renderPlaylist(){
@@ -97,7 +83,7 @@ class OnePlaylist extends Component{
     if(Array.isArray(data)) {
       return this.state.apiDataSongs.map((song, id) => {
         return(
-          <div className="one-playlist-song-container-if-array">
+          <div className="one-playlist-song-container-if-array" key={id}>
             <a className="one-playlist-song-listing one-playlist-song-listing-if-array">{song.title}</a>
             {this.state.isThisMine ? <button className="one-playlist-remove-song-button" onClick={() => this.removeSong(song)}>Delete</button> : ""}
           </div>
@@ -129,40 +115,12 @@ class OnePlaylist extends Component{
     );
   }
 
-  handleEditState() {
-    let editButton = document.querySelector('.edit-playlist');
-    let deleteButton = document.querySelector('.delete-song');
-    let editPlaylistForm = document.querySelector('.playlistName-onePlaylist');
-    if(!this.state.editState) {
-      this.setState({
-        editState: true
-      })
-      editButton.style.backgroundColor = "black";
-      editButton.style.color = "#B2006E";
-      deleteButton.style.display = "inline-block";
-      editPlaylistForm.style.display = "none";
-      this.renderPlaylist();
-      this.renderEditPlaylistForm();
-    }else {
-      this.setState({
-        editState: false
-      });
-      editButton.style.backgroundColor = "inherit";
-      editButton.style.color = "inherit";
-      deleteButton.style.display = "none";
-      editPlaylistForm.style.display = "inline-block";
-      this.renderPlaylist();
-    }
-  }
-
   render(){
     return(
       <div>
         {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylistName() : <p>Loading Playlist Name</p>}
         {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylist() : <p>Loading.....</p>}
-        {this.state.apiDataRecieved && this.state.isLoggedIn ? this.renderPlaylistDeleteForm() : <p>Loading Delete Form</p>}
-        {this.state.fireRedirect ? <Redirect to="/songs"/> : ''}
-        {/* <button className="edit-playlist" onClick={(e) => this.handleEditState()}>Edit</button> */}
+        {this.state.fireRedirect ? window.location.reload() : ''}
       </div>
     )
   }

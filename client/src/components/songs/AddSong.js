@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TokenService from '../../services/TokenService';
 import services from '../../services/apiServices';
+import { Redirect } from 'react-router-dom';
 
 class AddSong extends Component {
           constructor(props){
@@ -80,6 +81,7 @@ class AddSong extends Component {
       return(
         <div className="add-song-container">
           {this.state.playlists ? this.renderAddForm() : ""}
+          {this.state.fireRedirect ? <Redirect to="/home" /> : ''}
         </div>
       )
     }
