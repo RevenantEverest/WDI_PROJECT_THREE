@@ -18,7 +18,7 @@ class AddSong extends Component {
             this.handleChange = this.handleChange.bind(this)
           }
     componentDidMount(){
-        axios(`http://localhost:3000/isLoggedIn`, {
+        axios(`/isLoggedIn`, {
             headers: {
                 Authorization: `Bearer ${TokenService.read()}`,
               },
