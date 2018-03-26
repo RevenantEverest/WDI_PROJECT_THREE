@@ -20,6 +20,7 @@ class UserProfile extends Component {
   componentDidMount(){
     services.checkLoggedIn(TokenService.read())
     .then(resp => {
+      console.log(`Here`);
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         username: window.localStorage.username,

@@ -18,8 +18,7 @@ class UserHome extends Component {
       isLoggedIn: false,
       userData: null,
       apiDataRecieved: false,
-      fireRedirect: false,
-      toRegister: false
+      fireRedirect: false
     }
     this.renderLogin = this.renderLogin.bind(this)
   }
@@ -80,8 +79,8 @@ class UserHome extends Component {
       window.location.reload();
     })
     .catch(err => {
-      alert(`No user found by that name please register!`)
-      })
+      alert(`No user found by that name, please sign up!`)
+    })
   }
 
   //Not used here but really nice to have
@@ -124,7 +123,7 @@ class UserHome extends Component {
           <Register {...props} submit={this.checkUser.bind(this)} />
         )} />
         <Route exact path="/login" component={(props) => (
-          <Login {...props} isUser={this.state.toRegister} submit={this.login.bind(this)} />
+          <Login {...props} submit={this.login.bind(this)} />
         )} />
       </div>
     );
