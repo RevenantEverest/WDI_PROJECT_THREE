@@ -28,6 +28,8 @@ class OneSong extends Component{
       <div className="one-song-data-container">
         <h1 className="one-song-title">Title: {this.state.apiData.title}</h1>
         <h2 className="one-song-artist">Artist: {this.state.apiData.artist}</h2>
+        <h2 className="one-song-genre">Album: {this.state.apiData.album}</h2>
+        <h2 className="one-song-genre">Song Rating: {this.state.apiData.rating}</h2>
         <h3 className="one-song-genre">Genre: {this.state.apiData.genre}</h3>
       </div>
     )

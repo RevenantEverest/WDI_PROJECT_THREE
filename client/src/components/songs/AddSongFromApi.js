@@ -35,14 +35,13 @@ class AddSongTwo extends Component {
 insert(){
   services.insertIntoLibrary(this.state)
   .then(result => {
-    console.log(`I AM THE RESULT !!!! FUCK YES!`, result);
+    console.log(`I AM THE RESULT !!!!`, result);
     this.setState({
       fireRedirect: true,
       song_id: result.data.data.song_id
     })
   })
   .catch(err => {
-    console.log(`You done fucked up!`, err);
   })
 }
 

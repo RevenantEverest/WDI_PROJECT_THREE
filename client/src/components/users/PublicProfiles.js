@@ -23,7 +23,6 @@ class PublicProfiles extends Component {
       })
     })
     .catch(err => {
-      console.log(`you fucking suck with this shit dude, c'mon!`);
     })
   }
 
@@ -31,8 +30,8 @@ class PublicProfiles extends Component {
     const allProfiles = this.state.publicProfiles.map((profile, id) => <Link key={id} to={`/public/${profile.user_id}`}>{profile.username}</Link>)
     return (
       <div>
-        <h1>I am the PublicProfiles Component</h1>
-        {allProfiles}
+        <h1>Public Profiles</h1>
+        <h2>{allProfiles}</h2>
       </div>
     )
   }

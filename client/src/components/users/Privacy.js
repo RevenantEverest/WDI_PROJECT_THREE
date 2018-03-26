@@ -53,7 +53,7 @@ class Privacy extends Component {
             console.log(`Set security`, result);
           })
           .catch(err => {
-            console.log(`I fucked up`);
+            
           })
         }
 
