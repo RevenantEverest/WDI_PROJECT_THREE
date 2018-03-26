@@ -1,4 +1,4 @@
-//Require the connection file in the configuratiosn directory
+//Require the connection file in the configuration directory
 
 const db = require(`../../config/connection`)
 
