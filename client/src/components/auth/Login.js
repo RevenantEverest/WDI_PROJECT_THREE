@@ -13,14 +13,12 @@ export default class Login extends Component {
     }
 
 
-    // preventDefault and lift state back up to the parent
     handleSubmit(e) {
       e.preventDefault();
       this.props.submit(this.state);
 
     }
 
-    // update form state
     handleChange(e) {
       const { name, value } = e.target
       this.setState({

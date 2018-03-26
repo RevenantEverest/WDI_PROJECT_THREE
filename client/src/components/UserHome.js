@@ -18,16 +18,14 @@ class UserHome extends Component {
       isLoggedIn: false,
       userData: null,
       apiDataRecieved: false,
-      fireRedirect: false
+      fireRedirect: false,
+      toRegister: false
     }
     this.renderLogin = this.renderLogin.bind(this)
   }
   componentDidMount(){
-    axios(`http://localhost:3000/isLoggedIn`, {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => {
+  services.checkLoggedIn(TokenService.read())
+    .then(resp => {
       this.setState({
         isLoggedIn: resp.data.isLoggedIn,
         apiDataRecieved: true
@@ -52,7 +50,7 @@ class UserHome extends Component {
   }
   register(data){
     console.log(`I am the data`, data);
-    axios('http://localhost:3000/users/', {
+    axios('/users/', {
       method: "POST",
       data
     }).then(resp => {
@@ -68,7 +66,7 @@ class UserHome extends Component {
     .catch(err => console.log(`err: ${err}`));
   }
   login(data){
-    axios(`http://localhost:3000/users/login`, {
+    axios(`/users/login`, {
       method: "POST",
       data
     }).then(resp => {
@@ -81,20 +79,22 @@ class UserHome extends Component {
       })
       window.location.reload();
     })
-    .catch(err => console.log(`err: ${err}`))
+    .catch(err => {
+      alert(`No user found by that name please register!`)
+      })
   }
 
-  //can probably delete this, not currently in use
+  //Not used here but really nice to have
 
-  authClick(event) {
-    event.preventDefault();
-    axios('http://localhost:3000/restricted', {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => console.log(resp))
-    .catch(err => console.log(err))
-  }
+  // authClick(event) {
+  //   event.preventDefault();
+  //   axios('/restricted', {
+  //     headers: {
+  //       Authorization: `Bearer ${TokenService.read()}`,
+  //     },
+  //   }).then(resp => console.log(resp))
+  //   .catch(err => console.log(err))
+  // }
 
   logout(event) {
     event.preventDefault()
@@ -124,7 +124,7 @@ class UserHome extends Component {
           <Register {...props} submit={this.checkUser.bind(this)} />
         )} />
         <Route exact path="/login" component={(props) => (
-          <Login {...props} submit={this.login.bind(this)} />
+          <Login {...props} isUser={this.state.toRegister} submit={this.login.bind(this)} />
         )} />
       </div>
     );
