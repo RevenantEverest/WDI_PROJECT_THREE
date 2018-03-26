@@ -4,6 +4,8 @@ import Playlist from '../playlists/Playlist';
 import PublicProfiles from './PublicProfiles';
 import Privacy from './Privacy';
 import TokenService from '../../services/TokenService';
+import { Redirect } from 'react-router-dom';
+import Login from '../../components/auth/Login';
 
 class UserProfile extends Component {
   constructor(props){
@@ -59,10 +61,11 @@ class UserProfile extends Component {
       </div>
     )
   }
+
   render() {
     return(
       <div className="userHomePageFalse">
-      {this.state.apiDataRecieved ? this.renderUserHomepage() : 'Loading!!!!'}
+      {this.state.apiDataRecieved ? this.renderUserHomepage() : "Loading"}
       </div>
     )
   }

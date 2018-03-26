@@ -42,7 +42,7 @@ class HomePage extends Component {
             <div className="homePage-box3-contents-container">
               <div className="homePage-box3-contents">
                 <h1 className="homePage-box3-h1">About BeatBox : <br /><br />
-                                                              BeatBox was created by 4 students in the WDI Immersive Program at General Assembly. </h1>
+                                                                  BeatBox was created by 4 students in the WDI Immersive Program at General Assembly. </h1>
               </div>
             </div>
           </div>

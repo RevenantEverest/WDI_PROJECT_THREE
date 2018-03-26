@@ -14,7 +14,7 @@ router.post('/login', User.login, (req, res) => {
   // console.log('last step', res.locals)
   if(!res.locals.user) {
     // console.log(res.locals)
-    // console.log('login failed, fuck')
+ 
     res.status(401).json({error: 'Login Failed'})
   } else {
     const {password, ...user} = res.locals.user;

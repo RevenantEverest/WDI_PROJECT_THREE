@@ -138,6 +138,12 @@ nav{
 .homePage-box2-h1 {
   font-weight: 800;
   font-size: 40px;
+  /* text-decoration: underline; */
+}
+
+.homePage-box2-p {
+  font-weight: 400;
+  font-size: 26px;
 }
 
 .homePage-box3 {
@@ -170,6 +176,11 @@ nav{
 .homePage-box3-h1 {
   font-weight: 800;
   font-size: 40px;
+}
+
+.homePage-box3-p {
+  font-weight: 400;
+  font-size: 26px;
 }
 
 /*-------- END --------*/
@@ -395,3 +406,87 @@ footer {
 }
 
 /*-------- END --------*/
+
+/*======PlayLists=======*/
+
+.add-playlist-form {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+
+
+.add-playlist-input-playlist_name {
+    text-align: center;
+    color: red;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+.add-playlist-input-submit {
+  border-color: black;
+  border-width: 5px;
+  font-size: 30px;
+}
+
+.add-playlist-input-submit:hover {
+  color: red;
+}
+
+.delete-playlist-container {
+  padding: 30px;
+}
+
+.delete-playlist-deleteButton {
+  border-color: black;
+  background-color: black;
+  color: red;
+  border-width: 5px;
+  font-size: 20px;
+}
+
+.one-playlist-song-container-if-array {
+  padding: 20px;
+  text-align: center;
+}
+
+.one-playlist-remove-song-button {
+  background-color: black;
+  color: red;
+  border-width: 5px;
+  font-size: 20px;
+}
+
+.one-playlist-playlist_name {
+  font-size: 50px;
+  text-align: center;
+}
+
+.one-playlist-delete-playlist-form {
+  border-color: black;
+  border-width: 30px;
+  color: red;
+}
+
+/*======End========*/
+
+
+/*=======Songs==========*/
+
+.song-component-container {
+  padding: 20px;
+}
+
+.all-songs-h1 {
+  text-align: center;
+}
+
+.one-song-data-container {
+  text-align: center;
+
+}
+
+/*=======End========*/

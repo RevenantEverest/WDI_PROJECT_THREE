@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-//********* We can probably make this a Brian "dumb" Component ***************
 
 class Song extends Component {
   constructor(props){

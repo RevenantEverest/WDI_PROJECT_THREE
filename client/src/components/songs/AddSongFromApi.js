@@ -24,7 +24,7 @@ class AddSongTwo extends Component {
      this.setState({
         artist: this.props.songData.track.artist_name,
         title: this.props.songData.track.track_name,
-        release_date: this.props.songData.track.release_date,
+        released: this.props.songData.track.release_date,
         album: this.props.songData.track.album_name,
         rating: this.props.songData.track.track_rating,
         genre: newGenre,

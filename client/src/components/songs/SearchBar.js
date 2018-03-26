@@ -8,19 +8,11 @@ class SearchBar extends Component {
 		super(props);
 		this.state = {
 			apiDataLoaded: false,
-			// apiData: null,
-			// songName:'',
-			// artistName:'',
-			// albumName:'',
-			// albumArt:'',
-			// releaseDate:'',
-			// songRating:'',
-			// song: '',
 			results: null
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		// this.handleButtonClick = this.handleButtonClick.bind(this)
+		
 	}
 
 	handleChange(e) {
