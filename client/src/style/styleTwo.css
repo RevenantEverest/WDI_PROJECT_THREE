@@ -165,7 +165,11 @@ a:hover{
 
 form {
   	display: block;
-  	
+}
+
+.one-song-data-container {
+	text-align: center;
+    
 }
 
 /*=======End========*/
