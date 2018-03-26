@@ -23,7 +23,7 @@ class UserHome extends Component {
     this.renderLogin = this.renderLogin.bind(this)
   }
   componentDidMount(){
-    axios(`/isLoggedIn`, {
+    axios(`https://wdi-beat-box-backend.herokuapp.com/isLoggedIn`, {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },
@@ -88,7 +88,7 @@ class UserHome extends Component {
 
   authClick(event) {
     event.preventDefault();
-    axios('/restricted', {
+    axios('https://wdi-beat-box-backend.herokuapp.com/restricted', {
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },
