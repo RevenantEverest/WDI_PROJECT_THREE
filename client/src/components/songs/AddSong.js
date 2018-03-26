@@ -11,25 +11,28 @@ class AddSong extends Component {
               song_id: parseInt(this.props.match.params.id, 10),
               user_id: parseInt(window.localStorage.user_id, 10),
               playlists: null,
-              fireRedirect: false
+              fireRedirect: false,
+              isLoggedIn: false
             }
             this.renderAddForm = this.renderAddForm.bind(this)
             this.handleSubmit = this.handleSubmit.bind(this)
             this.handleChange = this.handleChange.bind(this)
           }
     componentDidMount(){
-        axios(`http://localhost:3000/isLoggedIn`, {
-            headers: {
-                Authorization: `Bearer ${TokenService.read()}`,
-              },
-            }).then(resp => {
-              this.setState({
-                isLoggedIn: resp.data.isLoggedIn,
-              })
-              this.getAllUserPlaylists()
+      console.log(`in componentDidMount`);
+            services.checkLoggedIn(TokenService.read())
+            .then(resp => {
+              if(resp.data.isLoggedIn){
+                this.setState({
+                  isLoggedIn: resp.data.isLoggedIn,
+                }, this.getAllUserPlaylists())
+              } else {
+                this.setState({fireRedirect: true})
+              }
             })
-            .catch(err => console.log(err))
-            //this is were we will Redirect to the Login page
+            .catch(err => {
+              console.log(`made it here`);
+          })
           }
 
     getAllUserPlaylists(){
@@ -81,7 +84,7 @@ class AddSong extends Component {
       return(
         <div className="add-song-container">
           {this.state.playlists ? this.renderAddForm() : ""}
-          {this.state.fireRedirect ? <Redirect to="/home" /> : ''}
+          {this.state.fireRedirect ? <Redirect to="/login" /> : ''}
         </div>
       )
     }

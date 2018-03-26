@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import services from '../../services/apiServices';
 import {Redirect} from 'react-router-dom';
+import TokenService from '../../services/TokenService';
+
 
 class AddSongTwo extends Component {
   constructor(props){
     super(props);
     this.state ={
-      fireRedirect : false
+      fireRedirect : false,
+      iMadeAnUhOh: false
     }
     // this.handleButtonClick = this.handleButtonClick.bind(this)
     // this.insertIntoLibrary = this.insertIntoLibrary.bind(this)
     this.insert = this.insert.bind(this)
   }
+
+  // componentDidMount(){
+  //   services.checkLoggedIn(TokenService.read())
+  //   .then(result => {
+  //
+  //   })
+  // }
 
   handleButtonClick(e){
     e.preventDefault();
@@ -42,6 +52,9 @@ insert(){
     })
   })
   .catch(err => {
+    this.setState({
+      iMadeAnUhOh: true
+    })
     console.log(`You done fucked up!`, err);
   })
 }
@@ -53,6 +66,7 @@ insert(){
         <button  onClick={(e) => this.handleButtonClick(e)}> + </button>
         <div>
         {this.state.fireRedirect ? <Redirect to={`/addsong/${this.state.song_id}`} /> : ""}
+        {this.state.iMadeAnUhOh ? <Redirect to='/login' /> : ''}
       </div>
       </div>
     )
