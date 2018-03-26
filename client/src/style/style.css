@@ -1,0 +1,492 @@
+html{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+body{
+  background-color: #dedede;
+  color: black;
+  font-family: "Raleway", sans-serif;
+}
+
+a{
+  text-decoration: none;
+  margin-left: 5%;
+  font-weight: 800;
+  color: inherit;
+}
+
+a:visited, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  color: #B2006E;
+}
+
+nav{
+  height: 10vh;
+  width: 100;
+  background-color: rgba(0,0,0,.8);
+  color: #dedede;
+}
+
+/*======== Homepage ========*/
+
+.navBarContent {
+  position: absolute;
+  width: 30vw;
+  top: 5.4vh;
+  margin-left: 2vw;
+  margin-top: -0.1vh;
+  display: inline;
+  overflow: hidden;
+}
+
+.navBarLogo {
+  height: 10vh;
+  width: 15vw;
+  margin-top: -2.5vh;
+  margin-left: 5%;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/PiQO5Xg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.login {
+  position: absolute;
+  top: 5vh;
+  width: 6%;
+  height: 3%;
+  border-radius: 6px;
+  margin-left: 90%;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logout {
+  position: absolute;
+  top: 5vh;
+  width: 6%;
+  height: 3%;
+  border-radius: 6px;
+  margin-left: 90%;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.login:hover, .logout:hover {
+  color: #b3006E;
+  font-weight: 800;
+  background-color: rgba(0,0,0,.4);
+}
+
+.navBar-username {
+  position: absolute;
+  top: 2.5vh;
+  width: 6%;
+  height: 2%;
+  /*margin-left: 78%;*/
+  display: inline-block;
+  text-decoration: none;
+  /*font-size: 20px;*/
+  font-weight: 600;
+}
+
+.navBar-username:hover {
+  color: #B2006E;
+  cursor: pointer;
+}
+
+.login-form {
+  margin-top: 15%;
+}
+
+.login-username-text, .login-password-text {
+  font-weight: 400;
+}
+
+.login-input-username{
+  margin-left: 4%;
+}
+
+.login-input-password {
+  margin-left: 6%;
+}
+
+.login-input-submit {
+  font-weight: 600;
+  margin-top: 5%;
+  margin-left: 69%;
+  margin-bottom: 20%;
+}
+
+.homePage-box2 {
+  color: #dedede;
+  height: 80vh;
+  background-color: black;
+}
+
+.homePage-box2-contents {
+  padding-top: 4%;
+  margin-left: 6%;
+}
+
+.homePage-box2-h1 {
+  font-weight: 800;
+  font-size: 40px;
+  /* text-decoration: underline; */
+}
+
+.homePage-box2-p {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.homePage-box3 {
+  color: #dedede;
+  height: 80vh;
+  width: 100%;
+  background-image: url("https://i.imgur.com/UyLIjKX.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  border-style: solid;
+  border-color: #dedede;
+  border-width: .6vh 0 0 0;
+}
+
+.homePage-box3-contents-container {
+  border-radius: 12px;
+  height: 70%;
+  width: 92%;
+  margin-top: 5%;
+  margin-left: 4%;
+  background-color: rgba(0,0,0,.6);
+}
+
+.homePage-box3-contents {
+  padding-top: 2%;
+  margin-left: 2%;
+}
+
+.homePage-box3-h1 {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.homePage-box3-p {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+/*-------- END --------*/
+
+/*======== Register User ========*/
+
+.register-container {
+  margin-left: 70vh;
+}
+
+.register-username-text, .register-password-text {
+  font-weight: 400;
+  margin-bottom: 5%;
+}
+
+.register-input-username{
+  margin-left: 4%;
+}
+
+.register-input-password {
+  margin-top: 2%;
+  margin-left: 4.8%;
+}
+
+.register-input-submit {
+  font-weight: 600;
+  margin-top: 2%;
+  margin-left: 23.5%;
+  margin-bottom: 20%;
+}
+
+/*-------- END --------*/
+
+/*======== User Profile ========*/
+
+.userHomePageLogo {
+  height: 30vh;
+  width: 40vw;
+  margin-top: -14vh;
+  margin-left: 32vw;
+  background-image: url("https://i.imgur.com/tZR6CT5.png");
+  background-size: 80vh;
+  background-repeat: no-repeat;
+}
+
+/*-------- END --------*/
+
+/*======== Footer ========*/
+
+footer {
+  font-family: sans-serif;
+  font-weight: 200;
+  font-size: 10px;
+  position: fixed;
+  bottom: 0;
+  display: block;
+  height: 10vh;
+  width: 100%;
+  background-color: black;
+  color: #dedede;
+}
+
+.footer-h1 {
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 40%;
+  font-weight: 200;
+}
+
+.social-media-containers {
+  margin-top: -3.4%;
+  margin-left: 52%;
+}
+
+.facebook {
+  height: 6vh;
+  width: 3vw;
+  margin-left: 1%;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/htqOpO0.png");
+  background-size: 100%;
+}
+
+.twitter {
+  background-image: url("");
+}
+
+.github {
+  position: absolute;
+  height: 6vh;
+  width: 3vw;
+  margin-top: -6.5vh;
+  margin-left: 2.5%;
+  display: inline-block;
+  background-image: url("https://i.imgur.com/XgY8p7J.png");
+  background-size: 100%;
+}
+
+/*-------- END --------*/
+
+
+/*======== Modal ========*/
+
+.simpleModal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  animation: .5s linear fadeIn;
+}
+
+.modalContent{
+  border-radius: 12px;
+  background-color: #f4f4f4;
+  margin: 10% auto;
+  padding: 20px;
+  height: 40%;
+  width: 20%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+}
+
+.closeButton{
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+}
+
+.closeButton:hover, .closeButton:focus{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*-------- END --------*/
+
+/*======== Dropdown ========*/
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  width: 4vw;
+  height: 2vh;
+}
+
+.dropdown {
+  position: absolute;
+  margin-left: 85%;
+  margin-top: -5.65%;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 10vh;
+  padding: 50%;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover, .logoutButton:hover {
+  background-color: #B2006E;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+}
+
+.dropdown-content-link-userProfile {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.logoutButton {
+  display: block;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-weight: 600;
+  width: 100%;
+  padding-left: .5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-bottom: 2vh;
+}
+/*-------- END --------*/
+
+/*======== Animations ========*/
+
+@keyframes fadeIn {
+    0%,
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}
+
+/*-------- END --------*/
+
+/*======PlayLists=======*/
+
+.add-playlist-form {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+
+
+.add-playlist-input-playlist_name {
+    text-align: center;
+    color: red;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+.add-playlist-input-submit {
+  border-color: black;
+  border-width: 5px;
+  font-size: 30px;
+}
+
+.add-playlist-input-submit:hover {
+  color: red;
+}
+
+.delete-playlist-container {
+  padding: 30px;
+}
+
+.delete-playlist-deleteButton {
+  border-color: black;
+  background-color: black;
+  color: red;
+  border-width: 5px;
+  font-size: 20px;
+}
+
+.one-playlist-song-container-if-array {
+  padding: 20px;
+  text-align: center;
+}
+
+.one-playlist-remove-song-button {
+  background-color: black;
+  color: red;
+  border-width: 5px;
+  font-size: 20px;
+}
+
+.one-playlist-playlist_name {
+  font-size: 50px;
+  text-align: center;
+}
+
+.one-playlist-delete-playlist-form {
+  border-color: black;
+  border-width: 30px;
+  color: red;
+}
+
+/*======End========*/
+
+
+/*=======Songs==========*/
+
+.song-component-container {
+  padding: 20px;
+}
+
+.all-songs-h1 {
+  text-align: center;
+}
+
+.one-song-data-container {
+  text-align: center;
+
+}
+
+/*=======End========*/
