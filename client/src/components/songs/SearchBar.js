@@ -12,7 +12,7 @@ class SearchBar extends Component {
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		
+
 	}
 
 	handleChange(e) {
@@ -25,6 +25,7 @@ class SearchBar extends Component {
 	}
 
 	handleSubmit(e){
+			console.log();
 		this.setState({
 			apiDataLoaded: false
 		})
