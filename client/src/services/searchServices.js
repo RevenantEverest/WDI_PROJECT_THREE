@@ -4,8 +4,8 @@ const searchServices = {};
 
 searchServices.search = (data) => {
 	if(data.songName && !data.artistName){
-		// console.log('I made It to song!!!', data.songName)
-		return axios.get(`https://api.musixmatch.com/ws/1.1/track.search?format=json&callback=callback&q_track=${data.songName}&quorum_factor=1&page_size=100&apikey=77bc1b55c3630f3ec6652146b1a6a496`, )
+		console.log('I made It to song!!!', data.songName)
+		return axios.get(`https://api.musixmatch.com/ws/1.1/track.search?format=json&callback=callback&q_track=${data.songName}&quorum_factor=1&page_size=100&apikey=77bc1b55c3630f3ec6652146b1a6a496`)
 
 	} else if (!data.songName && data.artistName){
 		// console.log('I made it to artist!!!', data.artistName)

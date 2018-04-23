@@ -18,7 +18,7 @@ class AddSong extends Component {
             this.handleChange = this.handleChange.bind(this)
           }
     componentDidMount(){
-        axios(`https://wdi-beat-box-backend.herokuapp.com/isLoggedIn`, {
+        axios(`/isLoggedIn`, {
             headers: {
                 Authorization: `Bearer ${TokenService.read()}`,
               },
