@@ -52,9 +52,10 @@ class UserHome extends Component {
   }
   register(data){
     console.log(`I am the data`, data);
-    axios('/users/', {
+    axios.request({
+      url: '/users',
       method: "POST",
-      data
+      data: data
     }).then(resp => {
       TokenService.save(resp.data.token)
       TokenService.saveUser(resp.data.user.user_id);

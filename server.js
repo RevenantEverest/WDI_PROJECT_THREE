@@ -32,6 +32,9 @@ app.set(`view engine`, `ejs`);
 app.use(tokenService.receiveToken);
 
 app.use('/users', userRouterTwo)
+// app.use('/users', (req, res) => {
+//   console.log(`I am hitting the backend`);
+// })
 app.get('/restricted', authServices.restrict(), (req, res) => {
   res.json({message: 'nailed it!'})
 })
